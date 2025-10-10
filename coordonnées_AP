@@ -1,0 +1,39 @@
+import geopandas as gpd
+import pandas as pd
+import re
+
+def normalize_text(x: str) -> str:
+    if x is None:
+        return ""
+    s = str(x).upper().strip()
+    s = re.sub(r"\(.*?\)", "", s)
+    mapping = {
+        "É":"E","È":"E","Ê":"E","Ë":"E",
+        "À":"A","Â":"A","Ä":"A",
+        "Î":"I","Ï":"I",
+        "Ô":"O","Ö":"O",
+        "Ù":"U","Û":"U","Ü":"U",
+        "Ç":"C",
+    }
+    for k,v in mapping.items():
+        s = s.replace(k,v)
+    s = re.sub(r"[-’'_/]", " ", s)
+    s = re.sub(r"\s+", " ", s)
+    return s.strip()
+
+# Charger le shapefile
+gdf = gpd.read_file("AP_update.shp")
+print(gdf.columns)
+
+gdf["Key"] = gdf["SHORT_NAME"].apply(normalize_text)
+
+gdf["Longitude"] = gdf.geometry.centroid.x
+gdf["Latitude"] = gdf.geometry.centroid.y
+
+# Sélectionner uniquement les colonnes utiles
+coords = gdf[["Key","Latitude","Longitude"]]
+
+# Sauvegarder en CSV
+coords.to_csv("AP_coords.csv", index=False)
+
+print(" Coordonnées exportées dans AP_coords.csv")

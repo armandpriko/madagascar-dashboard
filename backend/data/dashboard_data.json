@@ -1,0 +1,762 @@
+{
+  "protected_areas": {
+    "analysis": {
+      "total_areas": 82,
+      "total_area_km2": 111073.45,
+      "columns": [
+        "AP_Name",
+        "Financement_annuel_USD",
+        "Superficie_ha",
+        "lat",
+        "lng"
+      ]
+    },
+    "data": [
+      {
+        "AP_Name": "AMBATOVAKY",
+        "Financement_annuel_USD": 8029851304.554415,
+        "Superficie_ha": 78115.0,
+        "FIRE_total": 3108.0,
+        "FIRE_par_100ha_moy": 0.1420981885663176,
+        "lat": -16.738389727768748,
+        "lng": 49.144054042413345
+      },
+      {
+        "AP_Name": "AMBOHIDRAY",
+        "Financement_annuel_USD": 289080921.94592977,
+        "Superficie_ha": 1244.0,
+        "FIRE_total": 30.0,
+        "FIRE_par_100ha_moy": 0.0861276985986571,
+        "lat": -18.598418209801228,
+        "lng": 48.303881010656426
+      },
+      {
+        "AP_Name": "AMBOHITANTELY",
+        "Financement_annuel_USD": 1658923787.5312223,
+        "Superficie_ha": 4940.0,
+        "FIRE_total": 135.0,
+        "FIRE_par_100ha_moy": 0.09759976863264318,
+        "lat": -18.1626212896425,
+        "lng": 47.302696460877904
+      },
+      {
+        "AP_Name": "AMORON'I ONILAHY",
+        "Financement_annuel_USD": 1156972576.10791,
+        "Superficie_ha": NaN,
+        "FIRE_total": NaN,
+        "FIRE_par_100ha_moy": NaN,
+        "lat": NaN,
+        "lng": NaN
+      },
+      {
+        "AP_Name": "AMPASINDAVA",
+        "Financement_annuel_USD": 1474141154.23944,
+        "Superficie_ha": 91784.0,
+        "FIRE_total": 6831.0,
+        "FIRE_par_100ha_moy": 0.265802629773847,
+        "lat": -13.798354628587708,
+        "lng": 47.99291044206898
+      },
+      {
+        "AP_Name": "ANALALAVA",
+        "Financement_annuel_USD": 6197594765.5676155,
+        "Superficie_ha": NaN,
+        "FIRE_total": NaN,
+        "FIRE_par_100ha_moy": NaN,
+        "lat": -17.70508298706203,
+        "lng": 49.45575054933587
+      },
+      {
+        "AP_Name": "ANALAMERANA",
+        "Financement_annuel_USD": 1630878721.04,
+        "Superficie_ha": 75000.0,
+        "FIRE_total": 1696.0,
+        "FIRE_par_100ha_moy": 0.08076190476082794,
+        "lat": -12.783656914525949,
+        "lng": 49.47982380889553
+      },
+      {
+        "AP_Name": "ANDOHAHELA",
+        "Financement_annuel_USD": 9139984064.740253,
+        "Superficie_ha": 76300.0,
+        "FIRE_total": 4996.0,
+        "FIRE_par_100ha_moy": 0.233851338697553,
+        "lat": -24.754366838438397,
+        "lng": 46.726374389043585
+      },
+      {
+        "AP_Name": "ANDRAFIAMENA",
+        "Financement_annuel_USD": 2679972345.845236,
+        "Superficie_ha": NaN,
+        "FIRE_total": NaN,
+        "FIRE_par_100ha_moy": NaN,
+        "lat": NaN,
+        "lng": NaN
+      },
+      {
+        "AP_Name": "ANDRINGITRA / PIC D\u2019IVOHIBE",
+        "Financement_annuel_USD": 8745202470.985857,
+        "Superficie_ha": NaN,
+        "FIRE_total": NaN,
+        "FIRE_par_100ha_moy": NaN,
+        "lat": NaN,
+        "lng": NaN
+      },
+      {
+        "AP_Name": "ANKARAFANTSIKA",
+        "Financement_annuel_USD": 17760757041.74418,
+        "Superficie_ha": 136700.0,
+        "FIRE_total": 4902.0,
+        "FIRE_par_100ha_moy": 0.1280698087565091,
+        "lat": -16.220896612713908,
+        "lng": 46.94175566160105
+      },
+      {
+        "AP_Name": "ANKARANA",
+        "Financement_annuel_USD": 10055817017.36164,
+        "Superficie_ha": 25190.0,
+        "FIRE_total": 1560.0,
+        "FIRE_par_100ha_moy": 0.2211762037001745,
+        "lat": -12.901905999662532,
+        "lng": 49.1370196936638
+      },
+      {
+        "AP_Name": "ANKAREA",
+        "Financement_annuel_USD": 1537923024.0,
+        "Superficie_ha": NaN,
+        "FIRE_total": NaN,
+        "FIRE_par_100ha_moy": NaN,
+        "lat": -12.87931690421528,
+        "lng": 48.57449115358692
+      },
+      {
+        "AP_Name": "ANKIVONJY",
+        "Financement_annuel_USD": 2716100608.0,
+        "Superficie_ha": NaN,
+        "FIRE_total": NaN,
+        "FIRE_par_100ha_moy": NaN,
+        "lat": -13.521458225718,
+        "lng": 47.862184658271126
+      },
+      {
+        "AP_Name": "ANTREMA",
+        "Financement_annuel_USD": 6587001740.647465,
+        "Superficie_ha": NaN,
+        "FIRE_total": NaN,
+        "FIRE_par_100ha_moy": NaN,
+        "lat": -15.768324212474086,
+        "lng": 46.12447639959059
+      },
+      {
+        "AP_Name": "APMA (FEU)",
+        "Financement_annuel_USD": 350876750.0,
+        "Superficie_ha": NaN,
+        "FIRE_total": NaN,
+        "FIRE_par_100ha_moy": NaN,
+        "lat": NaN,
+        "lng": NaN
+      },
+      {
+        "AP_Name": "APMA-CNFEREF",
+        "Financement_annuel_USD": 200000000.0,
+        "Superficie_ha": NaN,
+        "FIRE_total": NaN,
+        "FIRE_par_100ha_moy": NaN,
+        "lat": NaN,
+        "lng": NaN
+      },
+      {
+        "AP_Name": "APMA-DURELL",
+        "Financement_annuel_USD": 5143368213.5604515,
+        "Superficie_ha": NaN,
+        "FIRE_total": NaN,
+        "FIRE_par_100ha_moy": NaN,
+        "lat": NaN,
+        "lng": NaN
+      },
+      {
+        "AP_Name": "APMA-FANAMBY",
+        "Financement_annuel_USD": 7540079983.496726,
+        "Superficie_ha": NaN,
+        "FIRE_total": NaN,
+        "FIRE_par_100ha_moy": NaN,
+        "lat": NaN,
+        "lng": NaN
+      },
+      {
+        "AP_Name": "BAIE DE BALY",
+        "Financement_annuel_USD": 14812051015.428108,
+        "Superficie_ha": 62900.0,
+        "FIRE_total": 3296.0,
+        "FIRE_par_100ha_moy": 0.1139144259330752,
+        "lat": -16.087369664043226,
+        "lng": 45.225047295024766
+      },
+      {
+        "AP_Name": "BEANKA",
+        "Financement_annuel_USD": 2310400079.9483542,
+        "Superficie_ha": 17166.0,
+        "FIRE_total": 564.0,
+        "FIRE_par_100ha_moy": 0.11734158884821,
+        "lat": -17.928131348524428,
+        "lng": 44.503295115674426
+      },
+      {
+        "AP_Name": "BEMANEVIKA",
+        "Financement_annuel_USD": 1083303412.1262364,
+        "Superficie_ha": 35737.0,
+        "FIRE_total": 1271.0,
+        "FIRE_par_100ha_moy": 0.1270192157752104,
+        "lat": -14.371010386955748,
+        "lng": 48.53703684955719
+      },
+      {
+        "AP_Name": "BEMARAHA",
+        "Financement_annuel_USD": 8734709923.775612,
+        "Superficie_ha": NaN,
+        "FIRE_total": NaN,
+        "FIRE_par_100ha_moy": NaN,
+        "lat": -18.661417650004154,
+        "lng": 44.76731400766664
+      },
+      {
+        "AP_Name": "BETAMPONA",
+        "Financement_annuel_USD": 1628183500.0,
+        "Superficie_ha": 2234.0,
+        "FIRE_total": 0.0,
+        "FIRE_par_100ha_moy": 0.0,
+        "lat": -17.903679500750634,
+        "lng": 49.216687960114335
+      },
+      {
+        "AP_Name": "BEZA MAHAFALY",
+        "Financement_annuel_USD": 758623820.0,
+        "Superficie_ha": 4219.0,
+        "FIRE_total": 24.0,
+        "FIRE_par_100ha_moy": 0.02031625638634024,
+        "lat": -23.683967894490323,
+        "lng": 44.59217936054573
+      },
+      {
+        "AP_Name": "BOENY (FEU)",
+        "Financement_annuel_USD": 356701842.0,
+        "Superficie_ha": NaN,
+        "FIRE_total": NaN,
+        "FIRE_par_100ha_moy": NaN,
+        "lat": NaN,
+        "lng": NaN
+      },
+      {
+        "AP_Name": "BOMBETOKA",
+        "Financement_annuel_USD": 1558765638.0,
+        "Superficie_ha": NaN,
+        "FIRE_total": NaN,
+        "FIRE_par_100ha_moy": NaN,
+        "lat": NaN,
+        "lng": NaN
+      },
+      {
+        "AP_Name": "CAP STE MARIE",
+        "Financement_annuel_USD": 1473342216.0,
+        "Superficie_ha": NaN,
+        "FIRE_total": NaN,
+        "FIRE_par_100ha_moy": NaN,
+        "lat": NaN,
+        "lng": NaN
+      },
+      {
+        "AP_Name": "CAZ",
+        "Financement_annuel_USD": 5140587541.62,
+        "Superficie_ha": NaN,
+        "FIRE_total": NaN,
+        "FIRE_par_100ha_moy": NaN,
+        "lat": NaN,
+        "lng": NaN
+      },
+      {
+        "AP_Name": "CM7B",
+        "Financement_annuel_USD": 9355680891.05729,
+        "Superficie_ha": NaN,
+        "FIRE_total": NaN,
+        "FIRE_par_100ha_moy": NaN,
+        "lat": NaN,
+        "lng": NaN
+      },
+      {
+        "AP_Name": "CMI",
+        "Financement_annuel_USD": 10093052748.86019,
+        "Superficie_ha": NaN,
+        "FIRE_total": NaN,
+        "FIRE_par_100ha_moy": NaN,
+        "lat": NaN,
+        "lng": NaN
+      },
+      {
+        "AP_Name": "CMK",
+        "Financement_annuel_USD": 11435901418.021805,
+        "Superficie_ha": NaN,
+        "FIRE_total": NaN,
+        "FIRE_par_100ha_moy": NaN,
+        "lat": NaN,
+        "lng": NaN
+      },
+      {
+        "AP_Name": "COFAV",
+        "Financement_annuel_USD": 10311572428.843998,
+        "Superficie_ha": NaN,
+        "FIRE_total": NaN,
+        "FIRE_par_100ha_moy": NaN,
+        "lat": NaN,
+        "lng": NaN
+      },
+      {
+        "AP_Name": "COMATSA NORD",
+        "Financement_annuel_USD": 2909803170.78,
+        "Superficie_ha": 239095.0,
+        "FIRE_total": 7312.0,
+        "FIRE_par_100ha_moy": 0.1092213794273259,
+        "lat": -14.066834962148704,
+        "lng": 49.28656922602533
+      },
+      {
+        "AP_Name": "COMPLEXE ANJOZOROBE ANGAVO",
+        "Financement_annuel_USD": 319251620.17696,
+        "Superficie_ha": 41200.0,
+        "FIRE_total": 2471.0,
+        "FIRE_par_100ha_moy": 0.2141990291210146,
+        "lat": NaN,
+        "lng": NaN
+      },
+      {
+        "AP_Name": "COORDINATION/SIEGE",
+        "Financement_annuel_USD": 5105186052.058583,
+        "Superficie_ha": NaN,
+        "FIRE_total": NaN,
+        "FIRE_par_100ha_moy": NaN,
+        "lat": NaN,
+        "lng": NaN
+      },
+      {
+        "AP_Name": "CORRIDOR FORESTIER BONGOLAVA",
+        "Financement_annuel_USD": 491869800.0,
+        "Superficie_ha": 60700.0,
+        "FIRE_total": 3597.0,
+        "FIRE_par_100ha_moy": 0.2116380324747436,
+        "lat": NaN,
+        "lng": NaN
+      },
+      {
+        "AP_Name": "FANIRY - RANOLALY BEHELOKE",
+        "Financement_annuel_USD": 514019440.0,
+        "Superficie_ha": NaN,
+        "FIRE_total": NaN,
+        "FIRE_par_100ha_moy": NaN,
+        "lat": NaN,
+        "lng": NaN
+      },
+      {
+        "AP_Name": "FIVOY - DELTA TSIRIBIHINA",
+        "Financement_annuel_USD": 462569428.82,
+        "Superficie_ha": NaN,
+        "FIRE_total": NaN,
+        "FIRE_par_100ha_moy": NaN,
+        "lat": NaN,
+        "lng": NaN
+      },
+      {
+        "AP_Name": "FORET DE MIKEA",
+        "Financement_annuel_USD": 10134252780.82,
+        "Superficie_ha": NaN,
+        "FIRE_total": NaN,
+        "FIRE_par_100ha_moy": NaN,
+        "lat": NaN,
+        "lng": NaN
+      },
+      {
+        "AP_Name": "GALOKO KALIBINONO",
+        "Financement_annuel_USD": 1654534208.0,
+        "Superficie_ha": NaN,
+        "FIRE_total": NaN,
+        "FIRE_par_100ha_moy": NaN,
+        "lat": NaN,
+        "lng": NaN
+      },
+      {
+        "AP_Name": "IBITY",
+        "Financement_annuel_USD": 953240474.0,
+        "Superficie_ha": 6143.0,
+        "FIRE_total": 364.0,
+        "FIRE_par_100ha_moy": 0.2116229854775154,
+        "lat": -20.13132969636236,
+        "lng": 47.01205397997063
+      },
+      {
+        "AP_Name": "ISALO",
+        "Financement_annuel_USD": 5756434294.599999,
+        "Superficie_ha": 86700.0,
+        "FIRE_total": 3268.0,
+        "FIRE_par_100ha_moy": 0.1346185533021217,
+        "lat": -22.447929591696138,
+        "lng": 45.28686229224573
+      },
+      {
+        "AP_Name": "KALAMBATRITRA",
+        "Financement_annuel_USD": 1284460108.4,
+        "Superficie_ha": 30400.0,
+        "FIRE_total": 4832.0,
+        "FIRE_par_100ha_moy": 0.5676691729136575,
+        "lat": -23.38096491564914,
+        "lng": 46.47214309305324
+      },
+      {
+        "AP_Name": "KIRINDY-MITE / ANDRANOMENA",
+        "Financement_annuel_USD": 12509827958.604465,
+        "Superficie_ha": NaN,
+        "FIRE_total": NaN,
+        "FIRE_par_100ha_moy": NaN,
+        "lat": NaN,
+        "lng": NaN
+      },
+      {
+        "AP_Name": "LOKOBE",
+        "Financement_annuel_USD": 4359222560.0,
+        "Superficie_ha": 847.0,
+        "FIRE_total": 0.0,
+        "FIRE_par_100ha_moy": 0.0,
+        "lat": -13.412705748648031,
+        "lng": 48.3194426486189
+      },
+      {
+        "AP_Name": "LOKY MANAMBATO",
+        "Financement_annuel_USD": 6209932085.530611,
+        "Superficie_ha": 249949.0,
+        "FIRE_total": 8331.0,
+        "FIRE_par_100ha_moy": 0.1190385695820043,
+        "lat": -13.051548428825782,
+        "lng": 49.697362384393415
+      },
+      {
+        "AP_Name": "MAHABO",
+        "Financement_annuel_USD": 1886168604.0,
+        "Superficie_ha": NaN,
+        "FIRE_total": NaN,
+        "FIRE_par_100ha_moy": NaN,
+        "lat": NaN,
+        "lng": NaN
+      },
+      {
+        "AP_Name": "MAHIMBORONDRO",
+        "Financement_annuel_USD": 1188279274.1357567,
+        "Superficie_ha": 75469.0,
+        "FIRE_total": 1993.0,
+        "FIRE_par_100ha_moy": 0.09431497890210323,
+        "lat": -14.294836732281729,
+        "lng": 48.75084309649642
+      },
+      {
+        "AP_Name": "MAKIRA",
+        "Financement_annuel_USD": 13039015139.740974,
+        "Superficie_ha": 726198.0,
+        "FIRE_total": 3011.0,
+        "FIRE_par_100ha_moy": 0.0148080433002523,
+        "lat": -15.237902705007484,
+        "lng": 49.49019108709875
+      },
+      {
+        "AP_Name": "MANANARA NORD",
+        "Financement_annuel_USD": 11888321235.77808,
+        "Superficie_ha": 24080.0,
+        "FIRE_total": 744.0,
+        "FIRE_par_100ha_moy": 0.1103464641624797,
+        "lat": -16.432792241349972,
+        "lng": 49.72872852875362
+      },
+      {
+        "AP_Name": "MANDRARE",
+        "Financement_annuel_USD": 186300000.0,
+        "Superficie_ha": NaN,
+        "FIRE_total": NaN,
+        "FIRE_par_100ha_moy": NaN,
+        "lat": NaN,
+        "lng": NaN
+      },
+      {
+        "AP_Name": "MANDROZO",
+        "Financement_annuel_USD": 4887371524.56633,
+        "Superficie_ha": 15121.0,
+        "FIRE_total": 2010.0,
+        "FIRE_par_100ha_moy": 0.4747418443288596,
+        "lat": -17.542015909666656,
+        "lng": 44.095961248826626
+      },
+      {
+        "AP_Name": "MANGABE",
+        "Financement_annuel_USD": 827385500.0,
+        "Superficie_ha": NaN,
+        "FIRE_total": NaN,
+        "FIRE_par_100ha_moy": NaN,
+        "lat": NaN,
+        "lng": NaN
+      },
+      {
+        "AP_Name": "MANGERIVOLA",
+        "Financement_annuel_USD": 973822322.09617,
+        "Superficie_ha": 12524.0,
+        "FIRE_total": 252.0,
+        "FIRE_par_100ha_moy": 0.07186202490643069,
+        "lat": -18.195982861319575,
+        "lng": 48.88148966837676
+      },
+      {
+        "AP_Name": "MANOMBO",
+        "Financement_annuel_USD": 3241360636.870016,
+        "Superficie_ha": 6540.0,
+        "FIRE_total": 1016.0,
+        "FIRE_par_100ha_moy": 0.5548274354765445,
+        "lat": -23.03925777433046,
+        "lng": 47.73136879040436
+      },
+      {
+        "AP_Name": "MANTADIA ANALAMAZAOTRA",
+        "Financement_annuel_USD": 0.0,
+        "Superficie_ha": NaN,
+        "FIRE_total": NaN,
+        "FIRE_par_100ha_moy": NaN,
+        "lat": NaN,
+        "lng": NaN
+      },
+      {
+        "AP_Name": "MAROJEJY / ANJANAHARIBE-SUD",
+        "Financement_annuel_USD": 9144806419.26789,
+        "Superficie_ha": NaN,
+        "FIRE_total": NaN,
+        "FIRE_par_100ha_moy": NaN,
+        "lat": NaN,
+        "lng": NaN
+      },
+      {
+        "AP_Name": "MAROLAMBO",
+        "Financement_annuel_USD": 1631786232.4,
+        "Superficie_ha": 194565.0,
+        "FIRE_total": 2309.0,
+        "FIRE_par_100ha_moy": 0.04238392604726537,
+        "lat": -20.208872104918356,
+        "lng": 47.74536673301985
+      },
+      {
+        "AP_Name": "MAROMIZAHA",
+        "Financement_annuel_USD": 4660735296.57,
+        "Superficie_ha": 2133.0,
+        "FIRE_total": 119.0,
+        "FIRE_par_100ha_moy": 0.1992498827007736,
+        "lat": -18.963127519981448,
+        "lng": 48.4725057585737
+      },
+      {
+        "AP_Name": "MAROTANDRANO",
+        "Financement_annuel_USD": 6094549427.692917,
+        "Superficie_ha": 44990.0,
+        "FIRE_total": 3412.0,
+        "FIRE_par_100ha_moy": 0.2708538405299718,
+        "lat": -16.432907809608682,
+        "lng": 48.69812109014721
+      },
+      {
+        "AP_Name": "MASOALA",
+        "Financement_annuel_USD": 16297993846.337738,
+        "Superficie_ha": 222000.0,
+        "FIRE_total": 684.0,
+        "FIRE_par_100ha_moy": 0.01100386100381144,
+        "lat": -15.528742842288906,
+        "lng": 50.12562851516597
+      },
+      {
+        "AP_Name": "MASSIF D'ITREMO",
+        "Financement_annuel_USD": 3697807911.2326756,
+        "Superficie_ha": NaN,
+        "FIRE_total": NaN,
+        "FIRE_par_100ha_moy": NaN,
+        "lat": NaN,
+        "lng": NaN
+      },
+      {
+        "AP_Name": "MIDONGY DU SUD",
+        "Financement_annuel_USD": 8092402384.191706,
+        "Superficie_ha": NaN,
+        "FIRE_total": NaN,
+        "FIRE_par_100ha_moy": NaN,
+        "lat": NaN,
+        "lng": NaN
+      },
+      {
+        "AP_Name": "MONTAGNE D'AMBRE",
+        "Financement_annuel_USD": 8242178302.18,
+        "Superficie_ha": NaN,
+        "FIRE_total": NaN,
+        "FIRE_par_100ha_moy": NaN,
+        "lat": NaN,
+        "lng": NaN
+      },
+      {
+        "AP_Name": "MONTAGNE DES FRAN\u00c7AIS",
+        "Financement_annuel_USD": 6025208472.644537,
+        "Superficie_ha": NaN,
+        "FIRE_total": NaN,
+        "FIRE_par_100ha_moy": NaN,
+        "lat": NaN,
+        "lng": NaN
+      },
+      {
+        "AP_Name": "NOSIVOLO",
+        "Financement_annuel_USD": 39316000.0,
+        "Superficie_ha": NaN,
+        "FIRE_total": NaN,
+        "FIRE_par_100ha_moy": NaN,
+        "lat": NaN,
+        "lng": NaN
+      },
+      {
+        "AP_Name": "NOSY HARA",
+        "Financement_annuel_USD": 2515039634.4,
+        "Superficie_ha": NaN,
+        "FIRE_total": NaN,
+        "FIRE_par_100ha_moy": NaN,
+        "lat": -12.210882475978751,
+        "lng": 49.00161410039999
+      },
+      {
+        "AP_Name": "NOSY VE ANDROAKA",
+        "Financement_annuel_USD": 329000272.0,
+        "Superficie_ha": NaN,
+        "FIRE_total": NaN,
+        "FIRE_par_100ha_moy": NaN,
+        "lat": NaN,
+        "lng": NaN
+      },
+      {
+        "AP_Name": "ORONJIA",
+        "Financement_annuel_USD": 4632795201.026896,
+        "Superficie_ha": 1669.0,
+        "FIRE_total": 7.0,
+        "FIRE_par_100ha_moy": 0.01497902934992269,
+        "lat": -12.259366796556904,
+        "lng": 49.37097050476163
+      },
+      {
+        "AP_Name": "RANOMAFANA",
+        "Financement_annuel_USD": 9715818711.497368,
+        "Superficie_ha": 40520.0,
+        "FIRE_total": 1521.0,
+        "FIRE_par_100ha_moy": 0.1340607812687265,
+        "lat": -21.218670685557637,
+        "lng": 47.45547057303893
+      },
+      {
+        "AP_Name": "RESERVE TAMPOLO",
+        "Financement_annuel_USD": 250288000.0,
+        "Superficie_ha": NaN,
+        "FIRE_total": NaN,
+        "FIRE_par_100ha_moy": NaN,
+        "lat": NaN,
+        "lng": NaN
+      },
+      {
+        "AP_Name": "SAHAMALAZA-ILES RADAMA",
+        "Financement_annuel_USD": 3710799261.1466665,
+        "Superficie_ha": NaN,
+        "FIRE_total": NaN,
+        "FIRE_par_100ha_moy": NaN,
+        "lat": NaN,
+        "lng": NaN
+      },
+      {
+        "AP_Name": "TAFO MIHAAVO - TSITINGINY MAROMENA",
+        "Financement_annuel_USD": 313300280.0,
+        "Superficie_ha": NaN,
+        "FIRE_total": NaN,
+        "FIRE_par_100ha_moy": NaN,
+        "lat": NaN,
+        "lng": NaN
+      },
+      {
+        "AP_Name": "TSARATANANA/MANONGARIVO",
+        "Financement_annuel_USD": 11176775951.599377,
+        "Superficie_ha": NaN,
+        "FIRE_total": NaN,
+        "FIRE_par_100ha_moy": NaN,
+        "lat": NaN,
+        "lng": NaN
+      },
+      {
+        "AP_Name": "TSIMANAMPETSOTSA",
+        "Financement_annuel_USD": 7863964094.067422,
+        "Superficie_ha": NaN,
+        "FIRE_total": NaN,
+        "FIRE_par_100ha_moy": NaN,
+        "lat": NaN,
+        "lng": NaN
+      },
+      {
+        "AP_Name": "TSIMEMBO MANAMBOLOMATY",
+        "Financement_annuel_USD": 8263020451.638531,
+        "Superficie_ha": NaN,
+        "FIRE_total": NaN,
+        "FIRE_par_100ha_moy": NaN,
+        "lat": -18.97339985733323,
+        "lng": 44.38405339410957
+      },
+      {
+        "AP_Name": "TSINJORIAKE ",
+        "Financement_annuel_USD": 53664200.0,
+        "Superficie_ha": 14800.0,
+        "FIRE_total": 58.0,
+        "FIRE_par_100ha_moy": 0.01399613899519331,
+        "lat": -23.469302057664773,
+        "lng": 43.756377744346814
+      },
+      {
+        "AP_Name": "Total ",
+        "Financement_annuel_USD": 377139975773.11084,
+        "Superficie_ha": 8294927.0,
+        "FIRE_total": 0.0,
+        "FIRE_par_100ha_moy": 0.0,
+        "lat": NaN,
+        "lng": NaN
+      },
+      {
+        "AP_Name": "VELONDRIAKE",
+        "Financement_annuel_USD": 52671608.0,
+        "Superficie_ha": NaN,
+        "FIRE_total": NaN,
+        "FIRE_par_100ha_moy": NaN,
+        "lat": -22.047488181873227,
+        "lng": 43.20879963224535
+      },
+      {
+        "AP_Name": "ZAHAMENA",
+        "Financement_annuel_USD": 10121644078.815668,
+        "Superficie_ha": 69476.0,
+        "FIRE_total": 300.0,
+        "FIRE_par_100ha_moy": 0.01542156386972695,
+        "lat": -17.653709393486313,
+        "lng": 48.81473300238718
+      },
+      {
+        "AP_Name": "ZOMBITSE VOHIBASIA",
+        "Financement_annuel_USD": 2850573888.0,
+        "Superficie_ha": 35770.0,
+        "FIRE_total": 5584.0,
+        "FIRE_par_100ha_moy": 0.5575302527900367,
+        "lat": -22.683900162738293,
+        "lng": 44.76511620331857
+      }
+    ]
+  },
+  "summary_stats": {
+    "total_protected_areas": 82,
+    "total_investment": 765646146883.8481,
+    "avg_deforestation_rate": 0.0015628288698269857,
+    "total_financement_mga": 765646146883.8481,
+    "avg_score_global": 0.7
+  }
+}

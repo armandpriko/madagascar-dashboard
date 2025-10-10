@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Environnemental - Aires Protégées & Déforestation</title>
+    
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0f4c3a 0%, #1a5f4a 50%, #2d7a5f 100%);
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+        
+        .dashboard-container {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            grid-template-rows: 80px 1fr;
+            height: 100vh;
+            gap: 20px;
+            padding: 20px;
+        }
+        
+        .header {
+            grid-column: 1 / -1;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 30px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .header h1 {
+            font-size: 24px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .header .logo {
+            color: #4ade80;
+            font-size: 28px;
+        }
+        
+        .controls-panel {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            overflow-y: auto;
+        }
+        
+        .main-content {
+            display: grid;
+            grid-template-rows: 1fr 300px;
+            gap: 20px;
+        }
+        
+        .map-container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        #map {
+            width: 100%;
+            height: 100%;
+            border-radius: 15px;
+        }
+        
+        .charts-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        .chart-panel {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            max-height: 320px; /* éviter la croissance infinie */
+            overflow: hidden;
+        }
+
+        .chart-panel canvas {
+            height: 260px !important; /* hauteur fixe pour les graphiques */
+        }
+        
+        .chart-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .control-group {
+            margin-bottom: 25px;
+        }
+        
+        .control-label {
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 8px;
+            color: #e5e7eb;
+        }
+        
+        .control-input {
+            width: 100%;
+            padding: 10px 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 8px;
+            color: #ffffff;
+            font-size: 14px;
+        }
+        
+        .control-input:focus {
+            outline: none;
+            border-color: #4ade80;
+            box-shadow: 0 0 0 3px rgba(74, 222, 128, 0.1);
+        }
+        
+        .control-input::placeholder {
+            color: #9ca3af;
+        }
+        
+        .btn {
+            padding: 10px 20px;
+            background: linear-gradient(135deg, #4ade80, #22c55e);
+            border: none;
+            border-radius: 8px;
+            color: #ffffff;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(74, 222, 128, 0.3);
+        }
+        
+        .btn-secondary {
+            background: linear-gradient(135deg, #6b7280, #4b5563);
+        }
+        
+        .btn-secondary:hover {
+            box-shadow: 0 10px 25px rgba(107, 114, 128, 0.3);
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .stat-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .stat-value {
+            font-size: 20px;
+            font-weight: 700;
+            color: #4ade80;
+        }
+        
+        .stat-label {
+            font-size: 12px;
+            color: #d1d5db;
+            margin-top: 5px;
+        }
+        
+        .loading {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 200px;
+            font-size: 16px;
+            color: #9ca3af;
+        }
+        
+        .error {
+            color: #ef4444;
+            background: rgba(239, 68, 68, 0.1);
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            margin: 10px 0;
+        }
+        
+        .map-legend {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 15px;
+            border-radius: 8px;
+            color: #ffffff;
+            font-size: 12px;
+            z-index: 1000;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 5px;
+        }
+        
+        .legend-color {
+            width: 15px;
+            height: 15px;
+            border-radius: 3px;
+        }
+        
+        @media (max-width: 1200px) {
+            .dashboard-container {
+                grid-template-columns: 1fr;
+                grid-template-rows: 80px auto 1fr;
+            }
+            
+            .charts-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Header -->
+        <div class="header">
+            <h1>
+                <i class="fas fa-leaf logo"></i>
+                Dashboard Environnemental Madagascar
+            </h1>
+            <div>
+                <button class="btn" onclick="refreshData()">
+                    <i class="fas fa-sync-alt"></i> Actualiser
+                </button>
+            </div>
+        </div>
+        
+        <!-- Controls Panel -->
+        <div class="controls-panel">
+            <h3 style="margin-bottom: 20px; color: #4ade80;">
+                <i class="fas fa-sliders-h"></i> Contrôles
+            </h3>
+            
+            <!-- Statistiques -->
+            <div class="stats-grid" id="statsGrid">
+                <div class="stat-card">
+                    <div class="stat-value" id="totalAreas">-</div>
+                    <div class="stat-label">Aires Protégées</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="totalInvestment">-</div>
+                    <div class="stat-label">Financement (B MGA)</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="avgDeforestation">-</div>
+                    <div class="stat-label">Incendies Moy.</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="correlation">-</div>
+                    <div class="stat-label">Score Moyen</div>
+                </div>
+            </div>
+            
+            <!-- Filtres -->
+            <div class="control-group">
+                <label class="control-label">Aire Protégée</label>
+                <select class="control-input" id="apFilter"></select>
+            </div>
+            
+            <div class="control-group">
+                <label class="control-label">Année</label>
+                <select class="control-input" id="yearFilter">
+                    <option value="total">Toutes les années</option>
+                    <option value="2020">2020</option>
+                    <option value="2021">2021</option>
+                    <option value="2022">2022</option>
+                    <option value="2023">2023</option>
+                </select>
+            </div>
+            
+            <div class="control-group">
+                <label class="control-label">Taux de Déforestation Min.</label>
+                <input type="range" class="control-input" id="deforestationMin" min="0" max="0.5" step="0.01" value="0">
+                <div style="font-size: 12px; color: #9ca3af; margin-top: 5px;">
+                    Valeur: <span id="deforestationMinValue">0%</span>
+                </div>
+            </div>
+            
+            <div class="control-group">
+                <label class="control-label">Taux de Déforestation Max.</label>
+                <input type="range" class="control-input" id="deforestationMax" min="0" max="0.5" step="0.01" value="0.5">
+                <div style="font-size: 12px; color: #9ca3af; margin-top: 5px;">
+                    Valeur: <span id="deforestationMaxValue">50%</span>
+                </div>
+            </div>
+            
+            <button class="btn" onclick="applyFilters()" style="width: 100%; margin-top: 20px;">
+                <i class="fas fa-filter"></i> Appliquer les Filtres
+            </button>
+            
+            <button class="btn btn-secondary" onclick="resetFilters()" style="width: 100%; margin-top: 10px;">
+                <i class="fas fa-undo"></i> Réinitialiser
+            </button>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Map Container -->
+            <div class="map-container">
+                <div id="map"></div>
+                <div class="map-legend">
+                    <div class="legend-item">
+                        <div class="legend-color" style="background: #4ade80;"></div>
+                        <span>Score Excellent (>80%)</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color" style="background: #fbbf24;"></div>
+                        <span>Score Bon (60-80%)</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color" style="background: #ef4444;"></div>
+                        <span>Score Faible (<60%)</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color" style="background: #3b82f6;"></div>
+                        <span>Taille = Superficie</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Charts Container -->
+            <div class="charts-container">
+                <div class="chart-panel">
+                    <div class="chart-title">
+                        <i class="fas fa-chart-line"></i>
+                        Tendances d'Investissement
+                    </div>
+                    <canvas id="investmentChart"></canvas>
+                </div>
+                
+                <div class="chart-panel">
+                    <div class="chart-title">
+                        <i class="fas fa-chart-area"></i>
+                        Corrélation Investissement-Déforestation
+                    </div>
+                    <canvas id="correlationChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    
+    <script>
+        // Configuration globale
+        const API_BASE = 'http://localhost:5001/api';
+        let map;
+        let protectedAreasLayer;
+        let deforestationLayer;
+        let investmentChart;
+        let correlationChart;
+        let apsList = [];
+        
+        // Initialisation
+        document.addEventListener('DOMContentLoaded', async function() {
+            await loadAPCoords(); // Charger les coordonnées d'abord
+            initializeMap();
+            initializeCharts();
+            await loadAPList();
+            await loadData();
+            setupEventListeners();
+        });
+        async function loadAPList() {
+            const res = await fetch(`${API_BASE}/aps`);
+            const payload = await res.json();
+            if (payload.success) {
+                apsList = payload.data;
+                const sel = document.getElementById('apFilter');
+                sel.innerHTML = '<option value="">Toutes les AP</option>' +
+                    apsList.map(n => `<option value="${n}">${n}</option>`).join('');
+            }
+        }
+
+        
+        // Initialisation de la carte
+        function initializeMap() {
+            map = L.map('map').setView([-18.7669, 46.8691], 6); // Madagascar
+            
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '© OpenStreetMap contributors',
+                maxZoom: 18
+            }).addTo(map);
+            
+            // Couches de données
+            protectedAreasLayer = L.layerGroup().addTo(map);
+            deforestationLayer = L.layerGroup().addTo(map);
+        }
+        
+        // Initialisation des graphiques
+        function initializeCharts() {
+            // Graphique des tendances d'investissement
+            const investmentCtx = document.getElementById('investmentChart').getContext('2d');
+            investmentChart = new Chart(investmentCtx, {
+                type: 'line',
+                data: {
+                    labels: ['2020', '2021', '2022', '2023'],
+                    datasets: [{
+                        label: 'Investissement Total (M$)',
+                        data: [],
+                        borderColor: '#4ade80',
+                        backgroundColor: 'rgba(74, 222, 128, 0.1)',
+                        tension: 0.4,
+                        fill: true
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            labels: {
+                                color: '#ffffff'
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            ticks: { color: '#ffffff' },
+                            grid: { color: 'rgba(255, 255, 255, 0.1)' }
+                        },
+                        y: {
+                            ticks: { color: '#ffffff' },
+                            grid: { color: 'rgba(255, 255, 255, 0.1)' }
+                        }
+                    }
+                }
+            });
+            
+            // Graphique de corrélation
+            const correlationCtx = document.getElementById('correlationChart').getContext('2d');
+            correlationChart = new Chart(correlationCtx, {
+                type: 'scatter',
+                data: {
+                    datasets: [{
+                        label: 'Corrélation Investissement-Déforestation',
+                        data: [],
+                        backgroundColor: 'rgba(59, 130, 246, 0.6)',
+                        borderColor: '#3b82f6'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            labels: {
+                                color: '#ffffff'
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Investissement (M$)',
+                                color: '#ffffff'
+                            },
+                            ticks: { color: '#ffffff' },
+                            grid: { color: 'rgba(255, 255, 255, 0.1)' }
+                        },
+                        y: {
+                            title: {
+                                display: true,
+                                text: 'Taux de Déforestation',
+                                color: '#ffffff'
+                            },
+                            ticks: { color: '#ffffff' },
+                            grid: { color: 'rgba(255, 255, 255, 0.1)' }
+                        }
+                    }
+                }
+            });
+        }
+        
+        // Configuration des événements
+        function setupEventListeners() {
+            // Sliders de déforestation
+            document.getElementById('deforestationMin').addEventListener('input', function() {
+                document.getElementById('deforestationMinValue').textContent = (this.value * 100).toFixed(1) + '%';
+            });
+            
+            document.getElementById('deforestationMax').addEventListener('input', function() {
+                document.getElementById('deforestationMaxValue').textContent = (this.value * 100).toFixed(1) + '%';
+            });
+        }
+        
+        // Chargement des données
+        async function loadData() {
+            try {
+                await Promise.all([
+                    loadSummaryStats(),
+                    loadProtectedAreas(),
+                    loadDeforestationData(),
+                    loadTrends(),
+                    loadCorrelation()
+                ]);
+            } catch (error) {
+                console.error('Erreur lors du chargement des données:', error);
+                showError('Erreur lors du chargement des données');
+            }
+        }
+        
+        // Chargement des statistiques de résumé
+        async function loadSummaryStats() {
+            const response = await fetch(`${API_BASE}/summary`);
+            const data = await response.json();
+            
+            if (data.success) {
+                document.getElementById('totalAreas').textContent = data.data.total_protected_areas;
+                document.getElementById('totalInvestment').textContent = (data.data.total_investment / 1000000000).toFixed(1) + 'B';
+                document.getElementById('avgDeforestation').textContent = (data.data.avg_deforestation_rate * 100).toFixed(1) + '%';
+                if (data.data.avg_score_global) {
+                    document.getElementById('correlation').textContent = (data.data.avg_score_global * 100).toFixed(1) + '%';
+                }
+            }
+        }
+        
+        // Chargement des aires protégées
+        async function loadProtectedAreas() {
+            const response = await fetch(`${API_BASE}/protected-areas`);
+            const data = await response.json();
+            
+            if (data.success) {
+                displayProtectedAreasOnMap(data.data);
+            }
+        }
+        
+        // Chargement des données de déforestation
+        async function loadDeforestationData() {
+            const response = await fetch(`${API_BASE}/deforestation`);
+            const data = await response.json();
+            
+            if (data.success) {
+                displayDeforestationOnMap(data.data);
+            }
+        }
+        
+        // Chargement des tendances
+        async function loadTrends() {
+            const response = await fetch(`${API_BASE}/trends`);
+            const data = await response.json();
+            
+            if (data.success) {
+                updateInvestmentChart(data.data.investment_trends);
+            }
+        }
+        
+        // Chargement de la corrélation
+        async function loadCorrelation() {
+            const response = await fetch(`${API_BASE}/correlation`);
+            const data = await response.json();
+            
+            if (data.success) {
+                updateCorrelationChart(data.data);
+                document.getElementById('correlation').textContent = data.summary.avg_correlation.toFixed(3);
+            }
+        }
+        
+        // Chargement des coordonnées réelles des aires protégées
+        let apCoords = {};
+        
+        async function loadAPCoords() {
+            try {
+                const response = await fetch('AP_coords.csv');
+                const text = await response.text();
+                const lines = text.split('\n');
+                
+                for (let i = 1; i < lines.length; i++) { // Skip header
+                    const [key, lat, lng] = lines[i].split(',');
+                    if (key && lat && lng) {
+                        apCoords[key.trim()] = {
+                            lat: parseFloat(lat),
+                            lng: parseFloat(lng)
+                        };
+                    }
+                }
+                console.log('Coordonnées chargées:', Object.keys(apCoords).length, 'aires protégées');
+            } catch (error) {
+                console.warn('Impossible de charger AP_coords.csv, utilisation de coordonnées simulées');
+            }
+        }
+        
+        // Affichage des aires protégées sur la carte
+        function displayProtectedAreasOnMap(areas) {
+            protectedAreasLayer.clearLayers();
+            
+            areas.forEach(area => {
+                // Utiliser lat/lng provenant de l'API si fournis, sinon tomber sur AP_coords.csv
+                let lat = area.lat ?? null;
+                let lng = area.lng ?? null;
+                if (lat === null || lng === null) {
+                    const key = (area.name || area.AP_Name || '').toUpperCase();
+                    if (apCoords[key]) { lat = apCoords[key].lat; lng = apCoords[key].lng; }
+                }
+                if (lat === null || lng === null) { return; }
+                
+                const marker = L.circleMarker([lat, lng], {
+                    radius: Math.max(4, Math.min(14, Math.sqrt((area.superficie_ha || 1000)) / 50)),
+                    fillColor: area.score_global > 0.8 ? '#4ade80' : area.score_global > 0.6 ? '#fbbf24' : '#ef4444',
+                    color: '#ffffff',
+                    weight: 2,
+                    opacity: 1,
+                    fillOpacity: 0.7
+                });
+                
+                marker.bindPopup(`
+                    <div style="color: #000;">
+                        <h3>${area.name}</h3>
+                        <p><strong>Gestionnaire:</strong> ${area.gestionnaire || 'Non spécifié'}</p>
+                        <p><strong>Superficie:</strong> ${area.superficie_ha ? (area.superficie_ha/100).toFixed(1) : '-'} km²</p>
+                        <p><strong>Financement total:</strong> ${(area.total_financement / 1000000000).toFixed(1)}B MGA</p>
+                        <p><strong>Score global:</strong> ${(area.score_global * 100).toFixed(1)}%</p>
+                        <p><strong>Incendies:</strong> ${area.fire_total || 0} (${area.fire_par_100ha ? area.fire_par_100ha.toFixed(2) : '-'} /100ha)</p>
+                    </div>
+                `);
+                
+                protectedAreasLayer.addLayer(marker);
+            });
+        }
+        
+        // Affichage de la déforestation sur la carte
+        function displayDeforestationOnMap(deforestationData) {
+            deforestationLayer.clearLayers();
+            
+            // Échantillonner les données pour éviter la surcharge
+            const sampleSize = Math.min(100, deforestationData.length);
+            const sampledData = deforestationData.slice(0, sampleSize);
+            
+            sampledData.forEach(cell => {
+                const lat = -18.7669 + (Math.random() - 0.5) * 4;
+                const lng = 46.8691 + (Math.random() - 0.5) * 8;
+                
+                const intensity = cell.total_deforestation;
+                const color = intensity > 0.3 ? '#ef4444' : intensity > 0.15 ? '#f97316' : '#eab308';
+                
+                const marker = L.circleMarker([lat, lng], {
+                    radius: 3,
+                    fillColor: color,
+                    color: color,
+                    weight: 1,
+                    opacity: 0.8,
+                    fillOpacity: 0.6
+                });
+                
+                marker.bindPopup(`
+                    <div style="color: #000;">
+                        <p><strong>Taux de Déforestation:</strong> ${(intensity * 100).toFixed(1)}%</p>
+                    </div>
+                `);
+                
+                deforestationLayer.addLayer(marker);
+            });
+        }
+        
+        // Mise à jour du graphique d'investissement
+        function updateInvestmentChart(trends) {
+            const labels = trends.map(t => t.year);
+            const data = trends.map(t => t.total_investment / 1000000);
+            
+            investmentChart.data.labels = labels;
+            investmentChart.data.datasets[0].data = data;
+            investmentChart.update();
+        }
+        
+        // Mise à jour du graphique de corrélation
+        function updateCorrelationChart(correlationData) {
+            const data = correlationData.map(item => ({
+                x: item.investment / 1000000,
+                y: item.nearby_deforestation_rate
+            }));
+            
+            correlationChart.data.datasets[0].data = data;
+            correlationChart.update();
+        }
+        
+        // Application des filtres
+        function applyFilters() {
+            const areaType = document.getElementById('areaTypeFilter').value;
+            const year = document.getElementById('yearFilter').value;
+            const minRate = document.getElementById('deforestationMin').value;
+            const maxRate = document.getElementById('deforestationMax').value;
+            
+            // Recharger les données avec les filtres
+            loadFilteredData(areaType, year, minRate, maxRate);
+        }
+        
+        // Chargement des données filtrées
+        async function loadFilteredData(areaType, year, minRate, maxRate) {
+            try {
+                const params = new URLSearchParams();
+                const apValue = document.getElementById('apFilter').value;
+                if (apValue) params.append('ap', apValue);
+                if (year !== 'total') params.append('year', year);
+                if (minRate) params.append('min_rate', minRate);
+                if (maxRate) params.append('max_rate', maxRate);
+                
+                const [areasResponse, deforestationResponse] = await Promise.all([
+                    fetch(`${API_BASE}/protected-areas?${params}`),
+                    fetch(`${API_BASE}/deforestation?${params}`)
+                ]);
+            // Charger aussi la série annuelle si AP sélectionnée
+            const apValue = document.getElementById('apFilter').value;
+            if (apValue) {
+                const y = await fetch(`${API_BASE}/yearly?ap=${encodeURIComponent(apValue)}`);
+                const yData = await y.json();
+                if (yData.success) {
+                    // mettre à jour le graphe d'investissement avec la série AP
+                    const labels = yData.years;
+                    const vals = labels.map(yr => {
+                        const row = yData.data.find(d => d['Année'] === yr);
+                        return row ? (row['Financement_annuel_USD'] / 1000000.0) : 0;
+                    });
+                    investmentChart.data.labels = labels;
+                    investmentChart.data.datasets[0].data = vals;
+                    investmentChart.update();
+                }
+            }
+                
+                const areasData = await areasResponse.json();
+                const deforestationData = await deforestationResponse.json();
+                
+                if (areasData.success) {
+                    displayProtectedAreasOnMap(areasData.data);
+                }
+                
+                if (deforestationData.success) {
+                    displayDeforestationOnMap(deforestationData.data);
+                }
+            } catch (error) {
+                console.error('Erreur lors du filtrage:', error);
+                showError('Erreur lors de l\'application des filtres');
+            }
+        }
+        
+        // Réinitialisation des filtres
+        function resetFilters() {
+            document.getElementById('areaTypeFilter').value = '';
+            document.getElementById('yearFilter').value = 'total';
+            document.getElementById('deforestationMin').value = 0;
+            document.getElementById('deforestationMax').value = 0.5;
+            document.getElementById('deforestationMinValue').textContent = '0%';
+            document.getElementById('deforestationMaxValue').textContent = '50%';
+            
+            loadData();
+        }
+        
+        // Actualisation des données
+        function refreshData() {
+            loadData();
+        }
+        
+        // Affichage des erreurs
+        function showError(message) {
+            const errorDiv = document.createElement('div');
+            errorDiv.className = 'error';
+            errorDiv.textContent = message;
+            document.body.appendChild(errorDiv);
+            
+            setTimeout(() => {
+                errorDiv.remove();
+            }, 5000);
+        }
+    </script>
+</body>
+</html>
