@@ -1,0 +1,2366 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_30c6beec15839673727dd3192eb13aa0 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+    <script src="https://cdn.jsdelivr.net/npm/leaflet.fullscreen@3.0.0/Control.FullScreen.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.fullscreen@3.0.0/Control.FullScreen.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-minimap/3.6.1/Control.MiniMap.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet-minimap/3.6.1/Control.MiniMap.css"/>
+    <script src="https://cdn.jsdelivr.net/gh/ljagis/leaflet-measure@2.1.7/dist/leaflet-measure.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/ljagis/leaflet-measure@2.1.7/dist/leaflet-measure.min.css"/>
+</head>
+<body>
+    
+    
+        <div style="position: fixed; 
+                    top: 10px; 
+                    left: 50px; 
+                    width: 500px; 
+                    height: auto; 
+                    background-color: white; 
+                    border: 2px solid #2ecc71;
+                    border-radius: 5px;
+                    z-index: 9999; 
+                    padding: 10px;
+                    box-shadow: 2px 2px 6px rgba(0,0,0,0.3);">
+            <h2 style="margin: 0; color: #2c3e50; font-size: 18px;">
+                🗺️ CARTE INTERACTIVE - MADAGASCAR
+            </h2>
+            <p style="margin: 5px 0; font-size: 12px; color: #7f8c8d;">
+                <b>56 Aires Protégées</b> | Taille = Superficie | Couleur = Efficacité<br>
+                <span style="font-size: 10px;">Par KOUMI Dzudzogbe Prince Armand</span>
+            </p>
+        </div>
+        
+    
+        <div style="position: fixed; 
+                    bottom: 50px; 
+                    right: 50px; 
+                    width: 250px; 
+                    background-color: white; 
+                    border: 2px solid gray;
+                    border-radius: 5px;
+                    z-index: 9999; 
+                    padding: 10px;
+                    box-shadow: 2px 2px 6px rgba(0,0,0,0.3);">
+            <h4 style="margin: 0 0 10px 0; color: #2c3e50;">Légende</h4>
+            <p style="margin: 5px 0; font-size: 12px;">
+                <span style="color: #2ecc71;">●</span> <b>Efficaces</b> - Investis + Protégés<br>
+                <span style="color: #a8e6cf;">●</span> <b>Naturellement protégées</b><br>
+                <span style="color: #f39c12;">●</span> <b>Sous pression</b> - Fragiles<br>
+                <span style="color: #e74c3c;">●</span> <b>Critiques</b> - Urgent!<br>
+            </p>
+            <p style="margin: 10px 0 0 0; font-size: 11px; color: #7f8c8d;">
+                💡 Cliquez sur les cercles pour voir les détails
+            </p>
+        </div>
+        
+    
+            <div class="folium-map" id="map_30c6beec15839673727dd3192eb13aa0" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_30c6beec15839673727dd3192eb13aa0 = L.map(
+                "map_30c6beec15839673727dd3192eb13aa0",
+                {
+                    center: [-18.8792, 47.5079],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 6,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+            L.control.scale().addTo(map_30c6beec15839673727dd3192eb13aa0);
+
+            
+
+        
+    
+            var tile_layer_9ec1ed68400877ae034cbe21a6feb85c = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_9ec1ed68400877ae034cbe21a6feb85c.addTo(map_30c6beec15839673727dd3192eb13aa0);
+        
+    
+            var tile_layer_6b02b2e621f81dece79eebeff93cc462 = L.tileLayer(
+                "https://tiles.stadiamaps.com/tiles/stamen_terrain/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 18,
+  "maxNativeZoom": 18,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://stadiamaps.com/\"\u003eStadia Maps\u003c/a\u003e \u0026copy; \u003ca href=\"https://stamen.com/\"\u003eStamen Design\u003c/a\u003e \u0026copy; \u003ca href=\"https://openmaptiles.org/\"\u003eOpenMapTiles\u003c/a\u003e \u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_6b02b2e621f81dece79eebeff93cc462.addTo(map_30c6beec15839673727dd3192eb13aa0);
+        
+    
+            var tile_layer_57e121926ec5afc03601f6ef0b5388a0 = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/\"\u003eCARTO\u003c/a\u003e",
+  "subdomains": "abcd",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_57e121926ec5afc03601f6ef0b5388a0.addTo(map_30c6beec15839673727dd3192eb13aa0);
+        
+    
+            var tile_layer_6120a1240f8b90b308ac43f20b66a1e3 = L.tileLayer(
+                "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
+                {
+  "minZoom": 0,
+  "maxZoom": 18,
+  "maxNativeZoom": 18,
+  "noWrap": false,
+  "attribution": "Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_6120a1240f8b90b308ac43f20b66a1e3.addTo(map_30c6beec15839673727dd3192eb13aa0);
+        
+    
+            var feature_group_664dca2be449900260121cd71367e30e = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var circle_marker_8ffdeba7639c0e1100c26697c6915a34 = L.circleMarker(
+                [-18.598418209801228, 48.303881010656426],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ecc71", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.037686691508377, "stroke": true, "weight": 2}
+            ).addTo(feature_group_664dca2be449900260121cd71367e30e);
+        
+    
+        var popup_1a542c6b9dd8d2c573be69d021759d0d = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_6bf95d025936134ebf99b16bb9f71a9d = $(`<div id="html_6bf95d025936134ebf99b16bb9f71a9d" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial; width: 300px;">                 <h3 style="color: #2ecc71; margin-bottom: 10px;">                     🌟 AMBOHIDRAY                 </h3>                 <table style="width: 100%; font-size: 12px;">                     <tr>                         <td><b>📊 Catégorie:</b></td>                         <td>🌟 EFFICACES (Investis + Protégés)</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>📐 Superficie:</b></td>                         <td>1.2 K ha</td>                     </tr>                     <tr>                         <td><b>💰 Financement:</b></td>                         <td>$224.09 M USD/an</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>💵 Financement/ha:</b></td>                         <td>$180136 USD/ha</td>                     </tr>                     <tr>                         <td><b>🔥 Taux de feu:</b></td>                         <td>0.0536 feux/100ha</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>⭐ Score efficacité:</b></td>                         <td>0.0479</td>                     </tr>                     <tr>                         <td><b>📍 Position:</b></td>                         <td>-18.5984, 48.3039</td>                     </tr>                 </table>             </div>             </div>`)[0];
+                popup_1a542c6b9dd8d2c573be69d021759d0d.setContent(html_6bf95d025936134ebf99b16bb9f71a9d);
+            
+        
+
+        circle_marker_8ffdeba7639c0e1100c26697c6915a34.bindPopup(popup_1a542c6b9dd8d2c573be69d021759d0d)
+        ;
+
+        
+    
+    
+            circle_marker_8ffdeba7639c0e1100c26697c6915a34.bindTooltip(
+                `<div>
+                     AMBOHIDRAY (1.2 K ha)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_bbf7db26ed07529b233aa73a04ba9aac = L.circleMarker(
+                [-22.23199031514543, 46.93024410379544],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ecc71", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.957314671756187, "stroke": true, "weight": 2}
+            ).addTo(feature_group_664dca2be449900260121cd71367e30e);
+        
+    
+        var popup_93db9c4ead9b4c5967016744c68f7486 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_7b5fd613b98a13713582eebeeebd455b = $(`<div id="html_7b5fd613b98a13713582eebeeebd455b" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial; width: 300px;">                 <h3 style="color: #2ecc71; margin-bottom: 10px;">                     🌟 ANDRINGITRA                 </h3>                 <table style="width: 100%; font-size: 12px;">                     <tr>                         <td><b>📊 Catégorie:</b></td>                         <td>🌟 EFFICACES (Investis + Protégés)</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>📐 Superficie:</b></td>                         <td>31.6 K ha</td>                     </tr>                     <tr>                         <td><b>💰 Financement:</b></td>                         <td>$3.94 Mds USD/an</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>💵 Financement/ha:</b></td>                         <td>$124557 USD/ha</td>                     </tr>                     <tr>                         <td><b>🔥 Taux de feu:</b></td>                         <td>0.1258 feux/100ha</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>⭐ Score efficacité:</b></td>                         <td>0.0323</td>                     </tr>                     <tr>                         <td><b>📍 Position:</b></td>                         <td>-22.2320, 46.9302</td>                     </tr>                 </table>             </div>             </div>`)[0];
+                popup_93db9c4ead9b4c5967016744c68f7486.setContent(html_7b5fd613b98a13713582eebeeebd455b);
+            
+        
+
+        circle_marker_bbf7db26ed07529b233aa73a04ba9aac.bindPopup(popup_93db9c4ead9b4c5967016744c68f7486)
+        ;
+
+        
+    
+    
+            circle_marker_bbf7db26ed07529b233aa73a04ba9aac.bindTooltip(
+                `<div>
+                     ANDRINGITRA (31.6 K ha)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_6a65aa73fbe424062847ec0f9a9d3585 = L.circleMarker(
+                [-14.714843785600902, 49.44518067574694],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ecc71", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.816383410584992, "stroke": true, "weight": 2}
+            ).addTo(feature_group_664dca2be449900260121cd71367e30e);
+        
+    
+        var popup_58dfbe411899875068c0a7a95b2ea72e = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_665067f6b8b6724690a7b16af6189daa = $(`<div id="html_665067f6b8b6724690a7b16af6189daa" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial; width: 300px;">                 <h3 style="color: #2ecc71; margin-bottom: 10px;">                     🌟 ANJANAHARIBE SUD                 </h3>                 <table style="width: 100%; font-size: 12px;">                     <tr>                         <td><b>📊 Catégorie:</b></td>                         <td>🌟 EFFICACES (Investis + Protégés)</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>📐 Superficie:</b></td>                         <td>26.9 K ha</td>                     </tr>                     <tr>                         <td><b>💰 Financement:</b></td>                         <td>$3.73 Mds USD/an</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>💵 Financement/ha:</b></td>                         <td>$138563 USD/ha</td>                     </tr>                     <tr>                         <td><b>🔥 Taux de feu:</b></td>                         <td>0.0040 feux/100ha</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>⭐ Score efficacité:</b></td>                         <td>0.0374</td>                     </tr>                     <tr>                         <td><b>📍 Position:</b></td>                         <td>-14.7148, 49.4452</td>                     </tr>                 </table>             </div>             </div>`)[0];
+                popup_58dfbe411899875068c0a7a95b2ea72e.setContent(html_665067f6b8b6724690a7b16af6189daa);
+            
+        
+
+        circle_marker_6a65aa73fbe424062847ec0f9a9d3585.bindPopup(popup_58dfbe411899875068c0a7a95b2ea72e)
+        ;
+
+        
+    
+    
+            circle_marker_6a65aa73fbe424062847ec0f9a9d3585.bindTooltip(
+                `<div>
+                     ANJANAHARIBE SUD (26.9 K ha)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_4453c09208d3236fb14cb3354b8f0933 = L.circleMarker(
+                [-16.087369664043226, 45.225047295024766],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ecc71", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.90554091308431, "stroke": true, "weight": 2}
+            ).addTo(feature_group_664dca2be449900260121cd71367e30e);
+        
+    
+        var popup_d41248d15fc856a56f68f17dbd4ebe07 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_2c88b0e9458f550c310a285b23f37057 = $(`<div id="html_2c88b0e9458f550c310a285b23f37057" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial; width: 300px;">                 <h3 style="color: #2ecc71; margin-bottom: 10px;">                     🌟 BAIE DE BALY                 </h3>                 <table style="width: 100%; font-size: 12px;">                     <tr>                         <td><b>📊 Catégorie:</b></td>                         <td>🌟 EFFICACES (Investis + Protégés)</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>📐 Superficie:</b></td>                         <td>62.9 K ha</td>                     </tr>                     <tr>                         <td><b>💰 Financement:</b></td>                         <td>$4.85 Mds USD/an</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>💵 Financement/ha:</b></td>                         <td>$77074 USD/ha</td>                     </tr>                     <tr>                         <td><b>🔥 Taux de feu:</b></td>                         <td>0.2145 feux/100ha</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>⭐ Score efficacité:</b></td>                         <td>0.0194</td>                     </tr>                     <tr>                         <td><b>📍 Position:</b></td>                         <td>-16.0874, 45.2250</td>                     </tr>                 </table>             </div>             </div>`)[0];
+                popup_d41248d15fc856a56f68f17dbd4ebe07.setContent(html_2c88b0e9458f550c310a285b23f37057);
+            
+        
+
+        circle_marker_4453c09208d3236fb14cb3354b8f0933.bindPopup(popup_d41248d15fc856a56f68f17dbd4ebe07)
+        ;
+
+        
+    
+    
+            circle_marker_4453c09208d3236fb14cb3354b8f0933.bindTooltip(
+                `<div>
+                     BAIE DE BALY (62.9 K ha)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_2c91a215b6b5c751a39c3ee43139038b = L.circleMarker(
+                [-17.903679500750634, 49.216687960114335],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ecc71", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.067678511920992, "stroke": true, "weight": 2}
+            ).addTo(feature_group_664dca2be449900260121cd71367e30e);
+        
+    
+        var popup_7144935f4dfdd808b85005d9f9a5fd90 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_f61e9b9db55174435e85c7ca2614f417 = $(`<div id="html_f61e9b9db55174435e85c7ca2614f417" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial; width: 300px;">                 <h3 style="color: #2ecc71; margin-bottom: 10px;">                     🌟 BETAMPONA                 </h3>                 <table style="width: 100%; font-size: 12px;">                     <tr>                         <td><b>📊 Catégorie:</b></td>                         <td>🌟 EFFICACES (Investis + Protégés)</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>📐 Superficie:</b></td>                         <td>2.2 K ha</td>                     </tr>                     <tr>                         <td><b>💰 Financement:</b></td>                         <td>$208.53 M USD/an</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>💵 Financement/ha:</b></td>                         <td>$93344 USD/ha</td>                     </tr>                     <tr>                         <td><b>🔥 Taux de feu:</b></td>                         <td>0.0000 feux/100ha</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>⭐ Score efficacité:</b></td>                         <td>0.0252</td>                     </tr>                     <tr>                         <td><b>📍 Position:</b></td>                         <td>-17.9037, 49.2167</td>                     </tr>                 </table>             </div>             </div>`)[0];
+                popup_7144935f4dfdd808b85005d9f9a5fd90.setContent(html_f61e9b9db55174435e85c7ca2614f417);
+            
+        
+
+        circle_marker_2c91a215b6b5c751a39c3ee43139038b.bindPopup(popup_7144935f4dfdd808b85005d9f9a5fd90)
+        ;
+
+        
+    
+    
+            circle_marker_2c91a215b6b5c751a39c3ee43139038b.bindTooltip(
+                `<div>
+                     BETAMPONA (2.2 K ha)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_d38e5afda31b226f2e8564cd914ff09c = L.circleMarker(
+                [-25.58028565835372, 45.17057863068309],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ecc71", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.109576176194372, "stroke": true, "weight": 2}
+            ).addTo(feature_group_664dca2be449900260121cd71367e30e);
+        
+    
+        var popup_a02e2effd8f74c3e8dd84cd397207072 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_8d5f3c45fec1a719b2e0e9d8c8996c4d = $(`<div id="html_8d5f3c45fec1a719b2e0e9d8c8996c4d" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial; width: 300px;">                 <h3 style="color: #2ecc71; margin-bottom: 10px;">                     🌟 CAP SAINTE MARIE                 </h3>                 <table style="width: 100%; font-size: 12px;">                     <tr>                         <td><b>📊 Catégorie:</b></td>                         <td>🌟 EFFICACES (Investis + Protégés)</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>📐 Superficie:</b></td>                         <td>3.6 K ha</td>                     </tr>                     <tr>                         <td><b>💰 Financement:</b></td>                         <td>$507.76 M USD/an</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>💵 Financement/ha:</b></td>                         <td>$140382 USD/ha</td>                     </tr>                     <tr>                         <td><b>🔥 Taux de feu:</b></td>                         <td>0.0000 feux/100ha</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>⭐ Score efficacité:</b></td>                         <td>0.0380</td>                     </tr>                     <tr>                         <td><b>📍 Position:</b></td>                         <td>-25.5803, 45.1706</td>                     </tr>                 </table>             </div>             </div>`)[0];
+                popup_a02e2effd8f74c3e8dd84cd397207072.setContent(html_8d5f3c45fec1a719b2e0e9d8c8996c4d);
+            
+        
+
+        circle_marker_d38e5afda31b226f2e8564cd914ff09c.bindPopup(popup_a02e2effd8f74c3e8dd84cd397207072)
+        ;
+
+        
+    
+    
+            circle_marker_d38e5afda31b226f2e8564cd914ff09c.bindTooltip(
+                `<div>
+                     CAP SAINTE MARIE (3.6 K ha)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_a3d125bd7ff468104de7a25cad5b62d8 = L.circleMarker(
+                [-22.50728201216262, 46.966772882524545],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ecc71", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.13602350874004, "stroke": true, "weight": 2}
+            ).addTo(feature_group_664dca2be449900260121cd71367e30e);
+        
+    
+        var popup_6a67458e1cc851c93bf3c8b47c372267 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_4ac6c4f11b3d0f2a49626b1d820a9958 = $(`<div id="html_4ac6c4f11b3d0f2a49626b1d820a9958" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial; width: 300px;">                 <h3 style="color: #2ecc71; margin-bottom: 10px;">                     🌟 IVOHIBE                 </h3>                 <table style="width: 100%; font-size: 12px;">                     <tr>                         <td><b>📊 Catégorie:</b></td>                         <td>🌟 EFFICACES (Investis + Protégés)</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>📐 Superficie:</b></td>                         <td>4.5 K ha</td>                     </tr>                     <tr>                         <td><b>💰 Financement:</b></td>                         <td>$3.94 Mds USD/an</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>💵 Financement/ha:</b></td>                         <td>$876618 USD/ha</td>                     </tr>                     <tr>                         <td><b>🔥 Taux de feu:</b></td>                         <td>0.2283 feux/100ha</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>⭐ Score efficacité:</b></td>                         <td>0.2207</td>                     </tr>                     <tr>                         <td><b>📍 Position:</b></td>                         <td>-22.5073, 46.9668</td>                     </tr>                 </table>             </div>             </div>`)[0];
+                popup_6a67458e1cc851c93bf3c8b47c372267.setContent(html_4ac6c4f11b3d0f2a49626b1d820a9958);
+            
+        
+
+        circle_marker_a3d125bd7ff468104de7a25cad5b62d8.bindPopup(popup_6a67458e1cc851c93bf3c8b47c372267)
+        ;
+
+        
+    
+    
+            circle_marker_a3d125bd7ff468104de7a25cad5b62d8.bindTooltip(
+                `<div>
+                     IVOHIBE (4.5 K ha)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_412ec6299fbb284c001d053dbe87065e = L.circleMarker(
+                [-13.412705748648031, 48.3194426486189],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ecc71", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.025659668575237, "stroke": true, "weight": 2}
+            ).addTo(feature_group_664dca2be449900260121cd71367e30e);
+        
+    
+        var popup_961813e6a5dfcf9fc2730d1149d51879 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_5ba99e678c792c8b75d514f12c7358cb = $(`<div id="html_5ba99e678c792c8b75d514f12c7358cb" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial; width: 300px;">                 <h3 style="color: #2ecc71; margin-bottom: 10px;">                     🌟 LOKOBE                 </h3>                 <table style="width: 100%; font-size: 12px;">                     <tr>                         <td><b>📊 Catégorie:</b></td>                         <td>🌟 EFFICACES (Investis + Protégés)</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>📐 Superficie:</b></td>                         <td>847 ha</td>                     </tr>                     <tr>                         <td><b>💰 Financement:</b></td>                         <td>$1.15 Mds USD/an</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>💵 Financement/ha:</b></td>                         <td>$1357684 USD/ha</td>                     </tr>                     <tr>                         <td><b>🔥 Taux de feu:</b></td>                         <td>0.0000 feux/100ha</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>⭐ Score efficacité:</b></td>                         <td>0.3685</td>                     </tr>                     <tr>                         <td><b>📍 Position:</b></td>                         <td>-13.4127, 48.3194</td>                     </tr>                 </table>             </div>             </div>`)[0];
+                popup_961813e6a5dfcf9fc2730d1149d51879.setContent(html_5ba99e678c792c8b75d514f12c7358cb);
+            
+        
+
+        circle_marker_412ec6299fbb284c001d053dbe87065e.bindPopup(popup_961813e6a5dfcf9fc2730d1149d51879)
+        ;
+
+        
+    
+    
+            circle_marker_412ec6299fbb284c001d053dbe87065e.bindTooltip(
+                `<div>
+                     LOKOBE (847 ha)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_a3e3f7046d837593a9d56d002866e3a8 = L.circleMarker(
+                [-16.432792241349972, 49.72872852875362],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ecc71", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.72949801569269, "stroke": true, "weight": 2}
+            ).addTo(feature_group_664dca2be449900260121cd71367e30e);
+        
+    
+        var popup_b793c07bf40846119d202b2692eed80b = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_24adf7670e27940a7cefb650e234d916 = $(`<div id="html_24adf7670e27940a7cefb650e234d916" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial; width: 300px;">                 <h3 style="color: #2ecc71; margin-bottom: 10px;">                     🌟 MANANARA NORD                 </h3>                 <table style="width: 100%; font-size: 12px;">                     <tr>                         <td><b>📊 Catégorie:</b></td>                         <td>🌟 EFFICACES (Investis + Protégés)</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>📐 Superficie:</b></td>                         <td>24.1 K ha</td>                     </tr>                     <tr>                         <td><b>💰 Financement:</b></td>                         <td>$4.40 Mds USD/an</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>💵 Financement/ha:</b></td>                         <td>$182706 USD/ha</td>                     </tr>                     <tr>                         <td><b>🔥 Taux de feu:</b></td>                         <td>0.2207 feux/100ha</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>⭐ Score efficacité:</b></td>                         <td>0.0460</td>                     </tr>                     <tr>                         <td><b>📍 Position:</b></td>                         <td>-16.4328, 49.7287</td>                     </tr>                 </table>             </div>             </div>`)[0];
+                popup_b793c07bf40846119d202b2692eed80b.setContent(html_24adf7670e27940a7cefb650e234d916);
+            
+        
+
+        circle_marker_a3e3f7046d837593a9d56d002866e3a8.bindPopup(popup_b793c07bf40846119d202b2692eed80b)
+        ;
+
+        
+    
+    
+            circle_marker_a3e3f7046d837593a9d56d002866e3a8.bindTooltip(
+                `<div>
+                     MANANARA NORD (24.1 K ha)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_feb7397f75fdfc307c9cba380ad132b4 = L.circleMarker(
+                [-14.43479761719393, 49.70857332628494],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ecc71", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.6852979490442, "stroke": true, "weight": 2}
+            ).addTo(feature_group_664dca2be449900260121cd71367e30e);
+        
+    
+        var popup_5f7ef761d30916a1394f52910557ccc9 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_12f2554e81edf61c113305af4d0c2a67 = $(`<div id="html_12f2554e81edf61c113305af4d0c2a67" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial; width: 300px;">                 <h3 style="color: #2ecc71; margin-bottom: 10px;">                     🌟 MAROJEJY                 </h3>                 <table style="width: 100%; font-size: 12px;">                     <tr>                         <td><b>📊 Catégorie:</b></td>                         <td>🌟 EFFICACES (Investis + Protégés)</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>📐 Superficie:</b></td>                         <td>55.6 K ha</td>                     </tr>                     <tr>                         <td><b>💰 Financement:</b></td>                         <td>$3.73 Mds USD/an</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>💵 Financement/ha:</b></td>                         <td>$67122 USD/ha</td>                     </tr>                     <tr>                         <td><b>🔥 Taux de feu:</b></td>                         <td>0.0235 feux/100ha</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>⭐ Score efficacité:</b></td>                         <td>0.0179</td>                     </tr>                     <tr>                         <td><b>📍 Position:</b></td>                         <td>-14.4348, 49.7086</td>                     </tr>                 </table>             </div>             </div>`)[0];
+                popup_5f7ef761d30916a1394f52910557ccc9.setContent(html_12f2554e81edf61c113305af4d0c2a67);
+            
+        
+
+        circle_marker_feb7397f75fdfc307c9cba380ad132b4.bindPopup(popup_5f7ef761d30916a1394f52910557ccc9)
+        ;
+
+        
+    
+    
+            circle_marker_feb7397f75fdfc307c9cba380ad132b4.bindTooltip(
+                `<div>
+                     MAROJEJY (55.6 K ha)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_ed8c0a094601c6fc68e15d7ab0efaaba = L.circleMarker(
+                [-15.498019267893351, 49.767863430431895],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ecc71", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.018055681783755, "stroke": true, "weight": 2}
+            ).addTo(feature_group_664dca2be449900260121cd71367e30e);
+        
+    
+        var popup_335331126213f389b6369bf2e89acb8b = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_3edb463dccf4dbaecdf385523c20c21c = $(`<div id="html_3edb463dccf4dbaecdf385523c20c21c" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial; width: 300px;">                 <h3 style="color: #2ecc71; margin-bottom: 10px;">                     🌟 NOSY MANGABE                 </h3>                 <table style="width: 100%; font-size: 12px;">                     <tr>                         <td><b>📊 Catégorie:</b></td>                         <td>🌟 EFFICACES (Investis + Protégés)</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>📐 Superficie:</b></td>                         <td>596 ha</td>                     </tr>                     <tr>                         <td><b>💰 Financement:</b></td>                         <td>$63.02 M USD/an</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>💵 Financement/ha:</b></td>                         <td>$105738 USD/ha</td>                     </tr>                     <tr>                         <td><b>🔥 Taux de feu:</b></td>                         <td>0.0000 feux/100ha</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>⭐ Score efficacité:</b></td>                         <td>0.0286</td>                     </tr>                     <tr>                         <td><b>📍 Position:</b></td>                         <td>-15.4980, 49.7679</td>                     </tr>                 </table>             </div>             </div>`)[0];
+                popup_335331126213f389b6369bf2e89acb8b.setContent(html_3edb463dccf4dbaecdf385523c20c21c);
+            
+        
+
+        circle_marker_ed8c0a094601c6fc68e15d7ab0efaaba.bindPopup(popup_335331126213f389b6369bf2e89acb8b)
+        ;
+
+        
+    
+    
+            circle_marker_ed8c0a094601c6fc68e15d7ab0efaaba.bindTooltip(
+                `<div>
+                     NOSY MANGABE (596 ha)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_d53bdd032bc66e0a3c9f7940d2a1d34e = L.circleMarker(
+                [-12.259366796556904, 49.37097050476163],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ecc71", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.050561967948136, "stroke": true, "weight": 2}
+            ).addTo(feature_group_664dca2be449900260121cd71367e30e);
+        
+    
+        var popup_32e29cc21a9c5322147f24d378f32d60 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_e1d0be90e2682b5cc7e0755e7533ee9f = $(`<div id="html_e1d0be90e2682b5cc7e0755e7533ee9f" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial; width: 300px;">                 <h3 style="color: #2ecc71; margin-bottom: 10px;">                     🌟 ORONJIA                 </h3>                 <table style="width: 100%; font-size: 12px;">                     <tr>                         <td><b>📊 Catégorie:</b></td>                         <td>🌟 EFFICACES (Investis + Protégés)</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>📐 Superficie:</b></td>                         <td>1.7 K ha</td>                     </tr>                     <tr>                         <td><b>💰 Financement:</b></td>                         <td>$1.80 Mds USD/an</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>💵 Financement/ha:</b></td>                         <td>$1075581 USD/ha</td>                     </tr>                     <tr>                         <td><b>🔥 Taux de feu:</b></td>                         <td>0.0323 feux/100ha</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>⭐ Score efficacité:</b></td>                         <td>0.2889</td>                     </tr>                     <tr>                         <td><b>📍 Position:</b></td>                         <td>-12.2594, 49.3710</td>                     </tr>                 </table>             </div>             </div>`)[0];
+                popup_32e29cc21a9c5322147f24d378f32d60.setContent(html_e1d0be90e2682b5cc7e0755e7533ee9f);
+            
+        
+
+        circle_marker_d53bdd032bc66e0a3c9f7940d2a1d34e.bindPopup(popup_32e29cc21a9c5322147f24d378f32d60)
+        ;
+
+        
+    
+    
+            circle_marker_d53bdd032bc66e0a3c9f7940d2a1d34e.bindTooltip(
+                `<div>
+                     ORONJIA (1.7 K ha)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_52b8b6d5ab2af0b2fd33334deeb95f21 = L.circleMarker(
+                [-14.186140856367564, 47.834148646656566],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ecc71", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.788724287315581, "stroke": true, "weight": 2}
+            ).addTo(feature_group_664dca2be449900260121cd71367e30e);
+        
+    
+        var popup_b7687e755891172be06335158ce2e94c = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_4bc77568db09b5a4c069b1a08e15e243 = $(`<div id="html_4bc77568db09b5a4c069b1a08e15e243" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial; width: 300px;">                 <h3 style="color: #2ecc71; margin-bottom: 10px;">                     🌟 SAHAMALAZA ILES RADAMA                 </h3>                 <table style="width: 100%; font-size: 12px;">                     <tr>                         <td><b>📊 Catégorie:</b></td>                         <td>🌟 EFFICACES (Investis + Protégés)</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>📐 Superficie:</b></td>                         <td>26.0 K ha</td>                     </tr>                     <tr>                         <td><b>💰 Financement:</b></td>                         <td>$1.42 Mds USD/an</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>💵 Financement/ha:</b></td>                         <td>$54651 USD/ha</td>                     </tr>                     <tr>                         <td><b>🔥 Taux de feu:</b></td>                         <td>0.1778 feux/100ha</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>⭐ Score efficacité:</b></td>                         <td>0.0139</td>                     </tr>                     <tr>                         <td><b>📍 Position:</b></td>                         <td>-14.1861, 47.8341</td>                     </tr>                 </table>             </div>             </div>`)[0];
+                popup_b7687e755891172be06335158ce2e94c.setContent(html_4bc77568db09b5a4c069b1a08e15e243);
+            
+        
+
+        circle_marker_52b8b6d5ab2af0b2fd33334deeb95f21.bindPopup(popup_b7687e755891172be06335158ce2e94c)
+        ;
+
+        
+    
+    
+            circle_marker_52b8b6d5ab2af0b2fd33334deeb95f21.bindTooltip(
+                `<div>
+                     SAHAMALAZA ILES RADAMA (26.0 K ha)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_13a78731c709b2d4dfb2f9b64fc9554a = L.circleMarker(
+                [-18.296626002324786, 48.65778296370517],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2ecc71", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.104759308067496, "stroke": true, "weight": 2}
+            ).addTo(feature_group_664dca2be449900260121cd71367e30e);
+        
+    
+        var popup_f3566f668bc9dc6719b5fc867a58453b = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_9a3e514fa36353e12f850a87c60ed6ea = $(`<div id="html_9a3e514fa36353e12f850a87c60ed6ea" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial; width: 300px;">                 <h3 style="color: #2ecc71; margin-bottom: 10px;">                     🌟 ZAHAMENA                 </h3>                 <table style="width: 100%; font-size: 12px;">                     <tr>                         <td><b>📊 Catégorie:</b></td>                         <td>🌟 EFFICACES (Investis + Protégés)</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>📐 Superficie:</b></td>                         <td>69.5 K ha</td>                     </tr>                     <tr>                         <td><b>💰 Financement:</b></td>                         <td>$3.75 Mds USD/an</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>💵 Financement/ha:</b></td>                         <td>$54045 USD/ha</td>                     </tr>                     <tr>                         <td><b>🔥 Taux de feu:</b></td>                         <td>0.0365 feux/100ha</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>⭐ Score efficacité:</b></td>                         <td>0.0144</td>                     </tr>                     <tr>                         <td><b>📍 Position:</b></td>                         <td>-18.2966, 48.6578</td>                     </tr>                 </table>             </div>             </div>`)[0];
+                popup_f3566f668bc9dc6719b5fc867a58453b.setContent(html_9a3e514fa36353e12f850a87c60ed6ea);
+            
+        
+
+        circle_marker_13a78731c709b2d4dfb2f9b64fc9554a.bindPopup(popup_f3566f668bc9dc6719b5fc867a58453b)
+        ;
+
+        
+    
+    
+            circle_marker_13a78731c709b2d4dfb2f9b64fc9554a.bindTooltip(
+                `<div>
+                     ZAHAMENA (69.5 K ha)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            feature_group_664dca2be449900260121cd71367e30e.addTo(map_30c6beec15839673727dd3192eb13aa0);
+        
+    
+            var feature_group_3368a81e79b7aa1810cd52ae0db79095 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var circle_marker_82668c64a981d439813455c74c3b6912 = L.circleMarker(
+                [-18.1626212896425, 47.302696460877904],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#a8e6cf", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.149656154382138, "stroke": true, "weight": 2}
+            ).addTo(feature_group_3368a81e79b7aa1810cd52ae0db79095);
+        
+    
+        var popup_20829011c69769382838ac32d9285810 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_981fd633793ab888aa4a5884409a5964 = $(`<div id="html_981fd633793ab888aa4a5884409a5964" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial; width: 300px;">                 <h3 style="color: #a8e6cf; margin-bottom: 10px;">                     🌱 AMBOHITANTELY                 </h3>                 <table style="width: 100%; font-size: 12px;">                     <tr>                         <td><b>📊 Catégorie:</b></td>                         <td>🌱 NATURELLEMENT PROTÉGÉES (Peu investis + Peu de feux)</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>📐 Superficie:</b></td>                         <td>4.9 K ha</td>                     </tr>                     <tr>                         <td><b>💰 Financement:</b></td>                         <td>$187.15 M USD/an</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>💵 Financement/ha:</b></td>                         <td>$37884 USD/ha</td>                     </tr>                     <tr>                         <td><b>🔥 Taux de feu:</b></td>                         <td>0.0000 feux/100ha</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>⭐ Score efficacité:</b></td>                         <td>0.0101</td>                     </tr>                     <tr>                         <td><b>📍 Position:</b></td>                         <td>-18.1626, 47.3027</td>                     </tr>                 </table>             </div>             </div>`)[0];
+                popup_20829011c69769382838ac32d9285810.setContent(html_981fd633793ab888aa4a5884409a5964);
+            
+        
+
+        circle_marker_82668c64a981d439813455c74c3b6912.bindPopup(popup_20829011c69769382838ac32d9285810)
+        ;
+
+        
+    
+    
+            circle_marker_82668c64a981d439813455c74c3b6912.bindTooltip(
+                `<div>
+                     AMBOHITANTELY (4.9 K ha)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_fce324a34801cdeeb8a7df24090272d0 = L.circleMarker(
+                [-12.783656914525949, 49.47982380889553],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#a8e6cf", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.272107607016268, "stroke": true, "weight": 2}
+            ).addTo(feature_group_3368a81e79b7aa1810cd52ae0db79095);
+        
+    
+        var popup_df271a2b10c04acec6fde4667552ea04 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_9ef737f7e46148a4b968b0ba321d6a01 = $(`<div id="html_9ef737f7e46148a4b968b0ba321d6a01" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial; width: 300px;">                 <h3 style="color: #a8e6cf; margin-bottom: 10px;">                     🌱 ANALAMERANA                 </h3>                 <table style="width: 100%; font-size: 12px;">                     <tr>                         <td><b>📊 Catégorie:</b></td>                         <td>🌱 NATURELLEMENT PROTÉGÉES (Peu investis + Peu de feux)</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>📐 Superficie:</b></td>                         <td>75.0 K ha</td>                     </tr>                     <tr>                         <td><b>💰 Financement:</b></td>                         <td>$228.38 M USD/an</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>💵 Financement/ha:</b></td>                         <td>$3045 USD/ha</td>                     </tr>                     <tr>                         <td><b>🔥 Taux de feu:</b></td>                         <td>0.1573 feux/100ha</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>⭐ Score efficacité:</b></td>                         <td>0.0006</td>                     </tr>                     <tr>                         <td><b>📍 Position:</b></td>                         <td>-12.7837, 49.4798</td>                     </tr>                 </table>             </div>             </div>`)[0];
+                popup_df271a2b10c04acec6fde4667552ea04.setContent(html_9ef737f7e46148a4b968b0ba321d6a01);
+            
+        
+
+        circle_marker_fce324a34801cdeeb8a7df24090272d0.bindPopup(popup_df271a2b10c04acec6fde4667552ea04)
+        ;
+
+        
+    
+    
+            circle_marker_fce324a34801cdeeb8a7df24090272d0.bindTooltip(
+                `<div>
+                     ANALAMERANA (75.0 K ha)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_0556b6ff189703e70a62cab70e4fe0b3 = L.circleMarker(
+                [-16.220896612713908, 46.94175566160105],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#a8e6cf", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12.14129479838832, "stroke": true, "weight": 2}
+            ).addTo(feature_group_3368a81e79b7aa1810cd52ae0db79095);
+        
+    
+        var popup_0835b888eaf526444f23ba49cdd2e206 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_2777355af6601232dddd2c00271d13bb = $(`<div id="html_2777355af6601232dddd2c00271d13bb" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial; width: 300px;">                 <h3 style="color: #a8e6cf; margin-bottom: 10px;">                     🌱 ANKARAFANTSIKA                 </h3>                 <table style="width: 100%; font-size: 12px;">                     <tr>                         <td><b>📊 Catégorie:</b></td>                         <td>🌱 NATURELLEMENT PROTÉGÉES (Peu investis + Peu de feux)</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>📐 Superficie:</b></td>                         <td>136.7 K ha</td>                     </tr>                     <tr>                         <td><b>💰 Financement:</b></td>                         <td>$3.86 Mds USD/an</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>💵 Financement/ha:</b></td>                         <td>$28207 USD/ha</td>                     </tr>                     <tr>                         <td><b>🔥 Taux de feu:</b></td>                         <td>0.1912 feux/100ha</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>⭐ Score efficacité:</b></td>                         <td>0.0071</td>                     </tr>                     <tr>                         <td><b>📍 Position:</b></td>                         <td>-16.2209, 46.9418</td>                     </tr>                 </table>             </div>             </div>`)[0];
+                popup_0835b888eaf526444f23ba49cdd2e206.setContent(html_2777355af6601232dddd2c00271d13bb);
+            
+        
+
+        circle_marker_0556b6ff189703e70a62cab70e4fe0b3.bindPopup(popup_0835b888eaf526444f23ba49cdd2e206)
+        ;
+
+        
+    
+    
+            circle_marker_0556b6ff189703e70a62cab70e4fe0b3.bindTooltip(
+                `<div>
+                     ANKARAFANTSIKA (136.7 K ha)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_55fe3ab4293448335b2592e8c7968528 = L.circleMarker(
+                [-23.683967894490323, 44.59217936054573],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#a8e6cf", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.127813626586688, "stroke": true, "weight": 2}
+            ).addTo(feature_group_3368a81e79b7aa1810cd52ae0db79095);
+        
+    
+        var popup_07d4c06e08bca04724cfa4a051b8186d = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_c843b26b551fb20a4211337b586d056e = $(`<div id="html_c843b26b551fb20a4211337b586d056e" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial; width: 300px;">                 <h3 style="color: #a8e6cf; margin-bottom: 10px;">                     🌱 BEZA MAHAFALY                 </h3>                 <table style="width: 100%; font-size: 12px;">                     <tr>                         <td><b>📊 Catégorie:</b></td>                         <td>🌱 NATURELLEMENT PROTÉGÉES (Peu investis + Peu de feux)</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>📐 Superficie:</b></td>                         <td>4.2 K ha</td>                     </tr>                     <tr>                         <td><b>💰 Financement:</b></td>                         <td>$145.68 M USD/an</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>💵 Financement/ha:</b></td>                         <td>$34529 USD/ha</td>                     </tr>                     <tr>                         <td><b>🔥 Taux de feu:</b></td>                         <td>0.0000 feux/100ha</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>⭐ Score efficacité:</b></td>                         <td>0.0092</td>                     </tr>                     <tr>                         <td><b>📍 Position:</b></td>                         <td>-23.6840, 44.5922</td>                     </tr>                 </table>             </div>             </div>`)[0];
+                popup_07d4c06e08bca04724cfa4a051b8186d.setContent(html_c843b26b551fb20a4211337b586d056e);
+            
+        
+
+        circle_marker_55fe3ab4293448335b2592e8c7968528.bindPopup(popup_07d4c06e08bca04724cfa4a051b8186d)
+        ;
+
+        
+    
+    
+            circle_marker_55fe3ab4293448335b2592e8c7968528.bindTooltip(
+                `<div>
+                     BEZA MAHAFALY (4.2 K ha)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_bc7940bbb6f09f1e598af7b0c61c698a = L.circleMarker(
+                [-13.627399008530622, 48.66510669061431],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#a8e6cf", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.28149898512527, "stroke": true, "weight": 2}
+            ).addTo(feature_group_3368a81e79b7aa1810cd52ae0db79095);
+        
+    
+        var popup_5dd605b7d1b0b1ad6c6dd0854d88d380 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_64ae3fa34d49c94ec4ed8424e6dac821 = $(`<div id="html_64ae3fa34d49c94ec4ed8424e6dac821" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial; width: 300px;">                 <h3 style="color: #a8e6cf; margin-bottom: 10px;">                     🌱 GALOKO KALOBINONO                 </h3>                 <table style="width: 100%; font-size: 12px;">                     <tr>                         <td><b>📊 Catégorie:</b></td>                         <td>🌱 NATURELLEMENT PROTÉGÉES (Peu investis + Peu de feux)</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>📐 Superficie:</b></td>                         <td>75.3 K ha</td>                     </tr>                     <tr>                         <td><b>💰 Financement:</b></td>                         <td>$255.47 M USD/an</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>💵 Financement/ha:</b></td>                         <td>$3392 USD/ha</td>                     </tr>                     <tr>                         <td><b>🔥 Taux de feu:</b></td>                         <td>0.1886 feux/100ha</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>⭐ Score efficacité:</b></td>                         <td>0.0007</td>                     </tr>                     <tr>                         <td><b>📍 Position:</b></td>                         <td>-13.6274, 48.6651</td>                     </tr>                 </table>             </div>             </div>`)[0];
+                popup_5dd605b7d1b0b1ad6c6dd0854d88d380.setContent(html_64ae3fa34d49c94ec4ed8424e6dac821);
+            
+        
+
+        circle_marker_bc7940bbb6f09f1e598af7b0c61c698a.bindPopup(popup_5dd605b7d1b0b1ad6c6dd0854d88d380)
+        ;
+
+        
+    
+    
+            circle_marker_bc7940bbb6f09f1e598af7b0c61c698a.bindTooltip(
+                `<div>
+                     GALOKO KALOBINONO (75.3 K ha)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_bd7fb58cd6394a32fcd4f0b42879a2c0 = L.circleMarker(
+                [-20.917732891102595, 44.026002250302206],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#a8e6cf", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12.747190160259322, "stroke": true, "weight": 2}
+            ).addTo(feature_group_3368a81e79b7aa1810cd52ae0db79095);
+        
+    
+        var popup_c4288338253b7dfd0629f81a3885f597 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_d67a954405fd44ad9582a4b7cf875206 = $(`<div id="html_d67a954405fd44ad9582a4b7cf875206" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial; width: 300px;">                 <h3 style="color: #a8e6cf; margin-bottom: 10px;">                     🌱 KIRINDY MITE                 </h3>                 <table style="width: 100%; font-size: 12px;">                     <tr>                         <td><b>📊 Catégorie:</b></td>                         <td>🌱 NATURELLEMENT PROTÉGÉES (Peu investis + Peu de feux)</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>📐 Superficie:</b></td>                         <td>156.7 K ha</td>                     </tr>                     <tr>                         <td><b>💰 Financement:</b></td>                         <td>$4.76 Mds USD/an</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>💵 Financement/ha:</b></td>                         <td>$30368 USD/ha</td>                     </tr>                     <tr>                         <td><b>🔥 Taux de feu:</b></td>                         <td>0.1907 feux/100ha</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>⭐ Score efficacité:</b></td>                         <td>0.0076</td>                     </tr>                     <tr>                         <td><b>📍 Position:</b></td>                         <td>-20.9177, 44.0260</td>                     </tr>                 </table>             </div>             </div>`)[0];
+                popup_c4288338253b7dfd0629f81a3885f597.setContent(html_d67a954405fd44ad9582a4b7cf875206);
+            
+        
+
+        circle_marker_bd7fb58cd6394a32fcd4f0b42879a2c0.bindPopup(popup_c4288338253b7dfd0629f81a3885f597)
+        ;
+
+        
+    
+    
+            circle_marker_bd7fb58cd6394a32fcd4f0b42879a2c0.bindTooltip(
+                `<div>
+                     KIRINDY MITE (156.7 K ha)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_888649fc273d8fda5cbfdbea325a3438 = L.circleMarker(
+                [-13.051548428825782, 49.697362384393415],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#a8e6cf", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15.57214699021479, "stroke": true, "weight": 2}
+            ).addTo(feature_group_3368a81e79b7aa1810cd52ae0db79095);
+        
+    
+        var popup_3ace2ed3a68bca2421d1ebf7bc20e141 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_87e76c1e7ef13b21e69284d4353a4b43 = $(`<div id="html_87e76c1e7ef13b21e69284d4353a4b43" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial; width: 300px;">                 <h3 style="color: #a8e6cf; margin-bottom: 10px;">                     🌱 LOKY MANAMBATO                 </h3>                 <table style="width: 100%; font-size: 12px;">                     <tr>                         <td><b>📊 Catégorie:</b></td>                         <td>🌱 NATURELLEMENT PROTÉGÉES (Peu investis + Peu de feux)</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>📐 Superficie:</b></td>                         <td>249.9 K ha</td>                     </tr>                     <tr>                         <td><b>💰 Financement:</b></td>                         <td>$1.98 Mds USD/an</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>💵 Financement/ha:</b></td>                         <td>$7919 USD/ha</td>                     </tr>                     <tr>                         <td><b>🔥 Taux de feu:</b></td>                         <td>0.2367 feux/100ha</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>⭐ Score efficacité:</b></td>                         <td>0.0018</td>                     </tr>                     <tr>                         <td><b>📍 Position:</b></td>                         <td>-13.0515, 49.6974</td>                     </tr>                 </table>             </div>             </div>`)[0];
+                popup_3ace2ed3a68bca2421d1ebf7bc20e141.setContent(html_87e76c1e7ef13b21e69284d4353a4b43);
+            
+        
+
+        circle_marker_888649fc273d8fda5cbfdbea325a3438.bindPopup(popup_3ace2ed3a68bca2421d1ebf7bc20e141)
+        ;
+
+        
+    
+    
+            circle_marker_888649fc273d8fda5cbfdbea325a3438.bindTooltip(
+                `<div>
+                     LOKY MANAMBATO (249.9 K ha)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_02393d292cf196055840febccffa42bf = L.circleMarker(
+                [-15.237902705007484, 49.49019108709875],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#a8e6cf", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 30.0, "stroke": true, "weight": 2}
+            ).addTo(feature_group_3368a81e79b7aa1810cd52ae0db79095);
+        
+    
+        var popup_7464206ac8164960d25a01d8d33d8e1d = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_70d22ce3e7233202f811219840c77d3a = $(`<div id="html_70d22ce3e7233202f811219840c77d3a" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial; width: 300px;">                 <h3 style="color: #a8e6cf; margin-bottom: 10px;">                     🌱 MAKIRA                 </h3>                 <table style="width: 100%; font-size: 12px;">                     <tr>                         <td><b>📊 Catégorie:</b></td>                         <td>🌱 NATURELLEMENT PROTÉGÉES (Peu investis + Peu de feux)</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>📐 Superficie:</b></td>                         <td>726.2 K ha</td>                     </tr>                     <tr>                         <td><b>💰 Financement:</b></td>                         <td>$5.62 Mds USD/an</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>💵 Financement/ha:</b></td>                         <td>$7738 USD/ha</td>                     </tr>                     <tr>                         <td><b>🔥 Taux de feu:</b></td>                         <td>0.0296 feux/100ha</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>⭐ Score efficacité:</b></td>                         <td>0.0019</td>                     </tr>                     <tr>                         <td><b>📍 Position:</b></td>                         <td>-15.2379, 49.4902</td>                     </tr>                 </table>             </div>             </div>`)[0];
+                popup_7464206ac8164960d25a01d8d33d8e1d.setContent(html_70d22ce3e7233202f811219840c77d3a);
+            
+        
+
+        circle_marker_02393d292cf196055840febccffa42bf.bindPopup(popup_7464206ac8164960d25a01d8d33d8e1d)
+        ;
+
+        
+    
+    
+            circle_marker_02393d292cf196055840febccffa42bf.bindTooltip(
+                `<div>
+                     MAKIRA (726.2 K ha)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_8a15ba87f71fe98072146559fcd6ba11 = L.circleMarker(
+                [-18.195982861319575, 48.88148966837676],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#a8e6cf", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.379411675603624, "stroke": true, "weight": 2}
+            ).addTo(feature_group_3368a81e79b7aa1810cd52ae0db79095);
+        
+    
+        var popup_20cd6394d3534e44b16e9ecfc3d9d2a0 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_9b6c86edeaa54dc3771be3f0eca0c67e = $(`<div id="html_9b6c86edeaa54dc3771be3f0eca0c67e" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial; width: 300px;">                 <h3 style="color: #a8e6cf; margin-bottom: 10px;">                     🌱 MANGERIVOLA                 </h3>                 <table style="width: 100%; font-size: 12px;">                     <tr>                         <td><b>📊 Catégorie:</b></td>                         <td>🌱 NATURELLEMENT PROTÉGÉES (Peu investis + Peu de feux)</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>📐 Superficie:</b></td>                         <td>12.5 K ha</td>                     </tr>                     <tr>                         <td><b>💰 Financement:</b></td>                         <td>$120.35 M USD/an</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>💵 Financement/ha:</b></td>                         <td>$9609 USD/ha</td>                     </tr>                     <tr>                         <td><b>🔥 Taux de feu:</b></td>                         <td>0.0639 feux/100ha</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>⭐ Score efficacité:</b></td>                         <td>0.0024</td>                     </tr>                     <tr>                         <td><b>📍 Position:</b></td>                         <td>-18.1960, 48.8815</td>                     </tr>                 </table>             </div>             </div>`)[0];
+                popup_20cd6394d3534e44b16e9ecfc3d9d2a0.setContent(html_9b6c86edeaa54dc3771be3f0eca0c67e);
+            
+        
+
+        circle_marker_8a15ba87f71fe98072146559fcd6ba11.bindPopup(popup_20cd6394d3534e44b16e9ecfc3d9d2a0)
+        ;
+
+        
+    
+    
+            circle_marker_8a15ba87f71fe98072146559fcd6ba11.bindTooltip(
+                `<div>
+                     MANGERIVOLA (12.5 K ha)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_ae9cc023b299bb9c18c3b73b7b7bf3c8 = L.circleMarker(
+                [-15.528742842288906, 50.12562851516597],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#a8e6cf", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 14.725438516768154, "stroke": true, "weight": 2}
+            ).addTo(feature_group_3368a81e79b7aa1810cd52ae0db79095);
+        
+    
+        var popup_8e90a873fc23aa219317f34e2146b477 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_75d1085a46566f73ec1d39231e500ebd = $(`<div id="html_75d1085a46566f73ec1d39231e500ebd" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial; width: 300px;">                 <h3 style="color: #a8e6cf; margin-bottom: 10px;">                     🌱 MASOALA                 </h3>                 <table style="width: 100%; font-size: 12px;">                     <tr>                         <td><b>📊 Catégorie:</b></td>                         <td>🌱 NATURELLEMENT PROTÉGÉES (Peu investis + Peu de feux)</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>📐 Superficie:</b></td>                         <td>222.0 K ha</td>                     </tr>                     <tr>                         <td><b>💰 Financement:</b></td>                         <td>$6.07 Mds USD/an</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>💵 Financement/ha:</b></td>                         <td>$27332 USD/ha</td>                     </tr>                     <tr>                         <td><b>🔥 Taux de feu:</b></td>                         <td>0.0205 feux/100ha</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>⭐ Score efficacité:</b></td>                         <td>0.0072</td>                     </tr>                     <tr>                         <td><b>📍 Position:</b></td>                         <td>-15.5287, 50.1256</td>                     </tr>                 </table>             </div>             </div>`)[0];
+                popup_8e90a873fc23aa219317f34e2146b477.setContent(html_75d1085a46566f73ec1d39231e500ebd);
+            
+        
+
+        circle_marker_ae9cc023b299bb9c18c3b73b7b7bf3c8.bindPopup(popup_8e90a873fc23aa219317f34e2146b477)
+        ;
+
+        
+    
+    
+            circle_marker_ae9cc023b299bb9c18c3b73b7b7bf3c8.bindTooltip(
+                `<div>
+                     MASOALA (222.0 K ha)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_cb29a6a05149a6a3e49c0e372668c7f3 = L.circleMarker(
+                [-22.239163872793913, 43.44597605592034],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#a8e6cf", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15.172316640916113, "stroke": true, "weight": 2}
+            ).addTo(feature_group_3368a81e79b7aa1810cd52ae0db79095);
+        
+    
+        var popup_a7075eb4ea9bb17cbf2d09ea045380d9 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_58984bbb0c4497a85745f70ca0d938a4 = $(`<div id="html_58984bbb0c4497a85745f70ca0d938a4" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial; width: 300px;">                 <h3 style="color: #a8e6cf; margin-bottom: 10px;">                     🌱 MIKEA                 </h3>                 <table style="width: 100%; font-size: 12px;">                     <tr>                         <td><b>📊 Catégorie:</b></td>                         <td>🌱 NATURELLEMENT PROTÉGÉES (Peu investis + Peu de feux)</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>📐 Superficie:</b></td>                         <td>236.8 K ha</td>                     </tr>                     <tr>                         <td><b>💰 Financement:</b></td>                         <td>$3.96 Mds USD/an</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>💵 Financement/ha:</b></td>                         <td>$16728 USD/ha</td>                     </tr>                     <tr>                         <td><b>🔥 Taux de feu:</b></td>                         <td>0.1489 feux/100ha</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>⭐ Score efficacité:</b></td>                         <td>0.0042</td>                     </tr>                     <tr>                         <td><b>📍 Position:</b></td>                         <td>-22.2392, 43.4460</td>                     </tr>                 </table>             </div>             </div>`)[0];
+                popup_a7075eb4ea9bb17cbf2d09ea045380d9.setContent(html_58984bbb0c4497a85745f70ca0d938a4);
+            
+        
+
+        circle_marker_cb29a6a05149a6a3e49c0e372668c7f3.bindPopup(popup_a7075eb4ea9bb17cbf2d09ea045380d9)
+        ;
+
+        
+    
+    
+            circle_marker_cb29a6a05149a6a3e49c0e372668c7f3.bindTooltip(
+                `<div>
+                     MIKEA (236.8 K ha)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_7a0262b429294b64961b613022873df9 = L.circleMarker(
+                [-17.277033269220592, 49.422706846145225],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#a8e6cf", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.022115180708292, "stroke": true, "weight": 2}
+            ).addTo(feature_group_3368a81e79b7aa1810cd52ae0db79095);
+        
+    
+        var popup_b5a33117c3c365571ee670e6e02bae7b = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_96b9a151f569699b72960d73f6a8d81f = $(`<div id="html_96b9a151f569699b72960d73f6a8d81f" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial; width: 300px;">                 <h3 style="color: #a8e6cf; margin-bottom: 10px;">                     🌱 RESERVE DE TAMPOLO                 </h3>                 <table style="width: 100%; font-size: 12px;">                     <tr>                         <td><b>📊 Catégorie:</b></td>                         <td>🌱 NATURELLEMENT PROTÉGÉES (Peu investis + Peu de feux)</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>📐 Superficie:</b></td>                         <td>730 ha</td>                     </tr>                     <tr>                         <td><b>💰 Financement:</b></td>                         <td>$12.10 M USD/an</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>💵 Financement/ha:</b></td>                         <td>$16575 USD/ha</td>                     </tr>                     <tr>                         <td><b>🔥 Taux de feu:</b></td>                         <td>0.0000 feux/100ha</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>⭐ Score efficacité:</b></td>                         <td>0.0043</td>                     </tr>                     <tr>                         <td><b>📍 Position:</b></td>                         <td>-17.2770, 49.4227</td>                     </tr>                 </table>             </div>             </div>`)[0];
+                popup_b5a33117c3c365571ee670e6e02bae7b.setContent(html_96b9a151f569699b72960d73f6a8d81f);
+            
+        
+
+        circle_marker_7a0262b429294b64961b613022873df9.bindPopup(popup_b5a33117c3c365571ee670e6e02bae7b)
+        ;
+
+        
+    
+    
+            circle_marker_7a0262b429294b64961b613022873df9.bindTooltip(
+                `<div>
+                     RESERVE DE TAMPOLO (730 ha)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_0c024921890ae9fa7726cb9fcc82827a = L.circleMarker(
+                [-24.384758366547587, 43.977254838483766],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#a8e6cf", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 14.11954315489715, "stroke": true, "weight": 2}
+            ).addTo(feature_group_3368a81e79b7aa1810cd52ae0db79095);
+        
+    
+        var popup_2715c9d39d8318a34dd0bcd2b34a28d5 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_9121140379c4fa3514675eac68a246a3 = $(`<div id="html_9121140379c4fa3514675eac68a246a3" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial; width: 300px;">                 <h3 style="color: #a8e6cf; margin-bottom: 10px;">                     🌱 TSIMANAMPESOTSE                 </h3>                 <table style="width: 100%; font-size: 12px;">                     <tr>                         <td><b>📊 Catégorie:</b></td>                         <td>🌱 NATURELLEMENT PROTÉGÉES (Peu investis + Peu de feux)</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>📐 Superficie:</b></td>                         <td>202.0 K ha</td>                     </tr>                     <tr>                         <td><b>💰 Financement:</b></td>                         <td>$3.51 Mds USD/an</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>💵 Financement/ha:</b></td>                         <td>$17374 USD/ha</td>                     </tr>                     <tr>                         <td><b>🔥 Taux de feu:</b></td>                         <td>0.0165 feux/100ha</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>⭐ Score efficacité:</b></td>                         <td>0.0045</td>                     </tr>                     <tr>                         <td><b>📍 Position:</b></td>                         <td>-24.3848, 43.9773</td>                     </tr>                 </table>             </div>             </div>`)[0];
+                popup_2715c9d39d8318a34dd0bcd2b34a28d5.setContent(html_9121140379c4fa3514675eac68a246a3);
+            
+        
+
+        circle_marker_0c024921890ae9fa7726cb9fcc82827a.bindPopup(popup_2715c9d39d8318a34dd0bcd2b34a28d5)
+        ;
+
+        
+    
+    
+            circle_marker_0c024921890ae9fa7726cb9fcc82827a.bindTooltip(
+                `<div>
+                     TSIMANAMPESOTSE (202.0 K ha)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            feature_group_3368a81e79b7aa1810cd52ae0db79095.addTo(map_30c6beec15839673727dd3192eb13aa0);
+        
+    
+            var feature_group_b947ffb234d7cc1f341bdd30d54ae331 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var circle_marker_57abaef660a956e0eb083ebdca050cde = L.circleMarker(
+                [-12.3737104215239, 49.358703715327295],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f39c12", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.149959102063074, "stroke": true, "weight": 2}
+            ).addTo(feature_group_b947ffb234d7cc1f341bdd30d54ae331);
+        
+    
+        var popup_9dedc9cd6a5d002a2b80b57fa5359265 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_ed6b0d4119ef27e71ea9de020953027e = $(`<div id="html_ed6b0d4119ef27e71ea9de020953027e" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial; width: 300px;">                 <h3 style="color: #f39c12; margin-bottom: 10px;">                     ⚠️ AMBOHITR ANTSINGY MONTAGNE DES FRANCAIS                 </h3>                 <table style="width: 100%; font-size: 12px;">                     <tr>                         <td><b>📊 Catégorie:</b></td>                         <td>⚠️  SOUS PRESSION (Investis mais encore fragiles)</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>📐 Superficie:</b></td>                         <td>5.0 K ha</td>                     </tr>                     <tr>                         <td><b>💰 Financement:</b></td>                         <td>$2.34 Mds USD/an</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>💵 Financement/ha:</b></td>                         <td>$471851 USD/ha</td>                     </tr>                     <tr>                         <td><b>🔥 Taux de feu:</b></td>                         <td>0.2694 feux/100ha</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>⭐ Score efficacité:</b></td>                         <td>0.1171</td>                     </tr>                     <tr>                         <td><b>📍 Position:</b></td>                         <td>-12.3737, 49.3587</td>                     </tr>                 </table>             </div>             </div>`)[0];
+                popup_9dedc9cd6a5d002a2b80b57fa5359265.setContent(html_ed6b0d4119ef27e71ea9de020953027e);
+            
+        
+
+        circle_marker_57abaef660a956e0eb083ebdca050cde.bindPopup(popup_9dedc9cd6a5d002a2b80b57fa5359265)
+        ;
+
+        
+    
+    
+            circle_marker_57abaef660a956e0eb083ebdca050cde.bindTooltip(
+                `<div>
+                     AMBOHITR ANTSINGY MONTAGNE DES FRANCAIS (5.0 K ha)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_34bade605c59564748e639edeafd0244 = L.circleMarker(
+                [-17.70508298706203, 49.45575054933587],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f39c12", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.011542306643642, "stroke": true, "weight": 2}
+            ).addTo(feature_group_b947ffb234d7cc1f341bdd30d54ae331);
+        
+    
+        var popup_4c9cea1506580a9bb713b4b19896a742 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_c753e641b258be840de2797995847013 = $(`<div id="html_c753e641b258be840de2797995847013" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial; width: 300px;">                 <h3 style="color: #f39c12; margin-bottom: 10px;">                     ⚠️ ANALALAVA BETSIBOKA PN                 </h3>                 <table style="width: 100%; font-size: 12px;">                     <tr>                         <td><b>📊 Catégorie:</b></td>                         <td>⚠️  SOUS PRESSION (Investis mais encore fragiles)</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>📐 Superficie:</b></td>                         <td>381 ha</td>                     </tr>                     <tr>                         <td><b>💰 Financement:</b></td>                         <td>$1.40 Mds USD/an</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>💵 Financement/ha:</b></td>                         <td>$3683194 USD/ha</td>                     </tr>                     <tr>                         <td><b>🔥 Taux de feu:</b></td>                         <td>0.7268 feux/100ha</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>⭐ Score efficacité:</b></td>                         <td>0.7703</td>                     </tr>                     <tr>                         <td><b>📍 Position:</b></td>                         <td>-17.7051, 49.4558</td>                     </tr>                 </table>             </div>             </div>`)[0];
+                popup_4c9cea1506580a9bb713b4b19896a742.setContent(html_c753e641b258be840de2797995847013);
+            
+        
+
+        circle_marker_34bade605c59564748e639edeafd0244.bindPopup(popup_4c9cea1506580a9bb713b4b19896a742)
+        ;
+
+        
+    
+    
+            circle_marker_34bade605c59564748e639edeafd0244.bindTooltip(
+                `<div>
+                     ANALALAVA BETSIBOKA PN (381 ha)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_fee0921c2df112caa770fbde9a78c612 = L.circleMarker(
+                [-20.1808572151735, 44.52412766795273],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f39c12", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.24711442333909, "stroke": true, "weight": 2}
+            ).addTo(feature_group_b947ffb234d7cc1f341bdd30d54ae331);
+        
+    
+        var popup_5ffcce2160187d9f84d88dafa40198e4 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_9c10455e2fc42e4b122673c75346a9e7 = $(`<div id="html_9c10455e2fc42e4b122673c75346a9e7" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial; width: 300px;">                 <h3 style="color: #f39c12; margin-bottom: 10px;">                     ⚠️ ANDRANOMENA                 </h3>                 <table style="width: 100%; font-size: 12px;">                     <tr>                         <td><b>📊 Catégorie:</b></td>                         <td>⚠️  SOUS PRESSION (Investis mais encore fragiles)</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>📐 Superficie:</b></td>                         <td>8.2 K ha</td>                     </tr>                     <tr>                         <td><b>💰 Financement:</b></td>                         <td>$4.76 Mds USD/an</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>💵 Financement/ha:</b></td>                         <td>$583393 USD/ha</td>                     </tr>                     <tr>                         <td><b>🔥 Taux de feu:</b></td>                         <td>3.1644 feux/100ha</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>⭐ Score efficacité:</b></td>                         <td>0.0000</td>                     </tr>                     <tr>                         <td><b>📍 Position:</b></td>                         <td>-20.1809, 44.5241</td>                     </tr>                 </table>             </div>             </div>`)[0];
+                popup_5ffcce2160187d9f84d88dafa40198e4.setContent(html_9c10455e2fc42e4b122673c75346a9e7);
+            
+        
+
+        circle_marker_fee0921c2df112caa770fbde9a78c612.bindPopup(popup_5ffcce2160187d9f84d88dafa40198e4)
+        ;
+
+        
+    
+    
+            circle_marker_fee0921c2df112caa770fbde9a78c612.bindTooltip(
+                `<div>
+                     ANDRANOMENA (8.2 K ha)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_eeea0e4ee1b377f95036bf0a13aa06f3 = L.circleMarker(
+                [-12.901905999662532, 49.1370196936638],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f39c12", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.76312520827653, "stroke": true, "weight": 2}
+            ).addTo(feature_group_b947ffb234d7cc1f341bdd30d54ae331);
+        
+    
+        var popup_76948eac0989c32e2a8a080d1ee55e3b = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_8721d88471edf5e64d2d4ffb0b6e94d4 = $(`<div id="html_8721d88471edf5e64d2d4ffb0b6e94d4" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial; width: 300px;">                 <h3 style="color: #f39c12; margin-bottom: 10px;">                     ⚠️ ANKARANA                 </h3>                 <table style="width: 100%; font-size: 12px;">                     <tr>                         <td><b>📊 Catégorie:</b></td>                         <td>⚠️  SOUS PRESSION (Investis mais encore fragiles)</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>📐 Superficie:</b></td>                         <td>25.2 K ha</td>                     </tr>                     <tr>                         <td><b>💰 Financement:</b></td>                         <td>$3.74 Mds USD/an</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>💵 Financement/ha:</b></td>                         <td>$148320 USD/ha</td>                     </tr>                     <tr>                         <td><b>🔥 Taux de feu:</b></td>                         <td>0.4764 feux/100ha</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>⭐ Score efficacité:</b></td>                         <td>0.0341</td>                     </tr>                     <tr>                         <td><b>📍 Position:</b></td>                         <td>-12.9019, 49.1370</td>                     </tr>                 </table>             </div>             </div>`)[0];
+                popup_76948eac0989c32e2a8a080d1ee55e3b.setContent(html_8721d88471edf5e64d2d4ffb0b6e94d4);
+            
+        
+
+        circle_marker_eeea0e4ee1b377f95036bf0a13aa06f3.bindPopup(popup_76948eac0989c32e2a8a080d1ee55e3b)
+        ;
+
+        
+    
+    
+            circle_marker_eeea0e4ee1b377f95036bf0a13aa06f3.bindTooltip(
+                `<div>
+                     ANKARANA (25.2 K ha)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_9b242f16720a0e61c516a29e197150d2 = L.circleMarker(
+                [-18.97339985733323, 44.38405339410957],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f39c12", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.90084522402981, "stroke": true, "weight": 2}
+            ).addTo(feature_group_b947ffb234d7cc1f341bdd30d54ae331);
+        
+    
+        var popup_9c9223674aff9537979772e0186a80d0 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_207a45cb6729e55221dcdd8b2c45142e = $(`<div id="html_207a45cb6729e55221dcdd8b2c45142e" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial; width: 300px;">                 <h3 style="color: #f39c12; margin-bottom: 10px;">                     ⚠️ COMPLEXE TSIMEMBO MANAMBOLOMATY                 </h3>                 <table style="width: 100%; font-size: 12px;">                     <tr>                         <td><b>📊 Catégorie:</b></td>                         <td>⚠️  SOUS PRESSION (Investis mais encore fragiles)</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>📐 Superficie:</b></td>                         <td>62.7 K ha</td>                     </tr>                     <tr>                         <td><b>💰 Financement:</b></td>                         <td>$3.42 Mds USD/an</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>💵 Financement/ha:</b></td>                         <td>$54467 USD/ha</td>                     </tr>                     <tr>                         <td><b>🔥 Taux de feu:</b></td>                         <td>0.6457 feux/100ha</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>⭐ Score efficacité:</b></td>                         <td>0.0117</td>                     </tr>                     <tr>                         <td><b>📍 Position:</b></td>                         <td>-18.9734, 44.3841</td>                     </tr>                 </table>             </div>             </div>`)[0];
+                popup_9c9223674aff9537979772e0186a80d0.setContent(html_207a45cb6729e55221dcdd8b2c45142e);
+            
+        
+
+        circle_marker_9b242f16720a0e61c516a29e197150d2.bindPopup(popup_9c9223674aff9537979772e0186a80d0)
+        ;
+
+        
+    
+    
+            circle_marker_9b242f16720a0e61c516a29e197150d2.bindTooltip(
+                `<div>
+                     COMPLEXE TSIMEMBO MANAMBOLOMATY (62.7 K ha)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_2e1713bd4fda4410431bf0f4aeb09809 = L.circleMarker(
+                [-17.542015909666656, 44.095961248826626],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f39c12", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.458087188342573, "stroke": true, "weight": 2}
+            ).addTo(feature_group_b947ffb234d7cc1f341bdd30d54ae331);
+        
+    
+        var popup_8097e44c0040166efef243ccbbcda42a = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_2e82345c592788bb2c3aa450395846bd = $(`<div id="html_2e82345c592788bb2c3aa450395846bd" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial; width: 300px;">                 <h3 style="color: #f39c12; margin-bottom: 10px;">                     ⚠️ MANDROZO                 </h3>                 <table style="width: 100%; font-size: 12px;">                     <tr>                         <td><b>📊 Catégorie:</b></td>                         <td>⚠️  SOUS PRESSION (Investis mais encore fragiles)</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>📐 Superficie:</b></td>                         <td>15.1 K ha</td>                     </tr>                     <tr>                         <td><b>💰 Financement:</b></td>                         <td>$1.78 Mds USD/an</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>💵 Financement/ha:</b></td>                         <td>$117638 USD/ha</td>                     </tr>                     <tr>                         <td><b>🔥 Taux de feu:</b></td>                         <td>1.1926 feux/100ha</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>⭐ Score efficacité:</b></td>                         <td>0.0198</td>                     </tr>                     <tr>                         <td><b>📍 Position:</b></td>                         <td>-17.5420, 44.0960</td>                     </tr>                 </table>             </div>             </div>`)[0];
+                popup_8097e44c0040166efef243ccbbcda42a.setContent(html_2e82345c592788bb2c3aa450395846bd);
+            
+        
+
+        circle_marker_2e1713bd4fda4410431bf0f4aeb09809.bindPopup(popup_8097e44c0040166efef243ccbbcda42a)
+        ;
+
+        
+    
+    
+            circle_marker_2e1713bd4fda4410431bf0f4aeb09809.bindTooltip(
+                `<div>
+                     MANDROZO (15.1 K ha)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_47c45cf063c3c1c61eaea8610a1f9f13 = L.circleMarker(
+                [-23.03925777433046, 47.73136879040436],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f39c12", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.198127783331818, "stroke": true, "weight": 2}
+            ).addTo(feature_group_b947ffb234d7cc1f341bdd30d54ae331);
+        
+    
+        var popup_66ba15cd04de5f4130da3adc324a65e2 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_4f761fa6a61fe5c74b4ef6c23fcb4603 = $(`<div id="html_4f761fa6a61fe5c74b4ef6c23fcb4603" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial; width: 300px;">                 <h3 style="color: #f39c12; margin-bottom: 10px;">                     ⚠️ MANOMBO                 </h3>                 <table style="width: 100%; font-size: 12px;">                     <tr>                         <td><b>📊 Catégorie:</b></td>                         <td>⚠️  SOUS PRESSION (Investis mais encore fragiles)</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>📐 Superficie:</b></td>                         <td>6.5 K ha</td>                     </tr>                     <tr>                         <td><b>💰 Financement:</b></td>                         <td>$1.07 Mds USD/an</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>💵 Financement/ha:</b></td>                         <td>$163047 USD/ha</td>                     </tr>                     <tr>                         <td><b>🔥 Taux de feu:</b></td>                         <td>1.1954 feux/100ha</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>⭐ Score efficacité:</b></td>                         <td>0.0275</td>                     </tr>                     <tr>                         <td><b>📍 Position:</b></td>                         <td>-23.0393, 47.7314</td>                     </tr>                 </table>             </div>             </div>`)[0];
+                popup_66ba15cd04de5f4130da3adc324a65e2.setContent(html_4f761fa6a61fe5c74b4ef6c23fcb4603);
+            
+        
+
+        circle_marker_47c45cf063c3c1c61eaea8610a1f9f13.bindPopup(popup_66ba15cd04de5f4130da3adc324a65e2)
+        ;
+
+        
+    
+    
+            circle_marker_47c45cf063c3c1c61eaea8610a1f9f13.bindTooltip(
+                `<div>
+                     MANOMBO (6.5 K ha)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_4da1f43c56559fa8414e79d3ee2c7478 = L.circleMarker(
+                [-14.013944223172825, 48.37605974844102],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f39c12", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.56139234754158, "stroke": true, "weight": 2}
+            ).addTo(feature_group_b947ffb234d7cc1f341bdd30d54ae331);
+        
+    
+        var popup_7505a0753b96e734295eb231fc22653f = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_8b4fc1b9361ac2eafa94d5e6b80fccee = $(`<div id="html_8b4fc1b9361ac2eafa94d5e6b80fccee" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial; width: 300px;">                 <h3 style="color: #f39c12; margin-bottom: 10px;">                     ⚠️ MANONGARIVO                 </h3>                 <table style="width: 100%; font-size: 12px;">                     <tr>                         <td><b>📊 Catégorie:</b></td>                         <td>⚠️  SOUS PRESSION (Investis mais encore fragiles)</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>📐 Superficie:</b></td>                         <td>51.5 K ha</td>                     </tr>                     <tr>                         <td><b>💰 Financement:</b></td>                         <td>$4.22 Mds USD/an</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>💵 Financement/ha:</b></td>                         <td>$81848 USD/ha</td>                     </tr>                     <tr>                         <td><b>🔥 Taux de feu:</b></td>                         <td>0.4463 feux/100ha</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>⭐ Score efficacité:</b></td>                         <td>0.0190</td>                     </tr>                     <tr>                         <td><b>📍 Position:</b></td>                         <td>-14.0139, 48.3761</td>                     </tr>                 </table>             </div>             </div>`)[0];
+                popup_7505a0753b96e734295eb231fc22653f.setContent(html_8b4fc1b9361ac2eafa94d5e6b80fccee);
+            
+        
+
+        circle_marker_4da1f43c56559fa8414e79d3ee2c7478.bindPopup(popup_7505a0753b96e734295eb231fc22653f)
+        ;
+
+        
+    
+    
+            circle_marker_4da1f43c56559fa8414e79d3ee2c7478.bindTooltip(
+                `<div>
+                     MANONGARIVO (51.5 K ha)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_61047ca28d8b1f3054e0c449dcaaacc3 = L.circleMarker(
+                [-18.963127519981448, 48.4725057585737],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f39c12", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.064618740343542, "stroke": true, "weight": 2}
+            ).addTo(feature_group_b947ffb234d7cc1f341bdd30d54ae331);
+        
+    
+        var popup_324981e95169af8ef685f6215150bfe3 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_4841f8c415253448dd9cbe9acfe06594 = $(`<div id="html_4841f8c415253448dd9cbe9acfe06594" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial; width: 300px;">                 <h3 style="color: #f39c12; margin-bottom: 10px;">                     ⚠️ MAROMIZAHA                 </h3>                 <table style="width: 100%; font-size: 12px;">                     <tr>                         <td><b>📊 Catégorie:</b></td>                         <td>⚠️  SOUS PRESSION (Investis mais encore fragiles)</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>📐 Superficie:</b></td>                         <td>2.1 K ha</td>                     </tr>                     <tr>                         <td><b>💰 Financement:</b></td>                         <td>$1.91 Mds USD/an</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>💵 Financement/ha:</b></td>                         <td>$896481 USD/ha</td>                     </tr>                     <tr>                         <td><b>🔥 Taux de feu:</b></td>                         <td>0.2813 feux/100ha</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>⭐ Score efficacité:</b></td>                         <td>0.2217</td>                     </tr>                     <tr>                         <td><b>📍 Position:</b></td>                         <td>-18.9631, 48.4725</td>                     </tr>                 </table>             </div>             </div>`)[0];
+                popup_324981e95169af8ef685f6215150bfe3.setContent(html_4841f8c415253448dd9cbe9acfe06594);
+            
+        
+
+        circle_marker_61047ca28d8b1f3054e0c449dcaaacc3.bindPopup(popup_324981e95169af8ef685f6215150bfe3)
+        ;
+
+        
+    
+    
+            circle_marker_61047ca28d8b1f3054e0c449dcaaacc3.bindTooltip(
+                `<div>
+                     MAROMIZAHA (2.1 K ha)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_5b641b0492a334e034e5ac606e974ecf = L.circleMarker(
+                [-16.432907809608682, 48.69812109014721],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f39c12", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.362961616528825, "stroke": true, "weight": 2}
+            ).addTo(feature_group_b947ffb234d7cc1f341bdd30d54ae331);
+        
+    
+        var popup_0ac1d45c4cd199cbc93bce4e3d987b57 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_dbd7f1877ddeaed5117d0080a02344fe = $(`<div id="html_dbd7f1877ddeaed5117d0080a02344fe" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial; width: 300px;">                 <h3 style="color: #f39c12; margin-bottom: 10px;">                     ⚠️ MAROTANDRANO                 </h3>                 <table style="width: 100%; font-size: 12px;">                     <tr>                         <td><b>📊 Catégorie:</b></td>                         <td>⚠️  SOUS PRESSION (Investis mais encore fragiles)</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>📐 Superficie:</b></td>                         <td>45.0 K ha</td>                     </tr>                     <tr>                         <td><b>💰 Financement:</b></td>                         <td>$2.39 Mds USD/an</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>💵 Financement/ha:</b></td>                         <td>$53173 USD/ha</td>                     </tr>                     <tr>                         <td><b>🔥 Taux de feu:</b></td>                         <td>0.5294 feux/100ha</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>⭐ Score efficacité:</b></td>                         <td>0.0119</td>                     </tr>                     <tr>                         <td><b>📍 Position:</b></td>                         <td>-16.4329, 48.6981</td>                     </tr>                 </table>             </div>             </div>`)[0];
+                popup_0ac1d45c4cd199cbc93bce4e3d987b57.setContent(html_dbd7f1877ddeaed5117d0080a02344fe);
+            
+        
+
+        circle_marker_5b641b0492a334e034e5ac606e974ecf.bindPopup(popup_0ac1d45c4cd199cbc93bce4e3d987b57)
+        ;
+
+        
+    
+    
+            circle_marker_5b641b0492a334e034e5ac606e974ecf.bindTooltip(
+                `<div>
+                     MAROTANDRANO (45.0 K ha)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_25a7973ff666b62a0c26806797b78ab4 = L.circleMarker(
+                [-20.513705533164256, 46.503346747078886],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f39c12", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.748644309127814, "stroke": true, "weight": 2}
+            ).addTo(feature_group_b947ffb234d7cc1f341bdd30d54ae331);
+        
+    
+        var popup_752fc91027847229c58362ae06467f26 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_6a85dc53ee93be59e0745cd045cfd29a = $(`<div id="html_6a85dc53ee93be59e0745cd045cfd29a" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial; width: 300px;">                 <h3 style="color: #f39c12; margin-bottom: 10px;">                     ⚠️ MASSIF D ITREMO                 </h3>                 <table style="width: 100%; font-size: 12px;">                     <tr>                         <td><b>📊 Catégorie:</b></td>                         <td>⚠️  SOUS PRESSION (Investis mais encore fragiles)</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>📐 Superficie:</b></td>                         <td>24.7 K ha</td>                     </tr>                     <tr>                         <td><b>💰 Financement:</b></td>                         <td>$1.57 Mds USD/an</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>💵 Financement/ha:</b></td>                         <td>$63596 USD/ha</td>                     </tr>                     <tr>                         <td><b>🔥 Taux de feu:</b></td>                         <td>0.6831 feux/100ha</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>⭐ Score efficacité:</b></td>                         <td>0.0134</td>                     </tr>                     <tr>                         <td><b>📍 Position:</b></td>                         <td>-20.5137, 46.5033</td>                     </tr>                 </table>             </div>             </div>`)[0];
+                popup_752fc91027847229c58362ae06467f26.setContent(html_6a85dc53ee93be59e0745cd045cfd29a);
+            
+        
+
+        circle_marker_25a7973ff666b62a0c26806797b78ab4.bindPopup(popup_752fc91027847229c58362ae06467f26)
+        ;
+
+        
+    
+    
+            circle_marker_25a7973ff666b62a0c26806797b78ab4.bindTooltip(
+                `<div>
+                     MASSIF D ITREMO (24.7 K ha)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_28f32d5ef1ce356b27671d5fd8be1945 = L.circleMarker(
+                [-12.574213865206216, 49.16143816776025],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f39c12", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.925808112938896, "stroke": true, "weight": 2}
+            ).addTo(feature_group_b947ffb234d7cc1f341bdd30d54ae331);
+        
+    
+        var popup_14e6a033482aea7c4da4e762a57c3a78 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_3227e787e3842ae4273d412af49e727c = $(`<div id="html_3227e787e3842ae4273d412af49e727c" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial; width: 300px;">                 <h3 style="color: #f39c12; margin-bottom: 10px;">                     ⚠️ MONTAGNE D AMBRE                 </h3>                 <table style="width: 100%; font-size: 12px;">                     <tr>                         <td><b>📊 Catégorie:</b></td>                         <td>⚠️  SOUS PRESSION (Investis mais encore fragiles)</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>📐 Superficie:</b></td>                         <td>30.6 K ha</td>                     </tr>                     <tr>                         <td><b>💰 Financement:</b></td>                         <td>$2.88 Mds USD/an</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>💵 Financement/ha:</b></td>                         <td>$94151 USD/ha</td>                     </tr>                     <tr>                         <td><b>🔥 Taux de feu:</b></td>                         <td>0.5049 feux/100ha</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>⭐ Score efficacité:</b></td>                         <td>0.0214</td>                     </tr>                     <tr>                         <td><b>📍 Position:</b></td>                         <td>-12.5742, 49.1614</td>                     </tr>                 </table>             </div>             </div>`)[0];
+                popup_14e6a033482aea7c4da4e762a57c3a78.setContent(html_3227e787e3842ae4273d412af49e727c);
+            
+        
+
+        circle_marker_28f32d5ef1ce356b27671d5fd8be1945.bindPopup(popup_14e6a033482aea7c4da4e762a57c3a78)
+        ;
+
+        
+    
+    
+            circle_marker_28f32d5ef1ce356b27671d5fd8be1945.bindTooltip(
+                `<div>
+                     MONTAGNE D AMBRE (30.6 K ha)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_78c5c1ad6fe1ebafe14e27b7dc7a6b7b = L.circleMarker(
+                [-21.218670685557637, 47.45547057303893],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f39c12", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.227544003150657, "stroke": true, "weight": 2}
+            ).addTo(feature_group_b947ffb234d7cc1f341bdd30d54ae331);
+        
+    
+        var popup_7295e835c4566c31ad5f0b3cc2e4e1a4 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_9062616976f03d961ad1826626a401a5 = $(`<div id="html_9062616976f03d961ad1826626a401a5" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial; width: 300px;">                 <h3 style="color: #f39c12; margin-bottom: 10px;">                     ⚠️ RANOMAFANA                 </h3>                 <table style="width: 100%; font-size: 12px;">                     <tr>                         <td><b>📊 Catégorie:</b></td>                         <td>⚠️  SOUS PRESSION (Investis mais encore fragiles)</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>📐 Superficie:</b></td>                         <td>40.5 K ha</td>                     </tr>                     <tr>                         <td><b>💰 Financement:</b></td>                         <td>$3.56 Mds USD/an</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>💵 Financement/ha:</b></td>                         <td>$87770 USD/ha</td>                     </tr>                     <tr>                         <td><b>🔥 Taux de feu:</b></td>                         <td>0.2964 feux/100ha</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>⭐ Score efficacité:</b></td>                         <td>0.0215</td>                     </tr>                     <tr>                         <td><b>📍 Position:</b></td>                         <td>-21.2187, 47.4555</td>                     </tr>                 </table>             </div>             </div>`)[0];
+                popup_7295e835c4566c31ad5f0b3cc2e4e1a4.setContent(html_9062616976f03d961ad1826626a401a5);
+            
+        
+
+        circle_marker_78c5c1ad6fe1ebafe14e27b7dc7a6b7b.bindPopup(popup_7295e835c4566c31ad5f0b3cc2e4e1a4)
+        ;
+
+        
+    
+    
+            circle_marker_78c5c1ad6fe1ebafe14e27b7dc7a6b7b.bindTooltip(
+                `<div>
+                     RANOMAFANA (40.5 K ha)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_2fdb160fc531c1a6b336adcae31cb2bc = L.circleMarker(
+                [-15.768324212474086, 46.12447639959059],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f39c12", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.618770638310764, "stroke": true, "weight": 2}
+            ).addTo(feature_group_b947ffb234d7cc1f341bdd30d54ae331);
+        
+    
+        var popup_eaa10bca354a09008204a1f243f6d4b8 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_b2f6d7bcdfaf92248d2224db66ba3b76 = $(`<div id="html_b2f6d7bcdfaf92248d2224db66ba3b76" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial; width: 300px;">                 <h3 style="color: #f39c12; margin-bottom: 10px;">                     ⚠️ SITE BIOCULTUREL D ANTREMA                 </h3>                 <table style="width: 100%; font-size: 12px;">                     <tr>                         <td><b>📊 Catégorie:</b></td>                         <td>⚠️  SOUS PRESSION (Investis mais encore fragiles)</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>📐 Superficie:</b></td>                         <td>20.4 K ha</td>                     </tr>                     <tr>                         <td><b>💰 Financement:</b></td>                         <td>$2.41 Mds USD/an</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>💵 Financement/ha:</b></td>                         <td>$117880 USD/ha</td>                     </tr>                     <tr>                         <td><b>🔥 Taux de feu:</b></td>                         <td>0.4920 feux/100ha</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>⭐ Score efficacité:</b></td>                         <td>0.0269</td>                     </tr>                     <tr>                         <td><b>📍 Position:</b></td>                         <td>-15.7683, 46.1245</td>                     </tr>                 </table>             </div>             </div>`)[0];
+                popup_eaa10bca354a09008204a1f243f6d4b8.setContent(html_b2f6d7bcdfaf92248d2224db66ba3b76);
+            
+        
+
+        circle_marker_2fdb160fc531c1a6b336adcae31cb2bc.bindPopup(popup_eaa10bca354a09008204a1f243f6d4b8)
+        ;
+
+        
+    
+    
+            circle_marker_2fdb160fc531c1a6b336adcae31cb2bc.bindTooltip(
+                `<div>
+                     SITE BIOCULTUREL D ANTREMA (20.4 K ha)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            feature_group_b947ffb234d7cc1f341bdd30d54ae331.addTo(map_30c6beec15839673727dd3192eb13aa0);
+        
+    
+            var feature_group_a0867dc428b2e8b3680ffddfa0d390b4 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var circle_marker_93b0b1cf07f3eea801a933cb0125017d = L.circleMarker(
+                [-16.738389727768748, 49.144054042413345],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.366475809627676, "stroke": true, "weight": 2}
+            ).addTo(feature_group_a0867dc428b2e8b3680ffddfa0d390b4);
+        
+    
+        var popup_7ff550e6d6c685b071f71f69baca1753 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_3391f42dbc03520572072ae66f3c57a0 = $(`<div id="html_3391f42dbc03520572072ae66f3c57a0" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial; width: 300px;">                 <h3 style="color: #e74c3c; margin-bottom: 10px;">                     🚨 AMBATOVAKY                 </h3>                 <table style="width: 100%; font-size: 12px;">                     <tr>                         <td><b>📊 Catégorie:</b></td>                         <td>🚨 CRITIQUES (Peu investis + Forte déforestation)</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>📐 Superficie:</b></td>                         <td>78.1 K ha</td>                     </tr>                     <tr>                         <td><b>💰 Financement:</b></td>                         <td>$2.98 Mds USD/an</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>💵 Financement/ha:</b></td>                         <td>$38209 USD/ha</td>                     </tr>                     <tr>                         <td><b>🔥 Taux de feu:</b></td>                         <td>0.2989 feux/100ha</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>⭐ Score efficacité:</b></td>                         <td>0.0093</td>                     </tr>                     <tr>                         <td><b>📍 Position:</b></td>                         <td>-16.7384, 49.1441</td>                     </tr>                 </table>             </div>             </div>`)[0];
+                popup_7ff550e6d6c685b071f71f69baca1753.setContent(html_3391f42dbc03520572072ae66f3c57a0);
+            
+        
+
+        circle_marker_93b0b1cf07f3eea801a933cb0125017d.bindPopup(popup_7ff550e6d6c685b071f71f69baca1753)
+        ;
+
+        
+    
+    
+            circle_marker_93b0b1cf07f3eea801a933cb0125017d.bindTooltip(
+                `<div>
+                     AMBATOVAKY (78.1 K ha)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_0534cdbfea61ccd2ccb9b43b33e96bb9 = L.circleMarker(
+                [-13.798354628587708, 47.99291044206898],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.780574994698416, "stroke": true, "weight": 2}
+            ).addTo(feature_group_a0867dc428b2e8b3680ffddfa0d390b4);
+        
+    
+        var popup_6b722109b0231d88601d4990032a0208 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_5f0ff3b57e46887477a7c46320f4a000 = $(`<div id="html_5f0ff3b57e46887477a7c46320f4a000" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial; width: 300px;">                 <h3 style="color: #e74c3c; margin-bottom: 10px;">                     🚨 AMPASINDAVA                 </h3>                 <table style="width: 100%; font-size: 12px;">                     <tr>                         <td><b>📊 Catégorie:</b></td>                         <td>🚨 CRITIQUES (Peu investis + Forte déforestation)</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>📐 Superficie:</b></td>                         <td>91.8 K ha</td>                     </tr>                     <tr>                         <td><b>💰 Financement:</b></td>                         <td>$132.71 M USD/an</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>💵 Financement/ha:</b></td>                         <td>$1446 USD/ha</td>                     </tr>                     <tr>                         <td><b>🔥 Taux de feu:</b></td>                         <td>0.3595 feux/100ha</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>⭐ Score efficacité:</b></td>                         <td>0.0002</td>                     </tr>                     <tr>                         <td><b>📍 Position:</b></td>                         <td>-13.7984, 47.9929</td>                     </tr>                 </table>             </div>             </div>`)[0];
+                popup_6b722109b0231d88601d4990032a0208.setContent(html_5f0ff3b57e46887477a7c46320f4a000);
+            
+        
+
+        circle_marker_0534cdbfea61ccd2ccb9b43b33e96bb9.bindPopup(popup_6b722109b0231d88601d4990032a0208)
+        ;
+
+        
+    
+    
+            circle_marker_0534cdbfea61ccd2ccb9b43b33e96bb9.bindTooltip(
+                `<div>
+                     AMPASINDAVA (91.8 K ha)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_4c44b415fb106b46e465f107382ecef1 = L.circleMarker(
+                [-24.754366838438397, 46.726374389043585],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.311490805537883, "stroke": true, "weight": 2}
+            ).addTo(feature_group_a0867dc428b2e8b3680ffddfa0d390b4);
+        
+    
+        var popup_6dd84fcc51243851c9f4f4fe20d743ae = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_50f1e325ad661c88b709122b2df5c1ea = $(`<div id="html_50f1e325ad661c88b709122b2df5c1ea" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial; width: 300px;">                 <h3 style="color: #e74c3c; margin-bottom: 10px;">                     🚨 ANDOHAHELA                 </h3>                 <table style="width: 100%; font-size: 12px;">                     <tr>                         <td><b>📊 Catégorie:</b></td>                         <td>🚨 CRITIQUES (Peu investis + Forte déforestation)</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>📐 Superficie:</b></td>                         <td>76.3 K ha</td>                     </tr>                     <tr>                         <td><b>💰 Financement:</b></td>                         <td>$3.20 Mds USD/an</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>💵 Financement/ha:</b></td>                         <td>$41982 USD/ha</td>                     </tr>                     <tr>                         <td><b>🔥 Taux de feu:</b></td>                         <td>0.5208 feux/100ha</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>⭐ Score efficacité:</b></td>                         <td>0.0094</td>                     </tr>                     <tr>                         <td><b>📍 Position:</b></td>                         <td>-24.7544, 46.7264</td>                     </tr>                 </table>             </div>             </div>`)[0];
+                popup_6dd84fcc51243851c9f4f4fe20d743ae.setContent(html_50f1e325ad661c88b709122b2df5c1ea);
+            
+        
+
+        circle_marker_4c44b415fb106b46e465f107382ecef1.bindPopup(popup_6dd84fcc51243851c9f4f4fe20d743ae)
+        ;
+
+        
+    
+    
+            circle_marker_4c44b415fb106b46e465f107382ecef1.bindTooltip(
+                `<div>
+                     ANDOHAHELA (76.3 K ha)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_0eef34bafece31c4cd4026cd9a3155c1 = L.circleMarker(
+                [-13.011313567399345, 49.27226878564453],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.232997061407495, "stroke": true, "weight": 2}
+            ).addTo(feature_group_a0867dc428b2e8b3680ffddfa0d390b4);
+        
+    
+        var popup_cefd816c7bfa7a29fa16efb1a60d6450 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_de146d05f49b0e90094cfe69dfb5aa03 = $(`<div id="html_de146d05f49b0e90094cfe69dfb5aa03" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial; width: 300px;">                 <h3 style="color: #e74c3c; margin-bottom: 10px;">                     🚨 ANDRAFIAMENA ANDAVAKOERA                 </h3>                 <table style="width: 100%; font-size: 12px;">                     <tr>                         <td><b>📊 Catégorie:</b></td>                         <td>🚨 CRITIQUES (Peu investis + Forte déforestation)</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>📐 Superficie:</b></td>                         <td>73.7 K ha</td>                     </tr>                     <tr>                         <td><b>💰 Financement:</b></td>                         <td>$551.10 M USD/an</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>💵 Financement/ha:</b></td>                         <td>$7477 USD/ha</td>                     </tr>                     <tr>                         <td><b>🔥 Taux de feu:</b></td>                         <td>0.2815 feux/100ha</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>⭐ Score efficacité:</b></td>                         <td>0.0017</td>                     </tr>                     <tr>                         <td><b>📍 Position:</b></td>                         <td>-13.0113, 49.2723</td>                     </tr>                 </table>             </div>             </div>`)[0];
+                popup_cefd816c7bfa7a29fa16efb1a60d6450.setContent(html_de146d05f49b0e90094cfe69dfb5aa03);
+            
+        
+
+        circle_marker_0eef34bafece31c4cd4026cd9a3155c1.bindPopup(popup_cefd816c7bfa7a29fa16efb1a60d6450)
+        ;
+
+        
+    
+    
+            circle_marker_0eef34bafece31c4cd4026cd9a3155c1.bindTooltip(
+                `<div>
+                     ANDRAFIAMENA ANDAVAKOERA (73.7 K ha)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_52a185d985ca0b1a15d259fe63d2e299 = L.circleMarker(
+                [-17.928131348524428, 44.503295115674426],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.520039989093883, "stroke": true, "weight": 2}
+            ).addTo(feature_group_a0867dc428b2e8b3680ffddfa0d390b4);
+        
+    
+        var popup_393857eb6ec53a42f26fb1c7552c7597 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_cb1e15f2d8dc762fe033ba9e08488967 = $(`<div id="html_cb1e15f2d8dc762fe033ba9e08488967" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial; width: 300px;">                 <h3 style="color: #e74c3c; margin-bottom: 10px;">                     🚨 BEANKA                 </h3>                 <table style="width: 100%; font-size: 12px;">                     <tr>                         <td><b>📊 Catégorie:</b></td>                         <td>🚨 CRITIQUES (Peu investis + Forte déforestation)</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>📐 Superficie:</b></td>                         <td>17.2 K ha</td>                     </tr>                     <tr>                         <td><b>💰 Financement:</b></td>                         <td>$860.28 M USD/an</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>💵 Financement/ha:</b></td>                         <td>$50115 USD/ha</td>                     </tr>                     <tr>                         <td><b>🔥 Taux de feu:</b></td>                         <td>0.2816 feux/100ha</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>⭐ Score efficacité:</b></td>                         <td>0.0123</td>                     </tr>                     <tr>                         <td><b>📍 Position:</b></td>                         <td>-17.9281, 44.5033</td>                     </tr>                 </table>             </div>             </div>`)[0];
+                popup_393857eb6ec53a42f26fb1c7552c7597.setContent(html_cb1e15f2d8dc762fe033ba9e08488967);
+            
+        
+
+        circle_marker_52a185d985ca0b1a15d259fe63d2e299.bindPopup(popup_393857eb6ec53a42f26fb1c7552c7597)
+        ;
+
+        
+    
+    
+            circle_marker_52a185d985ca0b1a15d259fe63d2e299.bindTooltip(
+                `<div>
+                     BEANKA (17.2 K ha)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_9e0acf71636673d35364a70b8dfcd985 = L.circleMarker(
+                [-14.066834962148704, 49.28656922602533],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15.243327577327396, "stroke": true, "weight": 2}
+            ).addTo(feature_group_a0867dc428b2e8b3680ffddfa0d390b4);
+        
+    
+        var popup_6f8e80fc3fb7aa326d53fd303c8f5ee5 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_2c9fb7c3d777543b130efd6283d37a33 = $(`<div id="html_2c9fb7c3d777543b130efd6283d37a33" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial; width: 300px;">                 <h3 style="color: #e74c3c; margin-bottom: 10px;">                     🚨 COMATSA NORD                 </h3>                 <table style="width: 100%; font-size: 12px;">                     <tr>                         <td><b>📊 Catégorie:</b></td>                         <td>🚨 CRITIQUES (Peu investis + Forte déforestation)</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>📐 Superficie:</b></td>                         <td>239.1 K ha</td>                     </tr>                     <tr>                         <td><b>💰 Financement:</b></td>                         <td>$357.36 M USD/an</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>💵 Financement/ha:</b></td>                         <td>$1495 USD/ha</td>                     </tr>                     <tr>                         <td><b>🔥 Taux de feu:</b></td>                         <td>0.2857 feux/100ha</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>⭐ Score efficacité:</b></td>                         <td>0.0002</td>                     </tr>                     <tr>                         <td><b>📍 Position:</b></td>                         <td>-14.0668, 49.2866</td>                     </tr>                 </table>             </div>             </div>`)[0];
+                popup_6f8e80fc3fb7aa326d53fd303c8f5ee5.setContent(html_2c9fb7c3d777543b130efd6283d37a33);
+            
+        
+
+        circle_marker_9e0acf71636673d35364a70b8dfcd985.bindPopup(popup_6f8e80fc3fb7aa326d53fd303c8f5ee5)
+        ;
+
+        
+    
+    
+            circle_marker_9e0acf71636673d35364a70b8dfcd985.bindTooltip(
+                `<div>
+                     COMATSA NORD (239.1 K ha)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_89aa23c70d5ff10ab8db27691ce799ce = L.circleMarker(
+                [-24.888473553096457, 45.834773326029705],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.24814444545427, "stroke": true, "weight": 2}
+            ).addTo(feature_group_a0867dc428b2e8b3680ffddfa0d390b4);
+        
+    
+        var popup_08daba452453ee31722753f670b65b30 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_5a9b4efb5d1ba31490548164933b29d5 = $(`<div id="html_5a9b4efb5d1ba31490548164933b29d5" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial; width: 300px;">                 <h3 style="color: #e74c3c; margin-bottom: 10px;">                     🚨 COMPLEXE ANJOZOROBE ANGAVO                 </h3>                 <table style="width: 100%; font-size: 12px;">                     <tr>                         <td><b>📊 Catégorie:</b></td>                         <td>🚨 CRITIQUES (Peu investis + Forte déforestation)</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>📐 Superficie:</b></td>                         <td>41.2 K ha</td>                     </tr>                     <tr>                         <td><b>💰 Financement:</b></td>                         <td>$40.00 M USD/an</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>💵 Financement/ha:</b></td>                         <td>$971 USD/ha</td>                     </tr>                     <tr>                         <td><b>🔥 Taux de feu:</b></td>                         <td>0.2573 feux/100ha</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>⭐ Score efficacité:</b></td>                         <td>0.0001</td>                     </tr>                     <tr>                         <td><b>📍 Position:</b></td>                         <td>-24.8885, 45.8348</td>                     </tr>                 </table>             </div>             </div>`)[0];
+                popup_08daba452453ee31722753f670b65b30.setContent(html_5a9b4efb5d1ba31490548164933b29d5);
+            
+        
+
+        circle_marker_89aa23c70d5ff10ab8db27691ce799ce.bindPopup(popup_08daba452453ee31722753f670b65b30)
+        ;
+
+        
+    
+    
+            circle_marker_89aa23c70d5ff10ab8db27691ce799ce.bindTooltip(
+                `<div>
+                     COMPLEXE ANJOZOROBE ANGAVO (41.2 K ha)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_f8d7458eb290d83e28eb1f54e2e3127d = L.circleMarker(
+                [-20.13132969636236, 47.01205397997063],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.186100760398679, "stroke": true, "weight": 2}
+            ).addTo(feature_group_a0867dc428b2e8b3680ffddfa0d390b4);
+        
+    
+        var popup_9cdc1fb2aae3a43f45401a0d7728bb99 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_4f18668c10489e9c2f4f7fd18f1e9454 = $(`<div id="html_4f18668c10489e9c2f4f7fd18f1e9454" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial; width: 300px;">                 <h3 style="color: #e74c3c; margin-bottom: 10px;">                     🚨 IBITY                 </h3>                 <table style="width: 100%; font-size: 12px;">                     <tr>                         <td><b>📊 Catégorie:</b></td>                         <td>🚨 CRITIQUES (Peu investis + Forte déforestation)</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>📐 Superficie:</b></td>                         <td>6.1 K ha</td>                     </tr>                     <tr>                         <td><b>💰 Financement:</b></td>                         <td>$217.77 M USD/an</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>💵 Financement/ha:</b></td>                         <td>$35450 USD/ha</td>                     </tr>                     <tr>                         <td><b>🔥 Taux de feu:</b></td>                         <td>0.4884 feux/100ha</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>⭐ Score efficacité:</b></td>                         <td>0.0080</td>                     </tr>                     <tr>                         <td><b>📍 Position:</b></td>                         <td>-20.1313, 47.0121</td>                     </tr>                 </table>             </div>             </div>`)[0];
+                popup_9cdc1fb2aae3a43f45401a0d7728bb99.setContent(html_4f18668c10489e9c2f4f7fd18f1e9454);
+            
+        
+
+        circle_marker_f8d7458eb290d83e28eb1f54e2e3127d.bindPopup(popup_9cdc1fb2aae3a43f45401a0d7728bb99)
+        ;
+
+        
+    
+    
+            circle_marker_f8d7458eb290d83e28eb1f54e2e3127d.bindTooltip(
+                `<div>
+                     IBITY (6.1 K ha)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_2b31fd3b65f98bcb7786ef5a5b141a0c = L.circleMarker(
+                [-22.447929591696138, 45.28686229224573],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.626556393710807, "stroke": true, "weight": 2}
+            ).addTo(feature_group_a0867dc428b2e8b3680ffddfa0d390b4);
+        
+    
+        var popup_8b134dcb27f997dafd8fd570f03bb369 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_1efe374c0709e27e0b638cebfa39d817 = $(`<div id="html_1efe374c0709e27e0b638cebfa39d817" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial; width: 300px;">                 <h3 style="color: #e74c3c; margin-bottom: 10px;">                     🚨 ISALO                 </h3>                 <table style="width: 100%; font-size: 12px;">                     <tr>                         <td><b>📊 Catégorie:</b></td>                         <td>🚨 CRITIQUES (Peu investis + Forte déforestation)</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>📐 Superficie:</b></td>                         <td>86.7 K ha</td>                     </tr>                     <tr>                         <td><b>💰 Financement:</b></td>                         <td>$1.71 Mds USD/an</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>💵 Financement/ha:</b></td>                         <td>$19691 USD/ha</td>                     </tr>                     <tr>                         <td><b>🔥 Taux de feu:</b></td>                         <td>0.3276 feux/100ha</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>⭐ Score efficacité:</b></td>                         <td>0.0047</td>                     </tr>                     <tr>                         <td><b>📍 Position:</b></td>                         <td>-22.4479, 45.2869</td>                     </tr>                 </table>             </div>             </div>`)[0];
+                popup_8b134dcb27f997dafd8fd570f03bb369.setContent(html_1efe374c0709e27e0b638cebfa39d817);
+            
+        
+
+        circle_marker_2b31fd3b65f98bcb7786ef5a5b141a0c.bindPopup(popup_8b134dcb27f997dafd8fd570f03bb369)
+        ;
+
+        
+    
+    
+            circle_marker_2b31fd3b65f98bcb7786ef5a5b141a0c.bindTooltip(
+                `<div>
+                     ISALO (86.7 K ha)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_2147f57f377bea3284bcfe3f2c84815e = L.circleMarker(
+                [-23.38096491564914, 46.47214309305324],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.920960950043927, "stroke": true, "weight": 2}
+            ).addTo(feature_group_a0867dc428b2e8b3680ffddfa0d390b4);
+        
+    
+        var popup_f9bd1bbb0fe85035f7a4fd1e4abc82ad = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_4406b85c2db737fbb5349316d6ed8865 = $(`<div id="html_4406b85c2db737fbb5349316d6ed8865" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial; width: 300px;">                 <h3 style="color: #e74c3c; margin-bottom: 10px;">                     🚨 KALAMBATRITRA                 </h3>                 <table style="width: 100%; font-size: 12px;">                     <tr>                         <td><b>📊 Catégorie:</b></td>                         <td>🚨 CRITIQUES (Peu investis + Forte déforestation)</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>📐 Superficie:</b></td>                         <td>30.4 K ha</td>                     </tr>                     <tr>                         <td><b>💰 Financement:</b></td>                         <td>$176.72 M USD/an</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>💵 Financement/ha:</b></td>                         <td>$5813 USD/ha</td>                     </tr>                     <tr>                         <td><b>🔥 Taux de feu:</b></td>                         <td>1.5000 feux/100ha</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>⭐ Score efficacité:</b></td>                         <td>0.0007</td>                     </tr>                     <tr>                         <td><b>📍 Position:</b></td>                         <td>-23.3810, 46.4721</td>                     </tr>                 </table>             </div>             </div>`)[0];
+                popup_f9bd1bbb0fe85035f7a4fd1e4abc82ad.setContent(html_4406b85c2db737fbb5349316d6ed8865);
+            
+        
+
+        circle_marker_2147f57f377bea3284bcfe3f2c84815e.bindPopup(popup_f9bd1bbb0fe85035f7a4fd1e4abc82ad)
+        ;
+
+        
+    
+    
+            circle_marker_2147f57f377bea3284bcfe3f2c84815e.bindTooltip(
+                `<div>
+                     KALAMBATRITRA (30.4 K ha)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_268b3d87170a03679c73346050137a4e = L.circleMarker(
+                [-13.975684109248435, 48.90970393448231],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 11.286982338150201, "stroke": true, "weight": 2}
+            ).addTo(feature_group_a0867dc428b2e8b3680ffddfa0d390b4);
+        
+    
+        var popup_563bb7a586bf6e061ec00300cbb74c5b = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_17dd0f12a83d5978097476811ebc2679 = $(`<div id="html_17dd0f12a83d5978097476811ebc2679" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial; width: 300px;">                 <h3 style="color: #e74c3c; margin-bottom: 10px;">                     🚨 TSARATANANA                 </h3>                 <table style="width: 100%; font-size: 12px;">                     <tr>                         <td><b>📊 Catégorie:</b></td>                         <td>🚨 CRITIQUES (Peu investis + Forte déforestation)</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>📐 Superficie:</b></td>                         <td>108.5 K ha</td>                     </tr>                     <tr>                         <td><b>💰 Financement:</b></td>                         <td>$4.22 Mds USD/an</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>💵 Financement/ha:</b></td>                         <td>$38880 USD/ha</td>                     </tr>                     <tr>                         <td><b>🔥 Taux de feu:</b></td>                         <td>0.4305 feux/100ha</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>⭐ Score efficacité:</b></td>                         <td>0.0090</td>                     </tr>                     <tr>                         <td><b>📍 Position:</b></td>                         <td>-13.9757, 48.9097</td>                     </tr>                 </table>             </div>             </div>`)[0];
+                popup_563bb7a586bf6e061ec00300cbb74c5b.setContent(html_17dd0f12a83d5978097476811ebc2679);
+            
+        
+
+        circle_marker_268b3d87170a03679c73346050137a4e.bindPopup(popup_563bb7a586bf6e061ec00300cbb74c5b)
+        ;
+
+        
+    
+    
+            circle_marker_268b3d87170a03679c73346050137a4e.bindTooltip(
+                `<div>
+                     TSARATANANA (108.5 K ha)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_a542fb9eee889743b97eb66ab5688e7f = L.circleMarker(
+                [-18.661417650004154, 44.76731400766664],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12.777484928352873, "stroke": true, "weight": 2}
+            ).addTo(feature_group_a0867dc428b2e8b3680ffddfa0d390b4);
+        
+    
+        var popup_45461c2ab64eea68876e6b09ba66cfd9 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_cbedb728058acb7ca55e68e46c58ee11 = $(`<div id="html_cbedb728058acb7ca55e68e46c58ee11" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial; width: 300px;">                 <h3 style="color: #e74c3c; margin-bottom: 10px;">                     🚨 TSINGY DE BEMARAHA                 </h3>                 <table style="width: 100%; font-size: 12px;">                     <tr>                         <td><b>📊 Catégorie:</b></td>                         <td>🚨 CRITIQUES (Peu investis + Forte déforestation)</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>📐 Superficie:</b></td>                         <td>157.7 K ha</td>                     </tr>                     <tr>                         <td><b>💰 Financement:</b></td>                         <td>$3.25 Mds USD/an</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>💵 Financement/ha:</b></td>                         <td>$20628 USD/ha</td>                     </tr>                     <tr>                         <td><b>🔥 Taux de feu:</b></td>                         <td>0.3252 feux/100ha</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>⭐ Score efficacité:</b></td>                         <td>0.0049</td>                     </tr>                     <tr>                         <td><b>📍 Position:</b></td>                         <td>-18.6614, 44.7673</td>                     </tr>                 </table>             </div>             </div>`)[0];
+                popup_45461c2ab64eea68876e6b09ba66cfd9.setContent(html_cbedb728058acb7ca55e68e46c58ee11);
+            
+        
+
+        circle_marker_a542fb9eee889743b97eb66ab5688e7f.bindPopup(popup_45461c2ab64eea68876e6b09ba66cfd9)
+        ;
+
+        
+    
+    
+            circle_marker_a542fb9eee889743b97eb66ab5688e7f.bindTooltip(
+                `<div>
+                     TSINGY DE BEMARAHA (157.7 K ha)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_b103f71d7aeb8fc5781a3990634570d0 = L.circleMarker(
+                [-22.683900162738293, 44.76511620331857],
+                {"bubblingMouseEvents": true, "color": "black", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e74c3c", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.083643854706292, "stroke": true, "weight": 2}
+            ).addTo(feature_group_a0867dc428b2e8b3680ffddfa0d390b4);
+        
+    
+        var popup_4ae1ce273870428658343879b2a645f9 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_fffcaf7a17161beb557a1339b01035a0 = $(`<div id="html_fffcaf7a17161beb557a1339b01035a0" style="width: 100.0%; height: 100.0%;">             <div style="font-family: Arial; width: 300px;">                 <h3 style="color: #e74c3c; margin-bottom: 10px;">                     🚨 ZOMBITSE VOHIBASIA                 </h3>                 <table style="width: 100%; font-size: 12px;">                     <tr>                         <td><b>📊 Catégorie:</b></td>                         <td>🚨 CRITIQUES (Peu investis + Forte déforestation)</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>📐 Superficie:</b></td>                         <td>35.8 K ha</td>                     </tr>                     <tr>                         <td><b>💰 Financement:</b></td>                         <td>$416.56 M USD/an</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>💵 Financement/ha:</b></td>                         <td>$11646 USD/ha</td>                     </tr>                     <tr>                         <td><b>🔥 Taux de feu:</b></td>                         <td>1.8116 feux/100ha</td>                     </tr>                     <tr style="background-color: #f8f9fa;">                         <td><b>⭐ Score efficacité:</b></td>                         <td>0.0013</td>                     </tr>                     <tr>                         <td><b>📍 Position:</b></td>                         <td>-22.6839, 44.7651</td>                     </tr>                 </table>             </div>             </div>`)[0];
+                popup_4ae1ce273870428658343879b2a645f9.setContent(html_fffcaf7a17161beb557a1339b01035a0);
+            
+        
+
+        circle_marker_b103f71d7aeb8fc5781a3990634570d0.bindPopup(popup_4ae1ce273870428658343879b2a645f9)
+        ;
+
+        
+    
+    
+            circle_marker_b103f71d7aeb8fc5781a3990634570d0.bindTooltip(
+                `<div>
+                     ZOMBITSE VOHIBASIA (35.8 K ha)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            feature_group_a0867dc428b2e8b3680ffddfa0d390b4.addTo(map_30c6beec15839673727dd3192eb13aa0);
+        
+    
+            var layer_control_3f2a8e79ecc617662c93f3d0c69f8c47_layers = {
+                base_layers : {
+                    "openstreetmap" : tile_layer_9ec1ed68400877ae034cbe21a6feb85c,
+                    "Terrain" : tile_layer_6b02b2e621f81dece79eebeff93cc462,
+                    "Carto Light" : tile_layer_57e121926ec5afc03601f6ef0b5388a0,
+                    "Satellite" : tile_layer_6120a1240f8b90b308ac43f20b66a1e3,
+                },
+                overlays :  {
+                    "\ud83c\udf1f EFFICACES (Investis + Prot\u00e9g\u00e9s)" : feature_group_664dca2be449900260121cd71367e30e,
+                    "\ud83c\udf31 NATURELLEMENT PROT\u00c9G\u00c9ES" : feature_group_3368a81e79b7aa1810cd52ae0db79095,
+                    "\u26a0\ufe0f SOUS PRESSION" : feature_group_b947ffb234d7cc1f341bdd30d54ae331,
+                    "\ud83d\udea8 CRITIQUES (Urgent!)" : feature_group_a0867dc428b2e8b3680ffddfa0d390b4,
+                    "\ud83c\udfd9\ufe0f Villes principales" : feature_group_e0eb5d9a44e346f430fd51b46f46245d,
+                },
+            };
+            let layer_control_3f2a8e79ecc617662c93f3d0c69f8c47 = L.control.layers(
+                layer_control_3f2a8e79ecc617662c93f3d0c69f8c47_layers.base_layers,
+                layer_control_3f2a8e79ecc617662c93f3d0c69f8c47_layers.overlays,
+                {
+  "position": "topright",
+  "collapsed": false,
+  "autoZIndex": true,
+}
+            ).addTo(map_30c6beec15839673727dd3192eb13aa0);
+
+        
+    
+            L.control.fullscreen(
+                {
+  "position": "topright",
+  "title": "Plein \u00e9cran",
+  "titleCancel": "Sortir du plein \u00e9cran",
+  "forceSeparateButton": true,
+}
+            ).addTo(map_30c6beec15839673727dd3192eb13aa0);
+        
+    
+            var tile_layer_dad8d49117104a3a57d7a4fcc868e36b = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors", "detect_retina": false, "max_native_zoom": 19, "max_zoom": 19, "min_zoom": 0, "no_wrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            );
+            var mini_map_28e84707a8b293776f992f23d99e06d2 = new L.Control.MiniMap(
+                tile_layer_dad8d49117104a3a57d7a4fcc868e36b,
+                {
+  "position": "bottomright",
+  "width": 150,
+  "height": 150,
+  "collapsedWidth": 25,
+  "collapsedHeight": 25,
+  "zoomLevelOffset": -5,
+  "centerFixed": false,
+  "zoomAnimation": false,
+  "toggleDisplay": true,
+  "autoToggleDisplay": false,
+  "minimized": false,
+}
+            );
+            map_30c6beec15839673727dd3192eb13aa0.addControl(mini_map_28e84707a8b293776f992f23d99e06d2);
+        
+    
+            var measure_control_ed3b3e93c214a790bb0b5234927bce91 = new L.Control.Measure(
+                {
+  "position": "topleft",
+  "primaryLengthUnit": "kilometers",
+  "secondaryLengthUnit": "miles",
+  "primaryAreaUnit": "hectares",
+  "secondaryAreaUnit": "sqmiles",
+});
+            map_30c6beec15839673727dd3192eb13aa0.addControl(measure_control_ed3b3e93c214a790bb0b5234927bce91);
+
+            // Workaround for using this plugin with Leaflet>=1.8.0
+            // https://github.com/ljagis/leaflet-measure/issues/171
+            L.Control.Measure.include({
+                _setCaptureMarkerIcon: function () {
+                    // disable autopan
+                    this._captureMarker.options.autoPanOnFocus = false;
+                    // default function
+                    this._captureMarker.setIcon(
+                        L.divIcon({
+                            iconSize: this._map.getSize().multiplyBy(2)
+                        })
+                    );
+                },
+            });
+
+        
+    
+            var feature_group_e0eb5d9a44e346f430fd51b46f46245d = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var marker_d6c9afcb10cb4b5d7dd2dd18cd2ac08b = L.marker(
+                [-18.9, 47.5],
+                {
+}
+            ).addTo(feature_group_e0eb5d9a44e346f430fd51b46f46245d);
+        
+    
+            var icon_1deb540b2aea620bff4d13b45f4938d8 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "gray",
+  "iconColor": "white",
+  "icon": "home",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_023abbc0371bc46fc5f648eef8ca177d = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_5e4b1b5c1d44d510f4431d4552c73eed = $(`<div id="html_5e4b1b5c1d44d510f4431d4552c73eed" style="width: 100.0%; height: 100.0%;"><b>Antananarivo</b><br>Ville principale</div>`)[0];
+                popup_023abbc0371bc46fc5f648eef8ca177d.setContent(html_5e4b1b5c1d44d510f4431d4552c73eed);
+            
+        
+
+        marker_d6c9afcb10cb4b5d7dd2dd18cd2ac08b.bindPopup(popup_023abbc0371bc46fc5f648eef8ca177d)
+        ;
+
+        
+    
+    
+            marker_d6c9afcb10cb4b5d7dd2dd18cd2ac08b.bindTooltip(
+                `<div>
+                     Antananarivo
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_d6c9afcb10cb4b5d7dd2dd18cd2ac08b.setIcon(icon_1deb540b2aea620bff4d13b45f4938d8);
+            
+    
+            var marker_e6270b55dc4253aecddaf1d0cf463257 = L.marker(
+                [-18.1, 49.4],
+                {
+}
+            ).addTo(feature_group_e0eb5d9a44e346f430fd51b46f46245d);
+        
+    
+            var icon_a5d04a34b9355d99952f606a15b2b541 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "gray",
+  "iconColor": "white",
+  "icon": "home",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_ca42e55d5509f368266b030f29afa5a5 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_227a8c3e30e8926f3552eb375495ed9f = $(`<div id="html_227a8c3e30e8926f3552eb375495ed9f" style="width: 100.0%; height: 100.0%;"><b>Toamasina</b><br>Ville principale</div>`)[0];
+                popup_ca42e55d5509f368266b030f29afa5a5.setContent(html_227a8c3e30e8926f3552eb375495ed9f);
+            
+        
+
+        marker_e6270b55dc4253aecddaf1d0cf463257.bindPopup(popup_ca42e55d5509f368266b030f29afa5a5)
+        ;
+
+        
+    
+    
+            marker_e6270b55dc4253aecddaf1d0cf463257.bindTooltip(
+                `<div>
+                     Toamasina
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_e6270b55dc4253aecddaf1d0cf463257.setIcon(icon_a5d04a34b9355d99952f606a15b2b541);
+            
+    
+            var marker_c358ad0610ef344ab3a4f6acc173ef07 = L.marker(
+                [-23.4, 43.7],
+                {
+}
+            ).addTo(feature_group_e0eb5d9a44e346f430fd51b46f46245d);
+        
+    
+            var icon_4c82d51bd2212efd96ff0f71abdd16cf = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "gray",
+  "iconColor": "white",
+  "icon": "home",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_43c0b122c683a05228aaf6befe3e2e76 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_acfe528df3fab0e018e81fcd91e4ac28 = $(`<div id="html_acfe528df3fab0e018e81fcd91e4ac28" style="width: 100.0%; height: 100.0%;"><b>Toliara</b><br>Ville principale</div>`)[0];
+                popup_43c0b122c683a05228aaf6befe3e2e76.setContent(html_acfe528df3fab0e018e81fcd91e4ac28);
+            
+        
+
+        marker_c358ad0610ef344ab3a4f6acc173ef07.bindPopup(popup_43c0b122c683a05228aaf6befe3e2e76)
+        ;
+
+        
+    
+    
+            marker_c358ad0610ef344ab3a4f6acc173ef07.bindTooltip(
+                `<div>
+                     Toliara
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_c358ad0610ef344ab3a4f6acc173ef07.setIcon(icon_4c82d51bd2212efd96ff0f71abdd16cf);
+            
+    
+            var marker_69a751a607f72eb629a476eacdff56e9 = L.marker(
+                [-15.7, 46.3],
+                {
+}
+            ).addTo(feature_group_e0eb5d9a44e346f430fd51b46f46245d);
+        
+    
+            var icon_9002a66bab5140afaf3a6a1f13237a15 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "gray",
+  "iconColor": "white",
+  "icon": "home",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_1905f2f60858a9b8011746ef22ab9383 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_357740cd6a2d2323c8f301cebf5855e0 = $(`<div id="html_357740cd6a2d2323c8f301cebf5855e0" style="width: 100.0%; height: 100.0%;"><b>Mahajanga</b><br>Ville principale</div>`)[0];
+                popup_1905f2f60858a9b8011746ef22ab9383.setContent(html_357740cd6a2d2323c8f301cebf5855e0);
+            
+        
+
+        marker_69a751a607f72eb629a476eacdff56e9.bindPopup(popup_1905f2f60858a9b8011746ef22ab9383)
+        ;
+
+        
+    
+    
+            marker_69a751a607f72eb629a476eacdff56e9.bindTooltip(
+                `<div>
+                     Mahajanga
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_69a751a607f72eb629a476eacdff56e9.setIcon(icon_9002a66bab5140afaf3a6a1f13237a15);
+            
+    
+            var marker_385e893dc23a498c2f7a41af4583f6f9 = L.marker(
+                [-12.3, 49.3],
+                {
+}
+            ).addTo(feature_group_e0eb5d9a44e346f430fd51b46f46245d);
+        
+    
+            var icon_931c56f597cd832aa2171f378eb3f6e2 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "gray",
+  "iconColor": "white",
+  "icon": "home",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_75434a19928cdf95f69c07eb2201def2 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_aea5beaad64438af2ca0eb560e7f8da1 = $(`<div id="html_aea5beaad64438af2ca0eb560e7f8da1" style="width: 100.0%; height: 100.0%;"><b>Antsiranana</b><br>Ville principale</div>`)[0];
+                popup_75434a19928cdf95f69c07eb2201def2.setContent(html_aea5beaad64438af2ca0eb560e7f8da1);
+            
+        
+
+        marker_385e893dc23a498c2f7a41af4583f6f9.bindPopup(popup_75434a19928cdf95f69c07eb2201def2)
+        ;
+
+        
+    
+    
+            marker_385e893dc23a498c2f7a41af4583f6f9.bindTooltip(
+                `<div>
+                     Antsiranana
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_385e893dc23a498c2f7a41af4583f6f9.setIcon(icon_931c56f597cd832aa2171f378eb3f6e2);
+            
+    
+            feature_group_e0eb5d9a44e346f430fd51b46f46245d.addTo(map_30c6beec15839673727dd3192eb13aa0);
+        
+</script>
+</html>

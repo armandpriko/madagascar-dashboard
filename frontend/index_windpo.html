@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Environnemental - Aires Protégées Madagascar</title>
+    
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            color: #1e293b;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* Header */
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+            padding: 0 40px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+            grid-column: 1 / -1;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #22c55e, #16a34a);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+        }
+
+        .logo-text {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1e293b;
+        }
+
+        .user-profile {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 16px;
+        }
+
+        /* Main Layout */
+        .dashboard-container {
+            display: grid;
+            grid-template-columns: 320px 1fr;
+            grid-template-rows: 80px 1fr;
+            height: 100vh;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            padding: 30px;
+            overflow-y: auto;
+            border-right: 1px solid rgba(226, 232, 240, 0.8);
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .sidebar-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .control-group {
+            margin-bottom: 25px;
+        }
+        
+        .control-label {
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 8px;
+            color: #475569;
+        }
+        
+        .control-input {
+            width: 100%;
+            padding: 12px 15px;
+            background: rgba(248, 250, 252, 0.8);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+            border-radius: 10px;
+            color: #1e293b;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+        
+        .control-input:focus {
+            outline: none;
+            border-color: #22c55e;
+            box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.1);
+        }
+
+        .slider-container {
+            position: relative;
+        }
+        
+        .slider-labels {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 8px;
+            font-size: 12px;
+            color: #64748b;
+        }
+        
+        .slider-labels span {
+            font-weight: 500;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            background: linear-gradient(135deg, #22c55e, #16a34a);
+            border: none;
+            border-radius: 10px;
+            color: #ffffff;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            width: 100%;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(34, 197, 94, 0.3);
+        }
+
+        /* Main Content */
+        .main-content {
+            padding: 30px;
+            overflow-y: auto;
+        }
+
+        .content-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 10px;
+        }
+
+        .content-subtitle {
+            font-size: 16px;
+            color: #64748b;
+            margin-bottom: 30px;
+        }
+
+        /* Stats Cards */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 16px;
+            padding: 25px;
+            border: 1px solid rgba(226, 232, 240, 0.8);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .stat-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+
+        .stat-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: white;
+        }
+
+        .stat-icon.areas { background: linear-gradient(135deg, #3b82f6, #1d4ed8); }
+        .stat-icon.investment { background: linear-gradient(135deg, #22c55e, #16a34a); }
+        .stat-icon.deforestation { background: linear-gradient(135deg, #f59e0b, #d97706); }
+        .stat-icon.score { background: linear-gradient(135deg, #8b5cf6, #7c3aed); }
+
+        .stat-value {
+            font-size: 32px;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            color: #64748b;
+            font-weight: 500;
+        }
+
+        /* Charts Grid */
+        .charts-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .chart-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 16px;
+            padding: 25px;
+            border: 1px solid rgba(226, 232, 240, 0.8);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .chart-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .chart-subtitle {
+            font-size: 12px;
+            color: #64748b;
+            margin-top: 5px;
+        }
+
+        .chart-explanation {
+            margin-top: 20px;
+            padding: 15px;
+            background: rgba(248, 250, 252, 0.8);
+            border-radius: 12px;
+            font-size: 12px;
+            color: #475569;
+            border-left: 4px solid #22c55e;
+        }
+
+        .chart-explanation ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+
+        .chart-explanation li {
+            margin: 6px 0;
+        }
+
+        /* Map Card */
+        .map-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 16px;
+            padding: 25px;
+            border: 1px solid rgba(226, 232, 240, 0.8);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            margin-bottom: 40px;
+        }
+
+        .map-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        #map {
+            height: 500px;
+            border-radius: 12px;
+            border: 1px solid rgba(226, 232, 240, 0.8);
+        }
+
+        /* Legend */
+        .legend {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 15px;
+            border-radius: 10px;
+            font-size: 12px;
+            color: #475569;
+            margin-top: 15px;
+            border: 1px solid rgba(226, 232, 240, 0.8);
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin: 8px 0;
+        }
+
+        .legend-color {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            border: 2px solid white;
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .charts-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .dashboard-container {
+                grid-template-columns: 1fr;
+                grid-template-rows: auto auto 1fr;
+            }
+            
+            .sidebar {
+                padding: 20px;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            }
+        }
+
+        /* Loading and Error States */
+        .loading {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+            color: #64748b;
+        }
+
+        .error {
+            background: rgba(239, 68, 68, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            margin: 10px 0;
+            color: #dc2626;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="dashboard-container">
+        <!-- Header -->
+        <div class="header">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-leaf"></i>
+                </div>
+                <div class="logo-text">Madagascar Protected Areas</div>
+            </div>
+            <div class="user-profile">
+                <i class="fas fa-user"></i>
+            </div>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="sidebar-title">
+                <i class="fas fa-filter"></i>
+                Filtres
+            </div>
+            
+            <div class="control-group">
+                <label class="control-label">Aire Protégée</label>
+                <select class="control-input" id="apFilter">
+                    <option value="">Toutes les APs</option>
+                </select>
+            </div>
+            
+            <div class="control-group">
+                <label class="control-label">Année</label>
+                <select class="control-input" id="yearFilter">
+                    <option value="total">Toutes les années</option>
+                </select>
+            </div>
+            
+            <div class="control-group">
+                <label class="control-label">Taux de Déforestation (%)</label>
+                <div class="slider-container">
+                    <input type="range" class="control-input" id="deforestationSlider" 
+                           min="0" max="100" value="50" step="1">
+                    <div class="slider-labels">
+                        <span>0%</span>
+                        <span id="deforestationValue">50%</span>
+                        <span>100%</span>
+                    </div>
+                </div>
+            </div>
+            
+            <button class="btn" onclick="applyFilters()">
+                <i class="fas fa-filter"></i> Appliquer les Filtres
+            </button>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <div class="content-title">Dashboard Environnemental</div>
+            <div class="content-subtitle">Surveillance des Aires Protégées de Madagascar</div>
+
+            <!-- Stats Cards -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <div class="stat-icon areas">
+                            <i class="fas fa-map-marked-alt"></i>
+                        </div>
+                    </div>
+                    <div class="stat-value" id="totalAreas">-</div>
+                    <div class="stat-label">Aires Protégées</div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <div class="stat-icon investment">
+                            <i class="fas fa-dollar-sign"></i>
+                        </div>
+                    </div>
+                    <div class="stat-value" id="totalInvestment">-</div>
+                    <div class="stat-label">Financement Total</div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <div class="stat-icon deforestation">
+                            <i class="fas fa-fire"></i>
+                        </div>
+                    </div>
+                    <div class="stat-value" id="avgDeforestation">-</div>
+                    <div class="stat-label">Taux Incendies Moy.</div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-header">
+                        <div class="stat-icon score">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                    </div>
+                    <div class="stat-value" id="correlation">-</div>
+                    <div class="stat-label">Score Moyen</div>
+                </div>
+            </div>
+
+            <!-- Charts Grid -->
+            <div class="charts-grid">
+                <div class="chart-card">
+                    <div class="chart-title">
+                        <i class="fas fa-chart-area"></i>
+                        Tendances d'Investissement
+                    </div>
+                    <canvas id="investmentChart"></canvas>
+                </div>
+
+                <div class="chart-card">
+                    <div class="chart-title">
+                        <i class="fas fa-chart-area"></i>
+                        Corrélation Financement-Incendies
+                        <div class="chart-subtitle">
+                            <small>Analyse de l'efficacité des investissements</small>
+                        </div>
+                    </div>
+                    <canvas id="correlationChart"></canvas>
+                    <div class="chart-explanation">
+                        <p><strong>Comment lire ce graphique :</strong></p>
+                        <ul>
+                            <li><strong>Points en bas à gauche :</strong> Peu de financement, peu d'incendies (efficace)</li>
+                            <li><strong>Points en bas à droite :</strong> Beaucoup de financement, peu d'incendies (très efficace)</li>
+                            <li><strong>Points en haut à droite :</strong> Beaucoup de financement, beaucoup d'incendies (inefficace)</li>
+                        </ul>
+                        <p><strong>Corrélation :</strong> Plus elle est négative, plus l'investissement réduit les incendies</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Map -->
+            <div class="map-card">
+                <div class="map-title">
+                    <i class="fas fa-map"></i>
+                    Carte des Aires Protégées
+                </div>
+                <div id="map"></div>
+                <div class="legend">
+                    <div class="legend-item">
+                        <div class="legend-color" style="background: #22c55e;"></div>
+                        <span>Score élevé (>80%)</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color" style="background: #fbbf24;"></div>
+                        <span>Score moyen (60-80%)</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color" style="background: #ef4444;"></div>
+                        <span>Score faible (<60%)</span>
+                    </div>
+                    <div class="legend-item">
+                        <span style="font-weight: 500;">Taille des marqueurs = Superficie</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <script>
+        // Configuration
+        const API_BASE = 'http://localhost:5001/api';
+        
+        // Variables globales
+        let map;
+        let apCoords = {};
+        let investmentChart;
+        let correlationChart;
+        let apsList = [];
+        
+        // Initialisation
+        document.addEventListener('DOMContentLoaded', async function() {
+            await loadAPCoords();
+            initializeMap();
+            initializeCharts();
+            await loadAPList();
+            await loadData();
+            
+            // Ajouter l'événement pour le slider de déforestation
+            const deforestationSlider = document.getElementById('deforestationSlider');
+            const deforestationValue = document.getElementById('deforestationValue');
+            
+            if (deforestationSlider && deforestationValue) {
+                deforestationSlider.addEventListener('input', function() {
+                    deforestationValue.textContent = this.value + '%';
+                });
+            }
+        });
+
+        async function loadAPList() {
+            const res = await fetch(`${API_BASE}/aps`);
+            const payload = await res.json();
+            if (payload.success) {
+                apsList = payload.data;
+                const apSelect = document.getElementById('apFilter');
+                apSelect.innerHTML = '<option value="">Toutes les APs</option>';
+                apsList.forEach(ap => {
+                    const option = document.createElement('option');
+                    option.value = ap;
+                    option.textContent = ap;
+                    apSelect.appendChild(option);
+                });
+            }
+        }
+
+        async function loadAPCoords() {
+            try {
+                const response = await fetch(`${API_BASE}/protected-areas`);
+                const data = await response.json();
+                
+                if (data.success && data.data) {
+                    data.data.forEach(area => {
+                        if (area.lat && area.lng) {
+                            const key = area.name || area.area_id;
+                            if (key) {
+                                apCoords[key.toUpperCase()] = {
+                                    lat: parseFloat(area.lat),
+                                    lng: parseFloat(area.lng)
+                                };
+                            }
+                        }
+                    });
+                    console.log(`✅ Coordonnées chargées: ${Object.keys(apCoords).length} aires protégées`);
+                }
+            } catch (error) {
+                console.error('Erreur lors du chargement des coordonnées:', error);
+            }
+        }
+
+        function initializeMap() {
+            map = L.map('map').setView([-18.7669, 46.8691], 6);
+            
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '© OpenStreetMap contributors',
+                maxZoom: 18
+            }).addTo(map);
+        }
+
+        function displayProtectedAreasOnMap(areas) {
+            map.eachLayer(layer => {
+                if (layer instanceof L.CircleMarker) {
+                    map.removeLayer(layer);
+                }
+            });
+
+            areas.forEach(area => {
+                const key = area.name?.toUpperCase() || area.area_id?.toUpperCase();
+                const coords = apCoords[key];
+                
+                if (coords && coords.lat && coords.lng) {
+                    const lat = coords.lat;
+                    const lng = coords.lng;
+                    
+                    let score = area.score_global;
+                    if (!score || score === 0.5) {
+                        const fireRate = area.fire_par_100ha || 0;
+                        score = Math.max(0, Math.min(1, 1 - (fireRate * 10)));
+                    }
+                    
+                    const marker = L.circleMarker([lat, lng], {
+                        radius: Math.max(6, Math.min(16, Math.sqrt((area.superficie_ha || 1000)) / 50)),
+                        fillColor: score > 0.8 ? '#22c55e' : score > 0.6 ? '#fbbf24' : '#ef4444',
+                        color: '#ffffff',
+                        weight: 2,
+                        opacity: 1,
+                        fillOpacity: 0.7
+                    });
+
+                    marker.bindPopup(`
+                        <div style="color: #1e293b; min-width: 200px;">
+                            <h3 style="margin: 0 0 10px 0; color: #1e293b;">${area.name}</h3>
+                            <p style="margin: 5px 0;"><strong>Superficie:</strong> ${area.superficie_ha ? (area.superficie_ha/100).toFixed(1) : '-'} km²</p>
+                            <p style="margin: 5px 0;"><strong>Financement total:</strong> ${area.total_financement ? (area.total_financement / 1000000000).toFixed(1) : '-'}B USD</p>
+                            <p style="margin: 5px 0;"><strong>Score global:</strong> ${area.score_global ? (area.score_global * 100).toFixed(1) : '-'}%</p>
+                            <p style="margin: 5px 0;"><strong>Incendies:</strong> ${area.fire_total || 0} (${area.fire_par_100ha ? area.fire_par_100ha.toFixed(2) : '-'} /100ha)</p>
+                        </div>
+                    `);
+
+                    marker.addTo(map);
+                }
+            });
+        }
+
+        function initializeCharts() {
+            const investmentCtx = document.getElementById('investmentChart').getContext('2d');
+            investmentChart = new Chart(investmentCtx, {
+                type: 'line',
+                data: {
+                    labels: [],
+                    datasets: [{
+                        label: 'Investissement (M USD)',
+                        data: [],
+                        borderColor: '#22c55e',
+                        backgroundColor: 'rgba(34, 197, 94, 0.1)',
+                        tension: 0.4,
+                        fill: true
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            labels: {
+                                color: '#1e293b'
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            ticks: { color: '#64748b' },
+                            grid: { color: 'rgba(226, 232, 240, 0.5)' }
+                        },
+                        y: {
+                            ticks: { color: '#64748b' },
+                            grid: { color: 'rgba(226, 232, 240, 0.5)' }
+                        }
+                    }
+                }
+            });
+
+            const correlationCtx = document.getElementById('correlationChart').getContext('2d');
+            correlationChart = new Chart(correlationCtx, {
+                type: 'scatter',
+                data: {
+                    datasets: [{
+                        label: 'Financement vs Incendies',
+                        data: [],
+                        backgroundColor: 'rgba(59, 130, 246, 0.6)',
+                        borderColor: '#3b82f6'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            labels: {
+                                color: '#1e293b'
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Financement (M USD)',
+                                color: '#64748b'
+                            },
+                            ticks: { color: '#64748b' },
+                            grid: { color: 'rgba(226, 232, 240, 0.5)' }
+                        },
+                        y: {
+                            title: {
+                                display: true,
+                                text: 'Incendies par 100ha',
+                                color: '#64748b'
+                            },
+                            ticks: { color: '#64748b' },
+                            grid: { color: 'rgba(226, 232, 240, 0.5)' }
+                        }
+                    }
+                }
+            });
+        }
+
+        async function loadData() {
+            try {
+                await Promise.all([
+                    loadSummaryStats(),
+                    loadProtectedAreas(),
+                    loadTrends(),
+                    loadCorrelation(),
+                    loadAvailableYears()
+                ]);
+            } catch (error) {
+                console.error('Erreur lors du chargement des données:', error);
+                showError('Erreur lors du chargement des données');
+            }
+        }
+
+        async function loadSummaryStats() {
+            const response = await fetch(`${API_BASE}/summary`);
+            const data = await response.json();
+            
+            if (data.success) {
+                document.getElementById('totalAreas').textContent = data.data.total_protected_areas;
+                document.getElementById('totalInvestment').textContent = (data.data.total_financement_mga / 1000000000).toFixed(1) + 'B USD';
+                document.getElementById('avgDeforestation').textContent = (data.data.avg_deforestation_rate * 100).toFixed(1) + '%';
+                if (data.data.avg_score_global) {
+                    document.getElementById('correlation').textContent = (data.data.avg_score_global * 100).toFixed(1) + '%';
+                }
+            }
+        }
+
+        async function loadProtectedAreas() {
+            const response = await fetch(`${API_BASE}/protected-areas`);
+            const data = await response.json();
+            
+            if (data.success) {
+                displayProtectedAreasOnMap(data.data);
+            }
+        }
+
+        async function loadTrends() {
+            const response = await fetch(`${API_BASE}/trends`);
+            const data = await response.json();
+            
+            if (data.success) {
+                updateInvestmentChart(data.data.investment_trends);
+            }
+        }
+
+        async function loadCorrelation() {
+            const response = await fetch(`${API_BASE}/correlation`);
+            const data = await response.json();
+            
+            if (data.success) {
+                updateCorrelationChart(data.data);
+            }
+        }
+
+        async function loadAvailableYears() {
+            try {
+                const response = await fetch(`${API_BASE}/trends`);
+                const data = await response.json();
+                
+                if (data.success && data.data.investment_trends) {
+                    const yearSelect = document.getElementById('yearFilter');
+                    yearSelect.innerHTML = '<option value="total">Toutes les années</option>';
+                    
+                    data.data.investment_trends.forEach(trend => {
+                        const option = document.createElement('option');
+                        option.value = trend.year;
+                        option.textContent = trend.year;
+                        yearSelect.appendChild(option);
+                    });
+                }
+            } catch (error) {
+                console.error('Erreur lors du chargement des années:', error);
+            }
+        }
+
+        function updateInvestmentChart(trends) {
+            const labels = trends.map(t => t.year);
+            const data = trends.map(t => t.total_investment / 1000000);
+            
+            investmentChart.data.labels = labels;
+            investmentChart.data.datasets[0].data = data;
+            investmentChart.update();
+        }
+
+        function updateCorrelationChart(correlationData) {
+            const data = correlationData.map(item => ({
+                x: item.x / 1000000,
+                y: item.y
+            }));
+            
+            correlationChart.data.datasets[0].data = data;
+            correlationChart.update();
+        }
+
+        function applyFilters() {
+            const year = document.getElementById('yearFilter')?.value || 'total';
+            const apValue = document.getElementById('apFilter')?.value || '';
+            const deforestationRate = document.getElementById('deforestationSlider')?.value || 50;
+            
+            const rate = parseFloat(deforestationRate) / 100;
+            loadFilteredData(year, apValue, rate);
+        }
+
+        async function loadFilteredData(year, apValue, deforestationRate) {
+            try {
+                const params = new URLSearchParams();
+                
+                if (year && year !== 'total') params.append('year', year);
+                if (apValue) params.append('ap', apValue);
+                if (deforestationRate !== undefined) {
+                    params.append('min_rate', 0);
+                    params.append('max_rate', deforestationRate);
+                }
+                
+                const [summaryRes, protectedRes, trendsRes, correlationRes] = await Promise.all([
+                    fetch(`${API_BASE}/summary?${params}`),
+                    fetch(`${API_BASE}/protected-areas?${params}`),
+                    fetch(`${API_BASE}/trends?${params}`),
+                    fetch(`${API_BASE}/correlation?${params}`)
+                ]);
+                
+                const [summaryData, protectedData, trendsData, correlationData] = await Promise.all([
+                    summaryRes.json(),
+                    protectedRes.json(),
+                    trendsRes.json(),
+                    correlationRes.json()
+                ]);
+                
+                if (summaryData.success) {
+                    document.getElementById('totalAreas').textContent = summaryData.data.total_protected_areas;
+                    document.getElementById('totalInvestment').textContent = (summaryData.data.total_financement_mga / 1000000000).toFixed(1) + 'B USD';
+                    document.getElementById('avgDeforestation').textContent = (summaryData.data.avg_deforestation_rate * 100).toFixed(1) + '%';
+                    if (summaryData.data.avg_score_global) {
+                        document.getElementById('correlation').textContent = (summaryData.data.avg_score_global * 100).toFixed(1) + '%';
+                    }
+                }
+                
+                if (protectedData.success) {
+                    displayProtectedAreasOnMap(protectedData.data);
+                }
+                
+                if (trendsData.success) {
+                    updateInvestmentChart(trendsData.data.investment_trends);
+                }
+                
+                if (correlationData.success) {
+                    updateCorrelationChart(correlationData.data);
+                }
+                
+                if (apValue) {
+                    const y = await fetch(`${API_BASE}/yearly?ap=${encodeURIComponent(apValue)}`);
+                    const yData = await y.json();
+                    if (yData.success) {
+                        const labels = yData.years;
+                        const vals = labels.map(yr => {
+                            const row = yData.data.find(d => d['Année'] === yr);
+                            return row ? (row['Financement_annuel_USD'] / 1000000.0) : 0;
+                        });
+                        investmentChart.data.labels = labels;
+                        investmentChart.data.datasets[0].data = vals;
+                        investmentChart.update();
+                    }
+                }
+                
+            } catch (error) {
+                console.error('Erreur lors du filtrage:', error);
+                showError('Erreur lors du filtrage des données');
+            }
+        }
+
+        function showError(message) {
+            const errorDiv = document.createElement('div');
+            errorDiv.className = 'error';
+            errorDiv.textContent = message;
+            document.querySelector('.main-content').insertBefore(errorDiv, document.querySelector('.stats-grid'));
+            
+            setTimeout(() => {
+                errorDiv.remove();
+            }, 5000);
+        }
+    </script>
+</body>
+</html>

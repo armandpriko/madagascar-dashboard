@@ -1,0 +1,1107 @@
+{
+  "metadata": {
+    "generated_at": "2025-10-13T10:23:40.924894",
+    "analyst": "KOUMI Dzudzogbe Prince Armand",
+    "version": "1.0"
+  },
+  "summary": {
+    "total_investment": 246568452251.89844,
+    "avg_investment": 498118085.35737056,
+    "avg_fire_rate": 0.3981132906376805,
+    "num_observations": 495,
+    "num_aps": 56
+  },
+  "correlation": {
+    "pearson": -0.10303770684159362,
+    "p_value_pearson": 0.02397254513012481,
+    "spearman": -0.09425275974481134,
+    "p_value_spearman": 0.03899993335979832,
+    "interpretation": "FAIBLE NÉGATIVE SIGNIFICATIVE"
+  },
+  "yearly_trends": [
+    {
+      "Année": 2007,
+      "Total_Investment": 1658125697.485504,
+      "Avg_Fire_Rate": 0.0,
+      "Num_APs": 8,
+      "Investment_Change%": NaN,
+      "Fire_Change%": NaN
+    },
+    {
+      "Année": 2008,
+      "Total_Investment": 1822581985.3666875,
+      "Avg_Fire_Rate": 0.0,
+      "Num_APs": 9,
+      "Investment_Change%": 9.918203917264922,
+      "Fire_Change%": NaN
+    },
+    {
+      "Année": 2009,
+      "Total_Investment": 2354101869.3554487,
+      "Avg_Fire_Rate": 0.0,
+      "Num_APs": 9,
+      "Investment_Change%": 29.163016438013578,
+      "Fire_Change%": NaN
+    },
+    {
+      "Année": 2010,
+      "Total_Investment": 3901270530.989776,
+      "Avg_Fire_Rate": 0.0,
+      "Num_APs": 10,
+      "Investment_Change%": 65.72224769771502,
+      "Fire_Change%": NaN
+    },
+    {
+      "Année": 2011,
+      "Total_Investment": 3917598601.591099,
+      "Avg_Fire_Rate": 0.0,
+      "Num_APs": 13,
+      "Investment_Change%": 0.41853212874165546,
+      "Fire_Change%": NaN
+    },
+    {
+      "Année": 2012,
+      "Total_Investment": 4687775483.672623,
+      "Avg_Fire_Rate": 0.2965712600236872,
+      "Num_APs": 18,
+      "Investment_Change%": 19.659412829296063,
+      "Fire_Change%": Infinity
+    },
+    {
+      "Année": 2013,
+      "Total_Investment": 5581799093.639154,
+      "Avg_Fire_Rate": 0.46257696595265035,
+      "Num_APs": 21,
+      "Investment_Change%": 19.071382856973162,
+      "Fire_Change%": 55.97498082440766
+    },
+    {
+      "Année": 2014,
+      "Total_Investment": 17405224832.66659,
+      "Avg_Fire_Rate": 0.4429305675159245,
+      "Num_APs": 27,
+      "Investment_Change%": 211.82105519528727,
+      "Fire_Change%": -4.247163149653421
+    },
+    {
+      "Année": 2015,
+      "Total_Investment": 12255408784.392344,
+      "Avg_Fire_Rate": 0.30847242040008854,
+      "Num_APs": 33,
+      "Investment_Change%": -29.5877594100878,
+      "Fire_Change%": -30.356484057967357
+    },
+    {
+      "Année": 2016,
+      "Total_Investment": 24124956326.51983,
+      "Avg_Fire_Rate": 0.48768769775041976,
+      "Num_APs": 39,
+      "Investment_Change%": 96.8515024749214,
+      "Fire_Change%": 58.09766627366204
+    },
+    {
+      "Année": 2017,
+      "Total_Investment": 26829850808.247208,
+      "Avg_Fire_Rate": 0.40216479249063813,
+      "Num_APs": 39,
+      "Investment_Change%": 11.212018148832747,
+      "Fire_Change%": -17.536408167414763
+    },
+    {
+      "Année": 2018,
+      "Total_Investment": 15500111305.373333,
+      "Avg_Fire_Rate": 0.5040117982974482,
+      "Num_APs": 34,
+      "Investment_Change%": -42.228112201769065,
+      "Fire_Change%": 25.32469467952767
+    },
+    {
+      "Année": 2019,
+      "Total_Investment": 13925826766.57497,
+      "Avg_Fire_Rate": 0.29196126636682,
+      "Num_APs": 30,
+      "Investment_Change%": -10.156601509387963,
+      "Fire_Change%": -42.07253335079355
+    },
+    {
+      "Année": 2020,
+      "Total_Investment": 18155294792.42,
+      "Avg_Fire_Rate": 0.47995229669633277,
+      "Num_APs": 37,
+      "Investment_Change%": 30.37139623190399,
+      "Fire_Change%": 64.38903100705178
+    },
+    {
+      "Année": 2021,
+      "Total_Investment": 24659204145.569565,
+      "Avg_Fire_Rate": 0.7072973204259898,
+      "Num_APs": 38,
+      "Investment_Change%": 35.82376065777246,
+      "Fire_Change%": 47.36825415662067
+    },
+    {
+      "Année": 2022,
+      "Total_Investment": 27073266278.41092,
+      "Avg_Fire_Rate": 0.36640924152010534,
+      "Num_APs": 41,
+      "Investment_Change%": 9.789700099770183,
+      "Fire_Change%": -48.19586743246461
+    },
+    {
+      "Année": 2023,
+      "Total_Investment": 42716054949.623405,
+      "Avg_Fire_Rate": 0.44661967506503764,
+      "Num_APs": 51,
+      "Investment_Change%": 57.779465951201246,
+      "Fire_Change%": 21.89094172738846
+    }
+  ],
+  "ap_segmentation": [
+    {
+      "AP_Name": "AMBATOVAKY",
+      "Financement_annuel_USD": 2984705253.027883,
+      "FIRE_par_100ha_moy": 0.298860072267243,
+      "Superficie_ha": 78115,
+      "Financement_par_ha": 38209.11800586165,
+      "Fire_normalized": 0.09444536774454636,
+      "Investment_normalized": 0.010222574588170805,
+      "Efficacite_Score": 0.009257099771894959,
+      "Categorie": "🚨 CRITIQUES (Peu investis + Forte déforestation)"
+    },
+    {
+      "AP_Name": "AMBOHIDRAY",
+      "Financement_annuel_USD": 224089295.84220576,
+      "FIRE_par_100ha_moy": 0.0535905680169422,
+      "Superficie_ha": 1244,
+      "Financement_par_ha": 180136.0899053101,
+      "Fire_normalized": 0.016935620960010025,
+      "Investment_normalized": 0.04876213149187753,
+      "Efficacite_Score": 0.047936314515728926,
+      "Categorie": "🌟 EFFICACES (Investis + Protégés)"
+    },
+    {
+      "AP_Name": "AMBOHITANTELY",
+      "Financement_annuel_USD": 187147000.0,
+      "FIRE_par_100ha_moy": 0.0,
+      "Superficie_ha": 4940,
+      "Financement_par_ha": 37884.00809716599,
+      "Fire_normalized": 0.0,
+      "Investment_normalized": 0.010134292624154747,
+      "Efficacite_Score": 0.010134292624154747,
+      "Categorie": "🌱 NATURELLEMENT PROTÉGÉES (Peu investis + Peu de feux)"
+    },
+    {
+      "AP_Name": "AMBOHITR ANTSINGY MONTAGNE DES FRANCAIS",
+      "Financement_annuel_USD": 2335664310.8936048,
+      "FIRE_par_100ha_moy": 0.2693602693058531,
+      "Superficie_ha": 4950,
+      "Financement_par_ha": 471851.37593810196,
+      "Fire_normalized": 0.08512287873507855,
+      "Investment_normalized": 0.12797595332770828,
+      "Efficacite_Score": 0.1170822717715877,
+      "Categorie": "⚠️  SOUS PRESSION (Investis mais encore fragiles)"
+    },
+    {
+      "AP_Name": "AMPASINDAVA",
+      "Financement_annuel_USD": 132713170.0,
+      "FIRE_par_100ha_moy": 0.3595397890660732,
+      "Superficie_ha": 91784,
+      "Financement_par_ha": 1445.929246927569,
+      "Fire_normalized": 0.11362129219716381,
+      "Investment_normalized": 0.00023971519101236098,
+      "Efficacite_Score": 0.0002124784412502466,
+      "Categorie": "🚨 CRITIQUES (Peu investis + Forte déforestation)"
+    },
+    {
+      "AP_Name": "ANALALAVA BETSIBOKA PN",
+      "Financement_annuel_USD": 1403297018.4981058,
+      "FIRE_par_100ha_moy": 0.726832220987519,
+      "Superficie_ha": 381,
+      "Financement_par_ha": 3683194.2742732433,
+      "Fire_normalized": 0.229692564413114,
+      "Investment_normalized": 1.0,
+      "Efficacite_Score": 0.770307435586886,
+      "Categorie": "⚠️  SOUS PRESSION (Investis mais encore fragiles)"
+    },
+    {
+      "AP_Name": "ANALAMERANA",
+      "Financement_annuel_USD": 228380570.0,
+      "FIRE_par_100ha_moy": 0.1573333333312356,
+      "Superficie_ha": 75000,
+      "Financement_par_ha": 3045.0742666666665,
+      "Fire_normalized": 0.049720273478540966,
+      "Investment_normalized": 0.0006739549951926239,
+      "Efficacite_Score": 0.0006404457685194179,
+      "Categorie": "🌱 NATURELLEMENT PROTÉGÉES (Peu investis + Peu de feux)"
+    },
+    {
+      "AP_Name": "ANDOHAHELA",
+      "Financement_annuel_USD": 3203213199.4659796,
+      "FIRE_par_100ha_moy": 0.5207514198271637,
+      "Superficie_ha": 76300,
+      "Financement_par_ha": 41981.824370458446,
+      "Fire_normalized": 0.16456718013870952,
+      "Investment_normalized": 0.011247034066686036,
+      "Efficacite_Score": 0.009396141385407513,
+      "Categorie": "🚨 CRITIQUES (Peu investis + Forte déforestation)"
+    },
+    {
+      "AP_Name": "ANDRAFIAMENA ANDAVAKOERA",
+      "Financement_annuel_USD": 551096000.0,
+      "FIRE_par_100ha_moy": 0.28151243402730314,
+      "Superficie_ha": 73709,
+      "Financement_par_ha": 7476.6446431236345,
+      "Fire_normalized": 0.08896318987902874,
+      "Investment_normalized": 0.001877325689363744,
+      "Efficacite_Score": 0.0017103128075960988,
+      "Categorie": "🚨 CRITIQUES (Peu investis + Forte déforestation)"
+    },
+    {
+      "AP_Name": "ANDRANOMENA",
+      "Financement_annuel_USD": 4758732631.760294,
+      "FIRE_par_100ha_moy": 3.164369829927422,
+      "Superficie_ha": 8157,
+      "Financement_par_ha": 583392.5011352573,
+      "Fire_normalized": 1.0,
+      "Investment_normalized": 0.15826438606257134,
+      "Efficacite_Score": 0.0,
+      "Categorie": "⚠️  SOUS PRESSION (Investis mais encore fragiles)"
+    },
+    {
+      "AP_Name": "ANDRINGITRA",
+      "Financement_annuel_USD": 3936015990.410585,
+      "FIRE_par_100ha_moy": 0.12579113923652557,
+      "Superficie_ha": 31600,
+      "Financement_par_ha": 124557.46805096787,
+      "Fire_normalized": 0.03975235070402966,
+      "Investment_normalized": 0.033670035670214024,
+      "Efficacite_Score": 0.03233157260403449,
+      "Categorie": "🌟 EFFICACES (Investis + Protégés)"
+    },
+    {
+      "AP_Name": "ANJANAHARIBE SUD",
+      "Financement_annuel_USD": 3734007301.633946,
+      "FIRE_par_100ha_moy": 0.003958240561923254,
+      "Superficie_ha": 26948,
+      "Financement_par_ha": 138563.4296286903,
+      "Fire_normalized": 0.0012508779866650542,
+      "Investment_normalized": 0.037473284242290836,
+      "Efficacite_Score": 0.03742640973594411,
+      "Categorie": "🌟 EFFICACES (Investis + Protégés)"
+    },
+    {
+      "AP_Name": "ANKARAFANTSIKA",
+      "Financement_annuel_USD": 3855964380.952089,
+      "FIRE_par_100ha_moy": 0.191172884660879,
+      "Superficie_ha": 136700,
+      "Financement_par_ha": 28207.493642663416,
+      "Fire_normalized": 0.060414204070850894,
+      "Investment_normalized": 0.007506683689377693,
+      "Efficacite_Score": 0.007053173369072302,
+      "Categorie": "🌱 NATURELLEMENT PROTÉGÉES (Peu investis + Peu de feux)"
+    },
+    {
+      "AP_Name": "ANKARANA",
+      "Financement_annuel_USD": 3736179467.901674,
+      "FIRE_par_100ha_moy": 0.4763795156619143,
+      "Superficie_ha": 25190,
+      "Financement_par_ha": 148319.94711797038,
+      "Fire_normalized": 0.15054482922839663,
+      "Investment_normalized": 0.040122617599635445,
+      "Efficacite_Score": 0.03408236498490207,
+      "Categorie": "⚠️  SOUS PRESSION (Investis mais encore fragiles)"
+    },
+    {
+      "AP_Name": "BAIE DE BALY",
+      "Financement_annuel_USD": 4847960688.062025,
+      "FIRE_par_100ha_moy": 0.2144818615372752,
+      "Superficie_ha": 62900,
+      "Financement_par_ha": 77074.09678953936,
+      "Fire_normalized": 0.06778027634721652,
+      "Investment_normalized": 0.020776164517899466,
+      "Efficacite_Score": 0.019367950345441007,
+      "Categorie": "🌟 EFFICACES (Investis + Protégés)"
+    },
+    {
+      "AP_Name": "BEANKA",
+      "Financement_annuel_USD": 860279628.2421291,
+      "FIRE_par_100ha_moy": 0.2815643325790382,
+      "Superficie_ha": 17166,
+      "Financement_par_ha": 50115.32262857562,
+      "Fire_normalized": 0.08897959079122433,
+      "Investment_normalized": 0.01345564469756024,
+      "Efficacite_Score": 0.012258366938539222,
+      "Categorie": "🚨 CRITIQUES (Peu investis + Forte déforestation)"
+    },
+    {
+      "AP_Name": "BETAMPONA",
+      "Financement_annuel_USD": 208530760.0,
+      "FIRE_par_100ha_moy": 0.0,
+      "Superficie_ha": 2234,
+      "Financement_par_ha": 93344.1181736795,
+      "Fire_normalized": 0.0,
+      "Investment_normalized": 0.02519420716734622,
+      "Efficacite_Score": 0.02519420716734622,
+      "Categorie": "🌟 EFFICACES (Investis + Protégés)"
+    },
+    {
+      "AP_Name": "BEZA MAHAFALY",
+      "Financement_annuel_USD": 145677500.0,
+      "FIRE_par_100ha_moy": 0.0,
+      "Superficie_ha": 4219,
+      "Financement_par_ha": 34528.91680493008,
+      "Fire_normalized": 0.0,
+      "Investment_normalized": 0.009223234422575803,
+      "Efficacite_Score": 0.009223234422575803,
+      "Categorie": "🌱 NATURELLEMENT PROTÉGÉES (Peu investis + Peu de feux)"
+    },
+    {
+      "AP_Name": "CAP SAINTE MARIE",
+      "Financement_annuel_USD": 507760900.0,
+      "FIRE_par_100ha_moy": 0.0,
+      "Superficie_ha": 3617,
+      "Financement_par_ha": 140381.78048106167,
+      "Fire_normalized": 0.0,
+      "Investment_normalized": 0.03796704829015285,
+      "Efficacite_Score": 0.03796704829015285,
+      "Categorie": "🌟 EFFICACES (Investis + Protégés)"
+    },
+    {
+      "AP_Name": "COMATSA NORD",
+      "Financement_annuel_USD": 357357313.0,
+      "FIRE_par_100ha_moy": 0.2856605115109657,
+      "Superficie_ha": 239095,
+      "Financement_par_ha": 1494.6247851272506,
+      "Fire_normalized": 0.0902740598805158,
+      "Investment_normalized": 0.00025293822001302795,
+      "Efficacite_Score": 0.00023010445999350077,
+      "Categorie": "🚨 CRITIQUES (Peu investis + Forte déforestation)"
+    },
+    {
+      "AP_Name": "COMPLEXE ANJOZOROBE ANGAVO",
+      "Financement_annuel_USD": 40000000.0,
+      "FIRE_par_100ha_moy": 0.2572815533918135,
+      "Superficie_ha": 41200,
+      "Financement_par_ha": 970.8737864077669,
+      "Fire_normalized": 0.08130577878683495,
+      "Investment_normalized": 0.0001107162649584002,
+      "Efficacite_Score": 0.00010171439281158791,
+      "Categorie": "🚨 CRITIQUES (Peu investis + Forte déforestation)"
+    },
+    {
+      "AP_Name": "COMPLEXE TSIMEMBO MANAMBOLOMATY",
+      "Financement_annuel_USD": 3417538232.929543,
+      "FIRE_par_100ha_moy": 0.6456974374633838,
+      "Superficie_ha": 62745,
+      "Financement_par_ha": 54467.10069215942,
+      "Fire_normalized": 0.20405245662394447,
+      "Investment_normalized": 0.014637348189639342,
+      "Efficacite_Score": 0.01165056133308339,
+      "Categorie": "⚠️  SOUS PRESSION (Investis mais encore fragiles)"
+    },
+    {
+      "AP_Name": "CORRIDOR FORESTIER BONGOLAVA",
+      "Financement_annuel_USD": 34183000.0,
+      "FIRE_par_100ha_moy": 0.4019769357429658,
+      "Superficie_ha": 60700,
+      "Financement_par_ha": 563.1466227347611,
+      "Fire_normalized": 0.1270322235856311,
+      "Investment_normalized": 0.0,
+      "Efficacite_Score": 0.0,
+      "Categorie": "🚨 CRITIQUES (Peu investis + Forte déforestation)"
+    },
+    {
+      "AP_Name": "GALOKO KALOBINONO",
+      "Financement_annuel_USD": 255469669.0,
+      "FIRE_par_100ha_moy": 0.1885539768929949,
+      "Superficie_ha": 75310,
+      "Financement_par_ha": 3392.240990572301,
+      "Fire_normalized": 0.05958658027570677,
+      "Investment_normalized": 0.0007682263766782641,
+      "Efficacite_Score": 0.0007224503940144094,
+      "Categorie": "🌱 NATURELLEMENT PROTÉGÉES (Peu investis + Peu de feux)"
+    },
+    {
+      "AP_Name": "IBITY",
+      "Financement_annuel_USD": 217769992.0,
+      "FIRE_par_100ha_moy": 0.4883607357173431,
+      "Superficie_ha": 6143,
+      "Financement_par_ha": 35450.10450919746,
+      "Fire_normalized": 0.15433111866337829,
+      "Investment_normalized": 0.009473378320331615,
+      "Efficacite_Score": 0.008011341246633441,
+      "Categorie": "🚨 CRITIQUES (Peu investis + Forte déforestation)"
+    },
+    {
+      "AP_Name": "ISALO",
+      "Financement_annuel_USD": 1707178681.6999998,
+      "FIRE_par_100ha_moy": 0.32756632064212726,
+      "Superficie_ha": 86700,
+      "Financement_par_ha": 19690.642234140712,
+      "Fire_normalized": 0.10351707867523194,
+      "Investment_normalized": 0.005193975434517426,
+      "Efficacite_Score": 0.004656310270825264,
+      "Categorie": "🚨 CRITIQUES (Peu investis + Forte déforestation)"
+    },
+    {
+      "AP_Name": "IVOHIBE",
+      "Financement_annuel_USD": 3936015990.410585,
+      "FIRE_par_100ha_moy": 0.22828507790015917,
+      "Superficie_ha": 4490,
+      "Financement_par_ha": 876618.2606705088,
+      "Fire_normalized": 0.07214235066366914,
+      "Investment_normalized": 0.23788836939709757,
+      "Efficacite_Score": 0.2207265432332437,
+      "Categorie": "🌟 EFFICACES (Investis + Protégés)"
+    },
+    {
+      "AP_Name": "KALAMBATRITRA",
+      "Financement_annuel_USD": 176724000.0,
+      "FIRE_par_100ha_moy": 1.499999999950658,
+      "Superficie_ha": 30400,
+      "Financement_par_ha": 5813.289473684211,
+      "Fire_normalized": 0.474028031036139,
+      "Investment_normalized": 0.0014256499412959131,
+      "Efficacite_Score": 0.0007498519066766242,
+      "Categorie": "🚨 CRITIQUES (Peu investis + Forte déforestation)"
+    },
+    {
+      "AP_Name": "KIRINDY MITE",
+      "Financement_annuel_USD": 4758732631.760294,
+      "FIRE_par_100ha_moy": 0.19066031007048267,
+      "Superficie_ha": 156700,
+      "Financement_par_ha": 30368.427771284583,
+      "Fire_normalized": 0.060252220921615744,
+      "Investment_normalized": 0.008093474506518216,
+      "Efficacite_Score": 0.007605824692528016,
+      "Categorie": "🌱 NATURELLEMENT PROTÉGÉES (Peu investis + Peu de feux)"
+    },
+    {
+      "AP_Name": "LOKOBE",
+      "Financement_annuel_USD": 1149958680.0,
+      "FIRE_par_100ha_moy": 0.0,
+      "Superficie_ha": 847,
+      "Financement_par_ha": 1357684.3919716647,
+      "Fire_normalized": 0.0,
+      "Investment_normalized": 0.36851946293485094,
+      "Efficacite_Score": 0.36851946293485094,
+      "Categorie": "🌟 EFFICACES (Investis + Protégés)"
+    },
+    {
+      "AP_Name": "LOKY MANAMBATO",
+      "Financement_annuel_USD": 1979442920.7538655,
+      "FIRE_par_100ha_moy": 0.2366982864494889,
+      "Superficie_ha": 249949,
+      "Financement_par_ha": 7919.3872380120165,
+      "Fire_normalized": 0.07480108178598005,
+      "Investment_normalized": 0.001997550218930149,
+      "Efficacite_Score": 0.0018481313016323526,
+      "Categorie": "🌱 NATURELLEMENT PROTÉGÉES (Peu investis + Peu de feux)"
+    },
+    {
+      "AP_Name": "MAKIRA",
+      "Financement_annuel_USD": 5619608193.215928,
+      "FIRE_par_100ha_moy": 0.029616086600504566,
+      "Superficie_ha": 726198,
+      "Financement_par_ha": 7738.396681367793,
+      "Fire_normalized": 0.009359236812463175,
+      "Investment_normalized": 0.0019484031416447587,
+      "Efficacite_Score": 0.001930167575235958,
+      "Categorie": "🌱 NATURELLEMENT PROTÉGÉES (Peu investis + Peu de feux)"
+    },
+    {
+      "AP_Name": "MANANARA NORD",
+      "Financement_annuel_USD": 4399558090.120911,
+      "FIRE_par_100ha_moy": 0.22069292832495932,
+      "Superficie_ha": 24080,
+      "Financement_par_ha": 182705.9007525295,
+      "Fire_normalized": 0.06974308952061432,
+      "Investment_normalized": 0.049459950729846915,
+      "Efficacite_Score": 0.04601046095841003,
+      "Categorie": "🌟 EFFICACES (Investis + Protégés)"
+    },
+    {
+      "AP_Name": "MANDROZO",
+      "Financement_annuel_USD": 1778800750.1733334,
+      "FIRE_par_100ha_moy": 1.1926019001481865,
+      "Superficie_ha": 15121,
+      "Financement_par_ha": 117637.77198421622,
+      "Fire_normalized": 0.3768844870371994,
+      "Investment_normalized": 0.03179102693246777,
+      "Efficacite_Score": 0.019809482054638863,
+      "Categorie": "⚠️  SOUS PRESSION (Investis mais encore fragiles)"
+    },
+    {
+      "AP_Name": "MANGERIVOLA",
+      "Financement_annuel_USD": 120345490.0,
+      "FIRE_par_100ha_moy": 0.0638773554723828,
+      "Superficie_ha": 12524,
+      "Financement_par_ha": 9609.189556052379,
+      "Fire_normalized": 0.020186438028910132,
+      "Investment_normalized": 0.002456407557465286,
+      "Efficacite_Score": 0.0024068214385327665,
+      "Categorie": "🌱 NATURELLEMENT PROTÉGÉES (Peu investis + Peu de feux)"
+    },
+    {
+      "AP_Name": "MANOMBO",
+      "Financement_annuel_USD": 1066326722.8700156,
+      "FIRE_par_100ha_moy": 1.1954406447991401,
+      "Superficie_ha": 6540,
+      "Financement_par_ha": 163046.89952140913,
+      "Fire_normalized": 0.3777815833955662,
+      "Investment_normalized": 0.04412164761186326,
+      "Efficacite_Score": 0.027453301715032356,
+      "Categorie": "⚠️  SOUS PRESSION (Investis mais encore fragiles)"
+    },
+    {
+      "AP_Name": "MANONGARIVO",
+      "Financement_annuel_USD": 4218459352.8715777,
+      "FIRE_par_100ha_moy": 0.4462553356529636,
+      "Superficie_ha": 51540,
+      "Financement_par_ha": 81848.26063002674,
+      "Fire_normalized": 0.14102502540393608,
+      "Investment_normalized": 0.02207256474778979,
+      "Efficacite_Score": 0.018959780743502713,
+      "Categorie": "⚠️  SOUS PRESSION (Investis mais encore fragiles)"
+    },
+    {
+      "AP_Name": "MAROJEJY",
+      "Financement_annuel_USD": 3734007301.633946,
+      "FIRE_par_100ha_moy": 0.023488525375573898,
+      "Superficie_ha": 55630,
+      "Financement_par_ha": 67122.18769789585,
+      "Fire_normalized": 0.007422812957394626,
+      "Investment_normalized": 0.018073773551581657,
+      "Efficacite_Score": 0.01793961531107396,
+      "Categorie": "🌟 EFFICACES (Investis + Protégés)"
+    },
+    {
+      "AP_Name": "MAROMIZAHA",
+      "Financement_annuel_USD": 1912194024.24,
+      "FIRE_par_100ha_moy": 0.281293952048151,
+      "Superficie_ha": 2133,
+      "Financement_par_ha": 896481.0240225035,
+      "Fire_normalized": 0.08889414549076356,
+      "Investment_normalized": 0.24328200309634535,
+      "Efficacite_Score": 0.22165565731781442,
+      "Categorie": "⚠️  SOUS PRESSION (Investis mais encore fragiles)"
+    },
+    {
+      "AP_Name": "MAROTANDRANO",
+      "Financement_annuel_USD": 2392275152.792917,
+      "FIRE_par_100ha_moy": 0.5294105760758481,
+      "Superficie_ha": 44990,
+      "Financement_par_ha": 53173.48639237423,
+      "Fire_normalized": 0.16730363533013162,
+      "Investment_normalized": 0.01428607371903807,
+      "Efficacite_Score": 0.011895961651248748,
+      "Categorie": "⚠️  SOUS PRESSION (Investis mais encore fragiles)"
+    },
+    {
+      "AP_Name": "MASOALA",
+      "Financement_annuel_USD": 6067665294.854475,
+      "FIRE_par_100ha_moy": 0.020540540540447978,
+      "Superficie_ha": 222000,
+      "Financement_par_ha": 27331.825652497635,
+      "Fire_normalized": 0.00649119465941789,
+      "Investment_normalized": 0.007268900441527819,
+      "Efficacite_Score": 0.0072217165938019325,
+      "Categorie": "🌱 NATURELLEMENT PROTÉGÉES (Peu investis + Peu de feux)"
+    },
+    {
+      "AP_Name": "MASSIF D ITREMO",
+      "Financement_annuel_USD": 1571581301.8142982,
+      "FIRE_par_100ha_moy": 0.6831425291815733,
+      "Superficie_ha": 24712,
+      "Financement_par_ha": 63595.876570666,
+      "Fire_normalized": 0.21588580535709437,
+      "Investment_normalized": 0.017116221463143295,
+      "Efficacite_Score": 0.01342107220790222,
+      "Categorie": "⚠️  SOUS PRESSION (Investis mais encore fragiles)"
+    },
+    {
+      "AP_Name": "MIKEA",
+      "Financement_annuel_USD": 3960393581.41,
+      "FIRE_par_100ha_moy": 0.14886043625035703,
+      "Superficie_ha": 236751,
+      "Financement_par_ha": 16728.09652930716,
+      "Fire_normalized": 0.04704267966483908,
+      "Investment_normalized": 0.0043895110170552205,
+      "Efficacite_Score": 0.00418301665639461,
+      "Categorie": "🌱 NATURELLEMENT PROTÉGÉES (Peu investis + Peu de feux)"
+    },
+    {
+      "AP_Name": "MONTAGNE D AMBRE",
+      "Financement_annuel_USD": 2877250703.0,
+      "FIRE_par_100ha_moy": 0.5048616304995605,
+      "Superficie_ha": 30560,
+      "Financement_par_ha": 94150.87378926702,
+      "Fire_normalized": 0.15954570977284913,
+      "Investment_normalized": 0.025413277605742864,
+      "Efficacite_Score": 0.021358698192480166,
+      "Categorie": "⚠️  SOUS PRESSION (Investis mais encore fragiles)"
+    },
+    {
+      "AP_Name": "NOSY MANGABE",
+      "Financement_annuel_USD": 63020000.0,
+      "FIRE_par_100ha_moy": 0.0,
+      "Superficie_ha": 596,
+      "Financement_par_ha": 105738.25503355704,
+      "Fire_normalized": 0.0,
+      "Investment_normalized": 0.028559772826860133,
+      "Efficacite_Score": 0.028559772826860133,
+      "Categorie": "🌟 EFFICACES (Investis + Protégés)"
+    },
+    {
+      "AP_Name": "ORONJIA",
+      "Financement_annuel_USD": 1795144740.0164623,
+      "FIRE_par_100ha_moy": 0.03226252475367964,
+      "Superficie_ha": 1669,
+      "Financement_par_ha": 1075581.0305670835,
+      "Fire_normalized": 0.010195560723829683,
+      "Investment_normalized": 0.2919157109906368,
+      "Efficacite_Score": 0.28893946663299186,
+      "Categorie": "🌟 EFFICACES (Investis + Protégés)"
+    },
+    {
+      "AP_Name": "RANOMAFANA",
+      "Financement_annuel_USD": 3556449446.3565187,
+      "FIRE_par_100ha_moy": 0.29635570910752657,
+      "Superficie_ha": 40520,
+      "Financement_par_ha": 87770.22325657746,
+      "Fire_normalized": 0.09365394218612044,
+      "Investment_normalized": 0.02368064397736196,
+      "Efficacite_Score": 0.021462858315376,
+      "Categorie": "⚠️  SOUS PRESSION (Investis mais encore fragiles)"
+    },
+    {
+      "AP_Name": "RESERVE DE TAMPOLO",
+      "Financement_annuel_USD": 12100000.0,
+      "FIRE_par_100ha_moy": 0.0,
+      "Superficie_ha": 730,
+      "Financement_par_ha": 16575.342465753423,
+      "Fire_normalized": 0.0,
+      "Investment_normalized": 0.004348031417752754,
+      "Efficacite_Score": 0.004348031417752754,
+      "Categorie": "🌱 NATURELLEMENT PROTÉGÉES (Peu investis + Peu de feux)"
+    },
+    {
+      "AP_Name": "SAHAMALAZA ILES RADAMA",
+      "Financement_annuel_USD": 1422834673.0,
+      "FIRE_par_100ha_moy": 0.1777826552100498,
+      "Superficie_ha": 26035,
+      "Financement_par_ha": 54650.84205876704,
+      "Fire_normalized": 0.0561826413362459,
+      "Investment_normalized": 0.014687242235564285,
+      "Efficacite_Score": 0.013862074172825015,
+      "Categorie": "🌟 EFFICACES (Investis + Protégés)"
+    },
+    {
+      "AP_Name": "SITE BIOCULTUREL D ANTREMA",
+      "Financement_annuel_USD": 2407689761.449863,
+      "FIRE_par_100ha_moy": 0.49204406362340053,
+      "Superficie_ha": 20425,
+      "Financement_par_ha": 117879.54768420382,
+      "Fire_normalized": 0.1554951191133958,
+      "Investment_normalized": 0.03185667991035422,
+      "Efficacite_Score": 0.02690312167313637,
+      "Categorie": "⚠️  SOUS PRESSION (Investis mais encore fragiles)"
+    },
+    {
+      "AP_Name": "TOTAL",
+      "Financement_annuel_USD": 126568526213.94638,
+      "FIRE_par_100ha_moy": 0.0,
+      "Superficie_ha": 8294927,
+      "Financement_par_ha": 15258.54612270203,
+      "Fire_normalized": 0.0,
+      "Investment_normalized": 0.003990461979650627,
+      "Efficacite_Score": 0.003990461979650627,
+      "Categorie": "🌱 NATURELLEMENT PROTÉGÉES (Peu investis + Peu de feux)"
+    },
+    {
+      "AP_Name": "TSARATANANA",
+      "Financement_annuel_USD": 4218459352.8715777,
+      "FIRE_par_100ha_moy": 0.4304856433849016,
+      "Superficie_ha": 108500,
+      "Financement_par_ha": 38879.80970388551,
+      "Fire_normalized": 0.13604150795318865,
+      "Investment_normalized": 0.010404697552642611,
+      "Efficacite_Score": 0.008989226807784259,
+      "Categorie": "🚨 CRITIQUES (Peu investis + Forte déforestation)"
+    },
+    {
+      "AP_Name": "TSIMANAMPESOTSE",
+      "Financement_annuel_USD": 3509519308.1161203,
+      "FIRE_par_100ha_moy": 0.016522277227640957,
+      "Superficie_ha": 202000,
+      "Financement_par_ha": 17373.857960970894,
+      "Fire_normalized": 0.005221348361806342,
+      "Investment_normalized": 0.004564864292819151,
+      "Efficacite_Score": 0.004541029546121972,
+      "Categorie": "🌱 NATURELLEMENT PROTÉGÉES (Peu investis + Peu de feux)"
+    },
+    {
+      "AP_Name": "TSINGY DE BEMARAHA",
+      "Financement_annuel_USD": 3253075351.3836594,
+      "FIRE_par_100ha_moy": 0.3252435579618506,
+      "Superficie_ha": 157700,
+      "Financement_par_ha": 20628.252069649076,
+      "Fire_normalized": 0.10278304226194394,
+      "Investment_normalized": 0.005448578679590889,
+      "Efficacite_Score": 0.004888557186898972,
+      "Categorie": "🚨 CRITIQUES (Peu investis + Forte déforestation)"
+    },
+    {
+      "AP_Name": "ZAHAMENA",
+      "Financement_annuel_USD": 3754817264.515669,
+      "FIRE_par_100ha_moy": 0.03650704756069903,
+      "Superficie_ha": 69476,
+      "Financement_par_ha": 54044.81064706761,
+      "Fire_normalized": 0.01153690924980673,
+      "Investment_normalized": 0.014522677447321136,
+      "Efficacite_Score": 0.014355130635547176,
+      "Categorie": "🌟 EFFICACES (Investis + Protégés)"
+    },
+    {
+      "AP_Name": "ZOMBITSE VOHIBASIA",
+      "Financement_annuel_USD": 416564003.0,
+      "FIRE_par_100ha_moy": 1.811573944595706,
+      "Superficie_ha": 35770,
+      "Financement_par_ha": 11645.62490914174,
+      "Fire_normalized": 0.5724912200408813,
+      "Investment_normalized": 0.003009391356955568,
+      "Efficacite_Score": 0.0012865412274315918,
+      "Categorie": "🚨 CRITIQUES (Peu investis + Forte déforestation)"
+    }
+  ],
+  "ap_correlations": [
+    {
+      "AP": "AMBOHIDRAY",
+      "correlation": -1.0,
+      "p_value": 0.0,
+      "n_obs": 3,
+      "avg_investment": 74696431.94740191,
+      "avg_fire": 0.0535905680169422
+    },
+    {
+      "AP": "ANKARANA",
+      "correlation": -0.671725978015033,
+      "p_value": 0.011921648609827803,
+      "n_obs": 13,
+      "avg_investment": 287398420.60782105,
+      "avg_fire": 0.47637951566191433
+    },
+    {
+      "AP": "AMBATOVAKY",
+      "correlation": -0.6675727963876463,
+      "p_value": 0.02480232253115162,
+      "n_obs": 11,
+      "avg_investment": 271336841.184353,
+      "avg_fire": 0.298860072267243
+    },
+    {
+      "AP": "AMBOHITR ANTSINGY MONTAGNE DES FRANCAIS",
+      "correlation": -0.6510234566472171,
+      "p_value": 0.021850893784595884,
+      "n_obs": 12,
+      "avg_investment": 194638692.57446706,
+      "avg_fire": 0.26936026930585305
+    },
+    {
+      "AP": "LOKY MANAMBATO",
+      "correlation": -0.6294381679093637,
+      "p_value": 0.09447599499634617,
+      "n_obs": 8,
+      "avg_investment": 247430365.09423319,
+      "avg_fire": 0.23669828644948893
+    },
+    {
+      "AP": "SITE BIOCULTUREL D ANTREMA",
+      "correlation": -0.47252556167260634,
+      "p_value": 0.12084248153789179,
+      "n_obs": 12,
+      "avg_investment": 200640813.45415524,
+      "avg_fire": 0.49204406362340053
+    },
+    {
+      "AP": "RANOMAFANA",
+      "correlation": -0.430249129385728,
+      "p_value": 0.16268032598955656,
+      "n_obs": 12,
+      "avg_investment": 296370787.19637656,
+      "avg_fire": 0.29635570910752657
+    },
+    {
+      "AP": "MANANARA NORD",
+      "correlation": -0.4287622689250926,
+      "p_value": 0.12608670557135665,
+      "n_obs": 14,
+      "avg_investment": 314254149.29435074,
+      "avg_fire": 0.22069292832495932
+    },
+    {
+      "AP": "MAROTANDRANO",
+      "correlation": -0.41715902477740524,
+      "p_value": 0.20178756413250942,
+      "n_obs": 11,
+      "avg_investment": 217479559.3448106,
+      "avg_fire": 0.5294105760758481
+    },
+    {
+      "AP": "ORONJIA",
+      "correlation": -0.41598335381343404,
+      "p_value": 0.1574276110391625,
+      "n_obs": 13,
+      "avg_investment": 138088056.9243433,
+      "avg_fire": 0.03226252475367964
+    },
+    {
+      "AP": "MANOMBO",
+      "correlation": -0.389576467356586,
+      "p_value": 0.23628025484114978,
+      "n_obs": 11,
+      "avg_investment": 96938792.98818325,
+      "avg_fire": 1.1954406447991401
+    },
+    {
+      "AP": "MASSIF D ITREMO",
+      "correlation": -0.38000140591307474,
+      "p_value": 0.24900323525923726,
+      "n_obs": 11,
+      "avg_investment": 142871027.43766347,
+      "avg_fire": 0.6831425291815733
+    },
+    {
+      "AP": "ANALALAVA BETSIBOKA PN",
+      "correlation": -0.32587187875530066,
+      "p_value": 0.27722711770799713,
+      "n_obs": 13,
+      "avg_investment": 107945924.4998543,
+      "avg_fire": 0.726832220987519
+    },
+    {
+      "AP": "ISALO",
+      "correlation": -0.2937956183856296,
+      "p_value": 0.5719861839448406,
+      "n_obs": 6,
+      "avg_investment": 284529780.2833333,
+      "avg_fire": 0.3275663206421273
+    },
+    {
+      "AP": "MANONGARIVO",
+      "correlation": -0.12172051380876857,
+      "p_value": 0.6920111797312046,
+      "n_obs": 13,
+      "avg_investment": 324496873.29781365,
+      "avg_fire": 0.4462553356529636
+    },
+    {
+      "AP": "BEANKA",
+      "correlation": -0.11451123479736922,
+      "p_value": 0.7692537465385112,
+      "n_obs": 9,
+      "avg_investment": 95586625.36023657,
+      "avg_fire": 0.2815643325790382
+    },
+    {
+      "AP": "ZAHAMENA",
+      "correlation": -0.049058126336929575,
+      "p_value": 0.886102530157551,
+      "n_obs": 11,
+      "avg_investment": 341347024.046879,
+      "avg_fire": 0.03650704756069903
+    },
+    {
+      "AP": "ANJANAHARIBE SUD",
+      "correlation": -0.03473244320557141,
+      "p_value": 0.9021989677806128,
+      "n_obs": 15,
+      "avg_investment": 248933820.10892972,
+      "avg_fire": 0.003958240561923254
+    },
+    {
+      "AP": "TSARATANANA",
+      "correlation": 0.00038421090977087263,
+      "p_value": 0.9990060852510096,
+      "n_obs": 13,
+      "avg_investment": 324496873.29781365,
+      "avg_fire": 0.43048564338490153
+    },
+    {
+      "AP": "TSINGY DE BEMARAHA",
+      "correlation": 0.04588734614591186,
+      "p_value": 0.8934266834150946,
+      "n_obs": 11,
+      "avg_investment": 295734122.85305995,
+      "avg_fire": 0.32524355796185056
+    },
+    {
+      "AP": "MONTAGNE D AMBRE",
+      "correlation": 0.06781248089184919,
+      "p_value": 0.885142470485615,
+      "n_obs": 7,
+      "avg_investment": 411035814.71428573,
+      "avg_fire": 0.5048616304995605
+    },
+    {
+      "AP": "MAROMIZAHA",
+      "correlation": 0.07998645007941724,
+      "p_value": 0.8379191992920064,
+      "n_obs": 9,
+      "avg_investment": 212466002.69333333,
+      "avg_fire": 0.281293952048151
+    },
+    {
+      "AP": "TSIMANAMPESOTSE",
+      "correlation": 0.124818773437282,
+      "p_value": 0.6450974734263852,
+      "n_obs": 16,
+      "avg_investment": 219344956.75725752,
+      "avg_fire": 0.016522277227640957
+    },
+    {
+      "AP": "MAROJEJY",
+      "correlation": 0.12667791583412885,
+      "p_value": 0.6527984602114674,
+      "n_obs": 15,
+      "avg_investment": 248933820.10892972,
+      "avg_fire": 0.0234885253755739
+    },
+    {
+      "AP": "COMPLEXE TSIMEMBO MANAMBOLOMATY",
+      "correlation": 0.16022729899343116,
+      "p_value": 0.5842571963608161,
+      "n_obs": 14,
+      "avg_investment": 244109873.78068164,
+      "avg_fire": 0.6456974374633838
+    },
+    {
+      "AP": "IVOHIBE",
+      "correlation": 0.19310387804666637,
+      "p_value": 0.47365368191531027,
+      "n_obs": 16,
+      "avg_investment": 246000999.40066153,
+      "avg_fire": 0.22828507790015917
+    },
+    {
+      "AP": "MAKIRA",
+      "correlation": 0.21701743719019984,
+      "p_value": 0.45612023062796814,
+      "n_obs": 14,
+      "avg_investment": 401400585.22970915,
+      "avg_fire": 0.02961608660050456
+    },
+    {
+      "AP": "ANKARAFANTSIKA",
+      "correlation": 0.22983387009436393,
+      "p_value": 0.4099184047630696,
+      "n_obs": 15,
+      "avg_investment": 257064292.0634726,
+      "avg_fire": 0.191172884660879
+    },
+    {
+      "AP": "KIRINDY MITE",
+      "correlation": 0.23382157300966167,
+      "p_value": 0.3663930749476572,
+      "n_obs": 17,
+      "avg_investment": 279925448.9270761,
+      "avg_fire": 0.19066031007048267
+    },
+    {
+      "AP": "IBITY",
+      "correlation": 0.3180196666407387,
+      "p_value": 0.7939643898499404,
+      "n_obs": 3,
+      "avg_investment": 72589997.33333333,
+      "avg_fire": 0.4883607357173431
+    },
+    {
+      "AP": "BAIE DE BALY",
+      "correlation": 0.34476223004663664,
+      "p_value": 0.11611149599525929,
+      "n_obs": 22,
+      "avg_investment": 220361849.45736477,
+      "avg_fire": 0.2144818615372752
+    },
+    {
+      "AP": "MASOALA",
+      "correlation": 0.4063740749905187,
+      "p_value": 0.1328149927601555,
+      "n_obs": 15,
+      "avg_investment": 404511019.656965,
+      "avg_fire": 0.020540540540447978
+    },
+    {
+      "AP": "MANDROZO",
+      "correlation": 0.41118937057445154,
+      "p_value": 0.27156099076332135,
+      "n_obs": 9,
+      "avg_investment": 197644527.79703704,
+      "avg_fire": 1.1926019001481865
+    },
+    {
+      "AP": "ANDRANOMENA",
+      "correlation": 0.4746818434736112,
+      "p_value": 0.05418857400359019,
+      "n_obs": 17,
+      "avg_investment": 279925448.9270761,
+      "avg_fire": 3.164369829927422
+    },
+    {
+      "AP": "ANDRINGITRA",
+      "correlation": 0.49354481403490524,
+      "p_value": 0.052037395450011084,
+      "n_obs": 16,
+      "avg_investment": 246000999.40066153,
+      "avg_fire": 0.12579113923652557
+    },
+    {
+      "AP": "SAHAMALAZA ILES RADAMA",
+      "correlation": 0.5062186320940261,
+      "p_value": 0.24635573051795392,
+      "n_obs": 7,
+      "avg_investment": 203262096.14285713,
+      "avg_fire": 0.1777826552100498
+    },
+    {
+      "AP": "ANDOHAHELA",
+      "correlation": 0.6954709686920089,
+      "p_value": 0.012030294763469927,
+      "n_obs": 12,
+      "avg_investment": 266934433.28883162,
+      "avg_fire": 0.5207514198271637
+    },
+    {
+      "AP": "MIKEA",
+      "correlation": 0.759082413039129,
+      "p_value": 0.04782360639063603,
+      "n_obs": 7,
+      "avg_investment": 565770511.63,
+      "avg_fire": 0.14886043625035703
+    },
+    {
+      "AP": "CAP SAINTE MARIE",
+      "correlation": NaN,
+      "p_value": NaN,
+      "n_obs": 3,
+      "avg_investment": 169253633.33333334,
+      "avg_fire": 0.0
+    },
+    {
+      "AP": "LOKOBE",
+      "correlation": NaN,
+      "p_value": NaN,
+      "n_obs": 4,
+      "avg_investment": 287489670.0,
+      "avg_fire": 0.0
+    },
+    {
+      "AP": "TOTAL",
+      "correlation": NaN,
+      "p_value": NaN,
+      "n_obs": 18,
+      "avg_investment": 7031584789.663688,
+      "avg_fire": 0.0
+    }
+  ]
+}
